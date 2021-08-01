@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding and Removing Classes</title>
+    <style>
+        .box1{
+            background-color: aqua;
+            font-size:1.5em;
+            color: #fff;
+        }
+        .box2{
+            background-color: red;
+            font-size:0.5em;
+            color: #ddd;
+        }
+        #one, #two, #three {
+            width:100px;
+            height:100px;
+            display: inline-block;
+            border: 1px solid black;
+        }
+        .active{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="one" class="myClass">Box One</div>
+    <div id="two" class="myClass active">Box Two</div>
+    <div id="three" class="myClass">Box Three</div>
+
+    <script>
+
+        var el = document.querySelectorAll(".myClass");  // This will select the class .myClass (because they got the dot "." in front of the name)
+
+        for(var x = 0; x < el.length; x++){
+            el[x].onclick = function(){  // This will activate the hidden function 
+                upClass(el,"active","remove");  // Calling the next function that will take the element, class and action (like click)
+                if(!this.classList.contains("active")){  // if the class .active is not on the class name, it will be added activating the class on the css part
+                    this.classList.add("active");  // The .active class will be added to the class already existing on the div
+                }
+                // this.classList.toggle("box1");
+                // console.log(this);
+            }
+        }
+
+        function upClass(e,c,a){  // this will loop the element, class and action (like click)
+            for(var x = 0; x < e.length; x++){
+                e[x].classList[a](c);  // it will take the element on the classList and according to the action (like click) it will add the class, in this case "active"
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regular Expresions</title>
+</head>
+<body>
+    <div id="output">Regular Expressions or RegEx</div>
+    <input type="button" value="Click" onclick="myFun()">
+    <br>
+    <br>
+    <a href="http://regexr.com">Click the Link to create Regular Expressions or see examples</a>
+
+    <script>
+
+        var output = document.getElementById('output');
+        var str = "Lorem ipsum dolor sit amet, JavaScript consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga Javascript 65464 64 64 968765 687 354684 javascript 3 3"
+
+        function myFun(){
+            var p = /JavaScript/;  // In RegEx to find a word or an expresion we have to do it between slashes '/word/' and it will give us the index position where is located the initial of the word
+            var pCase = /javascript/i;  // "i" in this case it is not case sensitive so it does not matter if it is uppercase or lowercase it will still find the expresion 
+            var pAll = /javascript/ig;  // Adding the "g" it will show all the results if the expresion is found more than one time, and this will return an array since it is repeated more than once
+            var r = str.match(p);
+            r.forEach(function(e){
+                console.log(e);
+            })
+            console.log(r);  // In the console we are going to find the result at the starting index position of the word but in case is not found it will be shown as "null"
+        }
+
+
+
+
+
+
+    </script>
+</body>
+</html>

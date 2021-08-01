@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Constructors</title>
+</head>
+<body>
+    
+    <div id="output">Class Constructors</div>
+    <script>
+        class MakeName {  // We can create a 'class' where we are going to fill some parameters and create methods that we can use later using the blocks
+            constructor(first, last) {  // and the "constructor" is where we are going to define the parameters 
+                this.firstName = first;  // calling them using the "this" method
+                this.lastName = last;
+            }
+            completeName() {  // then calling them 
+                console.log(this);
+                console.log(this.firstName + " " + this.lastName);  // and then we can log it in the console or place it in the html
+            }
+        }
+        let friend = new MakeName("Laurence", "Svekis");  // then we define the parameters according to the "constructor" parameters
+        friend.completeName();  // and when we call the "completeName" it will display it in the console
+    </script>
+</body>
+</html>

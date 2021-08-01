@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let and Const Block Level</title>
+</head>
+<body>
+    <div id="output">Let and Const Block Level</div>
+    <script>
+        console.log(a);
+        var a = "hello world";
+        const b = "constant";  // unlike variabes, we can not modify later this "const" value. for example if we go to the console log and we type 'a = "new";' it will change it to "new", but in const if we do the same it is going to return an error because it is not possible
+        let c = "hello world";  // On the other hand with "let" we can change it like it was "var"
+        for (var i = 0; i < 5; i++) {  // In the example in the video instead of "var" they use "let" and in the console log it loops 5 times (0,1,2,3,4), but when we try to access "i" in the console log we notices that it sends an error because since it is inside the curly brackets "{}" we can not access it from outside the "code block". But if we use "var" we can access it outside the code block in the console.
+            console.log(i);
+        }
+        if (a) {
+            let d = "works";
+            console.log(d);
+        }
+        else {
+            let d = "not working";
+            console.log(d);
+        }
+    </script>    
+</body>
+</html>

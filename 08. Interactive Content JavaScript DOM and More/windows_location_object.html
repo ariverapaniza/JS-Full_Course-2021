@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Location Object</title>
+</head>
+<body>
+    <div id="wrapper">Page 1</div>
+    <form name="myForm">
+    <input type="text" id="url" name="url" value="http://www.google.com">
+
+    <input type="button" value="Go to another URL" onclick="goUrl()">
+    <input type="button" onclick="goUrl2('https://www.apple.com')" value="Go to apple.com" >
+    <input type="button" value="Value" onclick="myValue()">
+
+    </form>
+    <script>
+
+        var output = document.getElementById("wrapper");
+
+        function goUrl(){
+            var url = document.getElementById("url").value;
+            window.location = url;
+        }
+
+        function goUrl2(url){
+            window.location = url;
+        }
+
+        function myValue(){
+            document.getElementById("wrapper").innerHTML = document.myForm.url.value;
+        }
+
+
+
+    </script>
+</body>
+</html>

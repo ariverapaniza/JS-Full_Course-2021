@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation with RegEx - Part 1</title>
+</head>
+<body>
+    
+    <div id="output">Form Validation with RegEx - Part 1</div>
+
+    <input type="text" id="email" value="email@gmail.com">
+    <input type="text" id="num" value="123321">
+    <input type="text" id="cha" value="characters">
+    <input type="button" onclick="myFun()" value="Validate Inputs">
+    <script>
+
+        // number input only digits
+        // email input
+        // text input only char
+        // all need to have content
+        
+        
+        
+        var output = document.getElementById('output');
+        var str = "abasdn skjkj eqwj k JavaScript adsjkj asllk 123432 43453 321 3 34 javascript 432 432 JavaScript 342 JavaScript4121";
+        
+        
+        
+        
+        function myFun(){
+            e = document.getElementById('email').value;
+            var p = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z.]+)/ig;  // what this meas is that everything between "/" is going to be search, the "()" is that everything inside is a line of text formed like: "[a-zA-Z0-9._-]" is any of this characters representing the username "+" an "@" and "[a-zA-Z0-9._-]" that is the domain name "+" the "\." to take into consideration or "escape" the dot (.) since the "." is a 'RegEx Character' plus "[a-zA-Z.]" to represent the "com or net or edu" plus "ig" representing the "i" in this case it is not case sensitive so it does not matter if it is uppercase or lowercase it will still find the expresion and adding the "g" it will show all the results if the expresion is found more than one time, and this will return an array since it is repeated more than once or are multiple values
+            var r = e.match(p);  // this will match if the email address that we input match the "pattern" that we created in the variable "p"
+            var t = r == null ? false : true;  // This will use a ternary operator to check if the email address is "null" or "true" acording to the comparison in the variable "r". If it return a "null" is because the email address is not written or is missing something important, otherwise it will return true because its equal to the "pattern"
+            console.log(t);  // This will log if it returns true or false
+            return t;  //  this will also return if its true or false, but since it has a "return" this should be the last line of code otherwise it will not continue after this line of code
+     }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </script>
+</body>
+</html>

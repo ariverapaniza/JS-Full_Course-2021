@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation with RegEx - Part 2</title>
+</head>
+<body>
+    
+    <div id="output">Complete JavaScript Course</div>
+    <input type="text" id="email" value="email@gmail.com">
+    <input type="text" id="num" value="123321">
+    <input type="text" id="cha" value="characters">
+    <input type="button" onclick="myFun()" value="Validate Inputs">
+    <script>
+        // number input only digits
+        // email input
+        // text input only char
+        // all need to have content
+        var output = document.getElementById('output');
+        var str = "abasdn skjkj eqwj k JavaScript adsjkj asllk 123432 43453 321 3 34 javascript 432 432 JavaScript 342 JavaScript4121";
+
+        function cEmail(e) {
+            var p = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z.]+)/ig;
+            var r = e.match(p);
+            return r == null ? false : true;
+        }
+
+        function cNum(e) {
+            var p = /\D/;  //  This will look for DIGITS (numbers), if we want to look for not digits (numbers) we use "\d". Please reffer to https://regexr.com/   . In this web page it is the opposite as we are using in this JavaScript
+            var r = e.match(p);
+            return r == null ? true : false;  // We continue using a Ternary Operator
+        }
+
+        function cChar(e) {
+            var p = /[^A-Za-z]/ig;  // When we put the ^ in front of the RegEx pattern we are telling the code that we want the opposite of those characters, in this case we are looking for special characters and numbers instead of letters. 
+            var r = e.match(p);
+            return r == null ? true : false;
+        }
+
+        function myFun() {
+            var i = document.getElementsByTagName('input');  // This will call all the "Input" boxes instead of their "IDs" or their "Classes"
+            for (var x = 0; x < i.length; x++) {  // This will loop inside the array, in this case 3 Input Boxes
+                //console.log(i[x]);
+                if (i[x].value == "") {  // then if the box is empty
+                    console.log('No Value in ' + i[x].id);  // This message is shown in the console
+                }
+                if (i[x].type == "text") {  // If there is any value inside the "Type Text" input boxes
+                    if (i[x].id == "email") { //it will call each "type text" by its "ID", in this case "email"
+                        if (cEmail(i[x].value)) {  // Then it takes the value inside that function that comes after the ternary operator
+                            console.log('Email Valid');  // and if is true return this
+                        }
+                        else {
+                            console.log('Bad Email');  // otherwise it will be this
+                        }
+                    }
+                    if (i[x].id == "num") {
+                        if (cNum(i[x].value)) {
+                            console.log('Num only Valid');
+                        }
+                        else {
+                            console.log('Non Number in the string');
+                        }
+                    }
+                    if (i[x].id == "cha") {
+                        if (cChar(i[x].value)) {
+                            console.log('Char only Valid');
+                        }
+                        else {
+                            console.log('Non Char is in the string');
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

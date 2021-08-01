@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Break And Continue Loops</title>
+    <style>
+        td { border:1px solid black;}  /*  This is to style the table to make the lines appears */
+    </style>
+</head>
+<body>
+
+    <div id="output1"></div>
+    
+    <script>
+
+        var output1 = document.getElementById("output1");
+        
+        var html ="<table>";
+        var holder = "empty";
+        for(var row = 0; row < 10; row++){
+            if(row === 5){ break; }  // This will stop because it will stop at row 5
+ 
+            html += "<tr>";
+            for(var col = 0; col < 5 ;col++){
+                html +="<td>Cell = "+((col+1)+(row*5))+" = " +holder+"</td>";
+            }
+            html += "</tr>";
+            if(row === 5){ continue; }  // This will make it continue since the requested number is larger than 5 rows. But since the break is active it will stop at row 5
+            holder = ((col+1)+(row*5));
+        }
+        
+        html += "</table>";
+        output1.innerHTML = html;
+
+
+    </script>
+</body>
+</html>

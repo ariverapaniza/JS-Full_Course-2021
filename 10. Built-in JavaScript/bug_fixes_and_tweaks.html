@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Fixes and Tweaks</title>
+    
+    <style>
+        #output {
+            width: 400px;
+            height: 400px;
+            display: block;
+            border: 1px solid black;
+        }
+        
+        #cButtons > div {
+            width: 100px;
+            display: inline-block;
+            height: 50px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        
+        .box {   /* This will create the css of the "guess" box of the clicked color that we are guessing */
+            width: 100px;
+            height: 100px;
+            display: block;
+            border: 1px solid black;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="message">Complete JavaScript Course</div>
+    <input type="button" value="start" onclick="start()">
+    <div id="output"></div>
+    <div id="cButtons"> </div>
+    <div id="guess"></div>
+    <script>
+        var arr1 = [];
+        var arr2 = [];
+        var myT;
+        var loop = 0;
+        var output = document.getElementById('output');
+        var message = document.getElementById('message');
+        var guess = document.getElementById('guess');  // This is the variable that we added to use the "div"
+        var gameplay = false;  // With this being 'false' we can not do anything like click the guessed boxes in the div 'guess' because its already over the game
+ 
+        function start() {
+            var colorArr = ["red", "green", "blue", "yellow"];
+            var html = "";
+            arr1 = [];  // we have to set the "arr1" and "arr2" to an "empty array" because when we reset the game it will have it empty so when the function runs it will fill again the arrays according to the function
+            arr2 = [];
+            guess.innerHTML = "";  // This when reseted the game it will be blank
+            gameplay = true;  // When 'gameplay' its "true" is because we are still on the game, so this will turn on the game and will be "false" when the game ends.
+            message.innerHTML = "GAME started";  // This is the first message that we are going to display to play, then when the game is over it will change the message if we guess correctly or if we fail
+            for (var x = 0; x < colorArr.length; x++) {
+                html += '<div class="' + colorArr[x] + '" style="background-color:' + colorArr[x] + '" onclick="oGuess()">' + colorArr[x] + '</div>';
+            }
+            document.getElementById('cButtons').innerHTML = html;
+            for (var x = 0; x < 4; x++) {
+                var r = colorArr[Math.floor(Math.random() * colorArr.length)];
+                arr1.push(r);
+            }
+            loop = 0;
+            console.log(loop)
+            myT = setTimeout(goWhite, 200);
+        }
+ 
+        function oGuess() {
+            if (gameplay) {  // in this case it is "true" so this function will be executed, if its 'false' it will not run
+                var g = event.target.className;  // This will add the colors to the guess boxes that we clicked from the colors that we picked to guess the order "targeting" the "className" and the "event" is the click
+                var d = document.createElement('div');  //  This will create an "element DIV" dynamically on the html. 
+                d.className = 'box';  // this will create the "className" to the "div" we just created
+                d.style.backgroundColor = g;  //  This will add the color that we click to create the new div with the "className 'box'" according of the color that we pick
+                d.dataset.v = arr2.length;  // This will add to the div a dataset named "v" or value with the "arr2.length"
+                d.onclick = function () {  // 
+                    if (gameplay) {  // This is telling "if gameplay" is active we can add or remove in case we make a mistake
+                        var iRemove = event.target.getAttribute('data-v');  // This will store the value that we picked (color) to remove it from the array and pick the "Attribute" 'data-v'
+                        arr2.splice(iRemove, 1);  // using the "splice" method. The first item is the variable "iRemove" where we are going to remove the value and the second item is the amount of elements that we want to remove, in this case just "1"
+                        event.target.parentNode.removeChild(event.target);  // and with this we use the "event" in this case clicked "target" and take from the "parentNode" and "removeChild" from this "event.target" so when clicked from the boxes from the div "guess" we can remove it if we want to remove it because we clicked wrongly
+                        console.log(iRemove);
+                    }
+                }
+                guess.appendChild(d);  // this will "appendChild" to the variable "d" or "div" to add it to the "div with id 'guess'"
+                arr2.push(g);
+                if (arr2.length == arr1.length) {  // so when the arr1 is equal to arr2 to being the length of the array with the arr1 (is the random colors selected by the computer) to the arr2 (the colors that we clicked guessing the answer) it will
+                    gameplay = false;  // change the game to "false" so it will turn off the game and start the next "if" loop
+                    if (arr1.toString() == arr2.toString()) {  // where it will check if the strings of the colors are the same from the arr1 to the arr2, and if they are equals
+                        message.innerText = "you were correct :)";  // it will give us this positive answer, otherwise
+                    }
+                    else {
+                        message.innerHTML = "you were wrong <br> Your guess " + arr2 + "<br>correct order was " + arr1;  // it will tell us that we are wrong
+                    }
+                }
+            }
+        }
+ 
+        function goWhite() {
+            output.style.backgroundColor = "white";
+            myT = setTimeout(goColor, 200);
+        }
+ 
+        function goColor() {
+            output.style.backgroundColor = arr1[loop];
+            loop++;
+            if (loop >= arr1.length) {
+                clearTimeout(myT);
+            }
+            myT = setTimeout(goWhite, 1000);
+        }
+    </script>
+</body>
+</html>

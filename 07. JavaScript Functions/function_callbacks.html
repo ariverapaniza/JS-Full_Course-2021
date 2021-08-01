@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Callbacks</title>
+</head>
+<body>
+    First: <input type="text" id="num1">  <!-- This will create the box where we are going to put the number that we are going to call later-->
+    Second: <input type="text" id="num2">
+    <br>
+    <input type="button" onclick="addBy()" value="Add"> <!--This will create the button to call the javascript function and make the math function-->
+    <input type="button" onclick="substractBy()" value="Substract">
+    <input type="button" onclick="multiplyBy()" value="Multiply">
+    <input type="button" onclick="divideBy()" value="Divide">
+    <!-- <input type="button" onclick="remainderBy()" value="Remainder">
+    <input type="button" onclick="exponentBy()" value="Exponent"> -->
+
+
+    <div id="output"></div>
+
+    <script>
+
+        var output = document.getElementById("output");
+
+        function makeMessage(s1,s2,callback){  // on this function we have 3 values, s1, s2 and callback. Callback is the value that will call the function that we designated on the callback
+            var result1 = callback(s1,s2);
+            output.innerHTML += result1 + "<br>";  // Since it has the += it will add the text and since the callback (makeMessage) is repeated 2 times it will add the 2 messages. If we remove the "+" it will only add the second callback
+        }
+
+        makeMessage("hello"," world",function(s1,s2){  // In here is created the function called on the function makeMessage(s1,s2,callback) and the callback will call the function(s1,s2)
+            var result2 = s1 + s2 + " worked!";
+            return result2;
+        })
+
+
+        makeMessage(" Java","Script",function(s1,s2){
+            var result2 = s1 + s2 + " is great!";
+            return result2;
+        })
+
+
+
+    </script>
+</body>
+</html>

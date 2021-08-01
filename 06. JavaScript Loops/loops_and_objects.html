@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops And Objects</title>
+</head>
+<body>
+    <div id="output1"></div>
+    <script>
+
+        var output1 = document.getElementById("output1");
+
+        var userNames = {a: "Emma",b: "Evelyn", c:"Arturo"}; // This is like dictionaries in python
+
+        for(var x in userNames){
+            output1.innerHTML += userNames[x] + "<br>"  // If we use the userName and the brackets with the var x is to return the name. We can not use userName.x because its not going to return anything
+            output1.innerHTML += x + "<br>";  // With this it will return just the a or b or c
+            output1.innerHTML += x + "= " + userNames[x] + "<br>"  // and this will print "a = Emma" and so on.
+        }
+
+
+        for (var x in document) {
+            output1.innerHTML += x + " = " + document[x] + "<br>";  // This will print in the html all the info regarding of the "documentation" in the html (the technical part)
+        }
+
+
+    </script>
+</body>
+</html>

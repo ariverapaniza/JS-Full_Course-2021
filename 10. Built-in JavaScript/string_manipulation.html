@@ -1,0 +1,58 @@
+<!-- a.toUpperCase()
+b.toLowerCase()
+a.indexOf('H')
+a.indexOf('h')
+a.indexOf('hello')
+var c = a + b
+a.indexOf('ello')
+c.lastIndexOf('ello')
+c.slice(6,16);   This will cut the parts of the string that we want
+c = c.slice(5,16)
+c.substr(3,3)  This will select the parts of the string that we want, the first number will be the starting point, the second number is how many characters we want to extract. 
+c.substr(3,5)
+c.substring(3,10)  with this one on the numbers we are adding the starting point and the ending point (this is the main difference between substr and substring)
+
+str.toLowerCase().indexOf('javascript') 
+
+***  This are the different methods for string manipulation like: toUpperCase, toLowerCase, indexOf, lastIndexOf, slice, substr and substring ***
+-->
+
+<html>
+
+<head>
+    <title>String Manipulation</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="message">String Manipulation in JavaScript</div>
+    <input type="text" id="myString" placeholder="type something">
+    <input type="number" id="guess" placeholder="enter a number">
+    <input type="button" value="Guess" onclick="checkGuess()">
+    <script>
+        var a = "world hello";
+        var b = new String("Hello World");
+        var message = document.getElementById('message');
+        var str = message.innerText;  // This will grab the message id already defined in the HTML
+        var hello = b.substr(0, 6);  // This will take the word Hello from the variable "b"
+        var c = str.toLowerCase().indexOf('javascript');  // This will look in the variable "str" the word "javascript" even though we do not know the position of the word "javascript" inside the variable the position where it start the word. 
+        var j = str.substr(c, 1) + str.toLowerCase().substr(c + 1, 9);  // This will take the word Javascript with the position that we just know and take the word Javascript and add it to the variable "j"
+        var jscript = j.substr(0, 4) + j.toUpperCase().substr(4, 1) + j.substr(5);  // This will transform the word "javascript" with the "s" in uppercase
+        message.innerText = hello + jscript;  // This will update the message ID in the HTML
+
+        function checkGuess() {
+            var myString = document.getElementById('myString').value;
+            var myGuess = document.getElementById('guess').value;
+            if (myString.length == myGuess) {
+                message.innerHTML = "Correct it was " + myString.length;
+            }
+            else {
+                message.innerHTML = "WRONG it was  " + myString.length;
+            }
+        }
+    </script>
+</body>
+
+</html>

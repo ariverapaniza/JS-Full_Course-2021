@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traversing the DOM</title>
+</head>
+<body>
+    <form name="myForm">
+
+        <input type="url" name="url" id="url">
+        <input type="text" name="first" id="first">
+        <input type="text" name="last" id="last">
+        <textarea name="output" cols="30" rows="10"></textarea>
+        <div id="another">Parent
+            <div id="one">Test 1</div>
+            <div id="two">Test 2</div>
+            <div id="three">Test 3</div>
+            <div id="four">Test 4</div>
+            <div id="five">Test 5</div>
+            <div id="six">Test 6</div>
+
+        </div>
+
+        <input value="Click Here" id="btn1" onclick="myFun1()">
+
+    </form>
+
+    <script>
+
+        console.dir(document.body.children.myForm.childNodes[9].children.four);  // This is the way to traverse through the document in the console. if we want to update through the console we can type "document.body.children.myForm.childNodes[9].children.four.innerHTML = UPDATED Test 4" and also we can add it to a variable
+
+        var a = document.body.children.myForm.childNodes[9].children.four.innerHTML = "UPDATED Test 4";  // with this we updated the HTML through a variable that we indicated the value to change. Also we can take the previous or next element through the following command: "a.nextElementSibling.id" or "a.previousElementSibling.id". I tried on two browser and it does not work
+
+
+    </script>
+</body>
+</html>

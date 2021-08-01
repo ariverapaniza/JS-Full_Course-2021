@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous JavaScript And XML</title>
+    <style>
+        .toggle {
+            padding: 10px;
+            background-color: aliceblue;
+            font-size: 1.3em;
+            margin: 10px;
+        }
+        
+        .active {
+            background-color: aquamarine;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>Asynchronous JavaScript And XML.</div>
+    <div id="output">Complete JavaScript Course </div> Guest Name :
+    <input type="text" id="guestName"> +
+    <input type="number" id="guestNum" value="0">
+    <input type="button" value="add">
+    <script>
+        window.onload = init;
+
+        function init() {
+            loadJSON();
+            /*
+            loadJSON(function(response){
+                 console.log(response);
+             })
+             */
+        }
+
+        function loadJSON(callback) {  // this will geneterate the "callback"
+            var xHR = new XMLHttpRequest;  // this is like the DOM but in XML HTTP Request
+            xHR.onreadystatechange = function () {  //  this will check the "onreadystatechange" to check the status and if it goes successfully to 4
+                console.log(this.readyState);  //  this will log the 4 states of the "ready state"
+                if (this.readyState == 4 && this.status == 200) {  // AND IF "readyState 4" means we are reading the address and "this.status 200" is "connected" like in html "404 file not found"
+                    var myObj = JSON.parse(this.responseText);  // it will store the "responseText" or the content of the json file stored in the web address detailed below and store it as an object since it is parsing it
+                    console.log(myObj);
+                }
+            }
+            xHR.open('GET', 'https://myjson.dit.upm.es/api/bins/1owo', true);  // the "GET" is the HTML Request to get the "web address" "true" is "Asynchronous" and "false" is "Synchronous".
+            xHR.send();
+            console.log(xHR);
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Date Object</title>
+</head>
+<body>
+    <div id="message">JavaScript Date Object</div>
+    <script>
+        //var d = new Date();   With this it will store the date in the variable
+        //var d = new Date("2010-01-10CDT13:00:55");  and with this we set the format that we want the date to be displayed (CDT means Central Daylight Time)
+        var d = new Date("APRIL,10, 1980");
+        var t = d.getTime();   // This will get the ammount of seconds from the "d" date to this momemnt
+        d.setFullYear(2017);  // This will set the year
+        d.setDate(d.getDate() + 100);  // setDate will set the day. the "getDate" will get the date that we are setting up and add 100 days more. 
+        //d.setMonth(11);  This will set the month
+        message.innerHTML += '<br>' + d + '<br>' + t;
+    </script>
+
+</body>
+</html>

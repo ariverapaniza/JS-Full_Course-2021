@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON AJAX Practice Exercise</title>
+</head>
+<body>
+    <div id="output">JSON AJAX Practice Exercise</div>
+    <input type="button" id="search" value="load">
+    <div id="output1"></div>
+    <script>
+        window.onload = init;
+
+        function init() {
+            document.getElementById('search').addEventListener('click', ySearch, false);  // We can reuse use the same function as before and update the content that we are looking for from an external web json file
+        }
+
+        function ySearch() {
+            var url = 'https://myjson.dit.upm.es/api/bins/1owo'; 
+            getJSON(url, function (data) {  //  in here we are pulling the data from the json file
+                showResults(data);
+            })
+        }
+
+        function showResults(results) {  // and since we are pulling the data we are now extracting the data from the json file
+            console.log(results);
+            var html = '<h1>' + results.firstName + ' ' + results.lastName + '</h1>';
+            document.getElementById('output1').innerHTML = html;
+        }
+
+        function getJSON(url, callback) {  // taking the info from the json file and using a callback
+            var xhr = new XMLHttpRequest();  // we are extracting all the info and storing it in a variable
+            xhr.open('get', url, true);  // then opening
+            xhr.responseType = 'json';
+            xhr.onload = function () {  // and using the onload to triggers an anonymous function
+                if (xhr.status == 200) {
+                    callback(xhr.response);
+                }
+            }
+            xhr.send();
+        }
+    </script>
+    
+</body>
+</html>

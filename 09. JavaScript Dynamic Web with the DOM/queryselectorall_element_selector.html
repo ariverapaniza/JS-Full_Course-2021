@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuerySelectorAll Element Selector</title>
+    <style>
+        div .output {
+            background-color: aqua;
+        }
+        
+    </style>
+
+</head>
+<body>
+
+    <div id="message">Message 1</div>
+    <div id="message1">Message 2</div>
+    <div class="output">Test Me 1</div>
+    <div class="output">Test Me 2</div>
+    <div id="pickme1">
+        <div class="output highlight">Test Me 3</div>
+    </div>
+    <input type="text" name="queryStuff" id="queryStuff">
+    <!--<input type="text" name="last">-->
+    <input type="button" value="Get Query" onclick="mySel()">  <!--In order to make it work we have to put the dot at the begining of the query in order to find the class ".output"-->
+    <div id="pickme2">
+    <div class="output">Test Me 4</div>
+    <div class="output">Test Me 5</div>
+    <div class="output">Test Me 6</div>
+    </div>
+    <div class="output highlight">Test Me 7</div>
+    <div class="output">Test Me 8</div>
+    <div class="output">Test Me 9</div>
+    <div class="output">Test Me 10</div>
+
+
+    <script>
+
+//        var elOLD = document.querySelectorAll("div .output");  // This is the old way and it will only take (without the function) the divs that are inside the parent divs
+
+//        var el = qs(".output");  // When we add the "." dot in front of the word "output" that is the class, it will take the class and change the output to IT WORKED! because the dot "." is calling the class
+
+        function mySel(){
+            var a = document.getElementById("queryStuff").value;  // In here we have to write the class that we are looking for, in this case we are looking .output and .highlight and this will take this value as soon as we click the Get Class button
+            var el = qs(a);  // we inserted the "qs function" or (query selector) inside the mySel function so we can get the class
+            var html = "Results<br>";
+            for(var x = 0; x < el.length; x++){
+                html += el[x].innerText + "<br>";  // With this for loop we are taking all the values from the classes and adding it to the html, but I think that with the propper functions or arrays we can take all the values and insert it into an array
+            }
+            function qs(el){
+            return document.querySelectorAll(el);
+
+        }
+
+            document.getElementById("message").innerHTML = html;  //In order to make it work we have to put the dot at the begining of the query in order to find the class ".output"
+        }
+
+        // for(var x = 0; x < el.length; x++){
+        //     el[x].innerHTML = "IT WORKED!";  // This will change the values that we selected on the variable, in this case the div .output inside the parent div pickme. It will select the divs that are inside a parent div. But when we change the "var el" as the way we put it it will loop in all the "output" and change all the outputs
+        // }
+
+        // function qs(el){
+        //     return document.querySelectorAll(el);
+
+        // }
+
+    </script>
+</body>
+</html>

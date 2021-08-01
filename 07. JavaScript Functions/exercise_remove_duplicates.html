@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Remove Duplicates</title>
+</head>
+<body>
+    <div id="output"></div>
+    <br>
+
+    <script>
+
+        var output = document.getElementById("output");
+
+        var myArray = ["javascript","css","html","python",1,2,3,4,5,6,7,8,9,0,4,3,2,"css","javascript","bootstrap","javascript","css","html","python",1,2,3,4,5,6,7,8,9,0,4,3,2,"css","javascript","bootstrap","evelyn","emma","arturo",645,321,684,654688,6832,33,654,684,6544,2589,54324,354,381,38,5,38,"evelyn","emma","arturo"];
+
+        var myArrayClean = removeDup(myArray);  // The removeDup will call the function and the (myArray) is the array that is going to take in order to remove duplicates. And the new values stored at cArray will be added to myArrayClean
+        output.innerHTML = myArray + "<br>" + myArrayClean;
+
+        function removeDup(arr){
+            var cArray = [];   // This is the new list that is going to load the values from the array and store the new values without the duplicate values.
+            var cObject = {};  // This is not an array this is an object like dictionaries in python
+            for(var x = 0; x < arr.length; x++){
+                //console.log(arr[x]);
+                cObject[arr[x]] = "Whatever"; // In the object like dictionary in python this will take all the values on the array and use it as the first value and the second value will be "whatever". So it will be {"javascript" : "whatever", "css" : "whatever"} and so on... THIS WILL REMOVE THE REPEATED OBJECTS SINCE THE OBJECT LIKE DICTIONARIES NEEDS ONLY ONE VALUE NOT DUPLICATES
+                //console.log(cObject);
+                }
+                for(z in cObject){  // This will loop on the object (dictionary) and take the first value and push it to the array cArray
+                    console.log(z);
+                    cArray.push(z);  // This will push the new values pulled from the object and push it to the new array (cArray) and the function will push it to the myArrayClean
+                }
+                return cArray;
+            }
+
+            
+        
+
+
+
+
+    </script>
+</body>
+</html>

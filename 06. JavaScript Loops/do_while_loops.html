@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do While Loops</title>
+</head>
+<body>
+    <div id="output1"></div>
+
+    <script>
+
+        var output1 = document.getElementById("output1");
+
+        var x = 0;
+
+        do {
+            output1.innerHTML += "Value of " + x + "<br>"; // This will put the variable value of X without adding since the x++ is after de ouput.innerHTML.  // The += sign is indicating that this will be added to the HTML
+            x++;  // This will increment the value while the condition is not met. The DO is the loop. ON THIS POSITION the value will start a 0 since it will start with 0 up to 9
+        }
+        while(x < 10);  // This is the trigger or the breaking point to met the condition. In this case the loop will interacte 10 times.
+        output1.innerHTML += "Final Value of x =" + x + "<br>";
+
+
+
+
+    </script>
+
+    <br>
+    <br>
+
+    <div id="output2"></div>
+
+    <script>
+
+        var output2 = document.getElementById("output2");
+
+        var x = 0;
+
+        do {
+            x++;  // This will increment the value while the condition is not met. The DO is the loop. ON THIS POSITION the value will start a 1 since it will start with 1 up to 10 because the x++ is after the output so it will start increasing at the begining and not taking the value of 0
+            output2.innerHTML += "Value of " + x + "<br>";  // Since the x++ is before the output the X was already increased so in this line the value of X is 1 and so on while the breaking point is not met
+        }
+        while(x < 10);
+        output2.innerHTML += "Final Value of x =" + x + "<br>";
+
+
+
+
+    </script>
+
+    <br>
+    <br>
+
+    <div id="output3"></div>
+
+    <script>
+
+        var output3 = document.getElementById("output3");
+
+        var x = prompt("Which value do you want to start");
+        var answer = prompt(" How many times do you want me to loop?")
+        answer = Number(answer);  // This is because when you look for the "typeof" answer it was a string and with this we can be sure that it will be a number instead of a string.
+
+        do {
+            output3.innerHTML += "Value of " + x + "<br>"; 
+            x++;
+        }
+        while(x < answer);
+        output3.innerHTML += "Final Value of x =" + x + "<br>";
+
+
+
+
+    </script>
+
+
+    <br>
+    <br>
+
+    <div id="output4"></div>
+
+    <script>
+
+    var output4 = document.getElementById("output4");
+
+    var x = prompt("Which value do you want to start");
+    var answer = prompt(" How many times do you want me to loop?")
+    answer = Number(answer);  // This is because when you look for the "typeof" answer it was a string and with this we can be sure that it will be a number instead of a string.
+
+    do {
+        if(x % 2 === 0) {  // This will only take the even numbers, the odd numbers are going to be ignored. // == VS === in JavaScript ** == in JavaScript is used for comparing two variables, but it ignores the datatype of variable. === is used for comparing two variables, but this operator also checks datatype and compares two values. Checks the equality of two operands without considering their type.
+        output4.innerHTML += "Value of " + x + "<br>"; 
+        }
+        x++;
+    }
+    while(x < answer);
+    output4.innerHTML += "Final Value of x =" + x + "<br>";
+
+
+
+
+    </script>
+
+<!-- 
+    == (Double equals operator): Known as the equality or abstract comparison operator. It converts the variable values to the same type before performing comparison. This is called type coercion.
+    === (Triple equals operator): Known as the identity or strict comparison operator. It does not do any type conversion (coercion) and returns true only if both values and types are identical for the two variables being compared.
+ -->
+
+
+</body>
+</html>

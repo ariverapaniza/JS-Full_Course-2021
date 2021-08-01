@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Interactive Content JavaScript</title>
+</head>
+<body>
+    <div id="wrapper1">Question 1</div>
+    <input type="text" name="myNum1" onkeypress="return numCheck()" onpaste="return false">
+    <script>
+        function numCheck() {
+            return !isNaN(event.key);
+        }
+    </script>
+    <br>
+    <br>
+
+    <div id="wrapper2">Question 2</div>
+    <form action="index2.html" method="get" onsubmit="return valForm()"> First:
+        <input type="text" id="firstName">
+        <input type="submit" value="submit"> </form>
+    <script>
+        function valForm() {
+            var p = event.target.children;
+            if (p.firstName.value == "") {
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <br>
+    <br>
+
+    <div id="wrapper3">Question 3</div>
+    <script>
+
+
+
+
+    </script>
+    <br>
+    <br>
+
+    <div id="wrapper4">Question 4</div>
+    <script>
+
+
+
+
+    </script>
+    <br>
+    <br>
+
+    <div id="wrapper5">Question 5</div>
+    <script>
+
+
+
+
+    </script>
+    <br>
+    <br>
+
+    <div id="wrapper6">Question 6</div>
+    <script>
+
+
+
+
+    </script>
+    <br>
+    <br>
+
+    <div id="wrapper7">Question 7</div>
+    <script>
+
+
+
+
+    </script>
+    <br>
+    <br>
+
+    <div id="wrapper8">Question 8</div>
+    <script>
+
+
+
+
+    </script>
+    <br>
+    <br>
+
+
+</body>
+</html>

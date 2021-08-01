@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listener ListMaker</title>
+    <style>
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        
+        td:first-child {
+            width: 300px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="message">Event Listener ListMaker</div>
+    <!--FIRST PART BEFORE DYNAMIC LIST EDITOR-->
+    <div>
+        <input type="text" id="addFriend">
+        <input type="button" id="addNew" value="Add Friend"> </div>
+    <div class="output"></div>
+    <script>
+        var myArray = ["Laurence", "Mike", "John", "Larry", "Kim", "Joanne", "Lisa", "Janet", "Jane"];
+        window.onload = build;  // This will trigger the function build as soon as the page loads
+
+        function build() {
+            var html = "<h1>Click Table</h1><table>";  // This will start the table
+            for (var x = 0; x < myArray.length; x++) {  // we are going to loop through the myArray to start creating the table
+                html += '<tr id="id' + x + '" data-row="' + x + '"><td>' + myArray[x] + '</td><td><a href="#" data-action="delete">Del</a></td><td><a href="#" data-action="edit">Edit</a></td></tr>';  // And since we are looping from the myArray it will fill up the html table with all the values inside the array
+            }
+            document.querySelector('.output').innerHTML = html;  // This will select the id ".output"
+            var dad = document.querySelectorAll('[data-action="delete"]'); // The "data action delete" or "dad" will select it all and 
+            for (var x = 0; x < dad.length; x++) {
+                dad[x].addEventListener('click', function () { // since we are looping and as soon as the addEventListener happend ('click') triggering a anonymous function
+                    event.preventDefault();  // This will prevent the default action that is that the "href=#" is activated and then it replace it with the following
+                    var iValue = this.closest('[data-row]').getAttribute('data-row');  // getting to "this" "closest" value named "[data-row]" and get the attribute in this case will get the row number and
+                    var r = myArray.splice(iValue, 1);  // This will "splice (delete)" the value stored on the variable "r" or "remove" and its only to remove "1" item
+                    build();
+                    console.log(r);
+                })
+            }
+            console.log(dad);
+        }
+    </script>
+
+</body>
+</html>

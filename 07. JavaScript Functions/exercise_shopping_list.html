@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Shopping List</title>
+</head>
+<body>
+    <div><h2>Shopping List</h2></div>
+    <input type="text" id="item" placeholder="Add Shopping Item!">
+    <br>
+    <br>
+    <input type="button" onclick="addItem()" value="Add Item">
+    <br>
+    <br>
+    <div id="output"></div>
+
+    <script>
+
+        var shoppingList = [];  // This is the list or array we are going to be adding the items on our shopping list
+
+        function addItem(){  // This is the function to add the values to the array
+            var addItem = document.getElementById("item").value;  // With this variable we are going to take the value of the input from the box in the html and 
+            shoppingList.push(addItem);  // with this add it to the array using the push method
+            outputList();  // This will call the next function
+        }
+
+        function outputList(){
+            var html = "";  // This is the variable to add the items to the html using 
+            var output = document.getElementById("output");  // the output id
+            for(var x = 0; x < shoppingList.length; x++){
+                html += (x+1) + "." + shoppingList[x] + "<br>"  // This will take the x value and incremented each time an item is added, then that x value will be added the name on the shoppingList array
+            }
+            output.innerHTML = html;  // This will be displayed on the HTML
+        }
+
+
+    </script>
+
+
+
+    <br>
+    <br>
+    <div><h2>Shopping List Shortened</h2></div>
+    <input type="text" id="item1" placeholder="Add Shopping Items!">
+    <br>
+    <br>
+    <input type="button" onclick="addItem1()" value="Add Item">
+    <br>
+    <br>
+    <div id="output1"></div>
+
+    <script>
+
+        var shoppingList1 = [];
+
+        function addItem1(){
+            var addItem1 = document.getElementById("item1").value;  // This will get the value we typed in the inbox
+            shoppingList1.push(addItem1);  // and push it to the "shoppingList array"
+                function outputList1(){  // We put the second function inside the first function and it worked normally
+                var html1 = "";
+                var output1 = document.getElementById("output1");
+                for(var x = 0; x < shoppingList1.length; x++){
+                    html1 += (x+1) + "." + shoppingList1[x] + "<br>"
+                }
+                output1.innerHTML = html1;
+            }
+            outputList1();
+        }
+
+        
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

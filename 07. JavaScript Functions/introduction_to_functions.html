@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction To Functions</title>
+</head>
+<body>
+    <div id="output"></div>
+    <script>
+
+        var output = document.getElementById("output");
+
+        function myFunction(){
+            alert("Hello!");
+        }
+
+        function myPrompt(){
+            var myPrompt1 = prompt("What is your name?");
+            output.innerHTML = myPrompt1;
+        }
+        myFunction();  // This are the triggers for the functions in order to work, otherwise it will not be fired up.
+        myPrompt();
+
+
+
+    </script>
+</body>
+</html>

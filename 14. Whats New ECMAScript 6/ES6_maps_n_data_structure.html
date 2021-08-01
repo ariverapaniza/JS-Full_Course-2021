@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 Maps and Data Structure</title>
+</head>
+<body>
+    <div id="output">ES6 Maps and Data Structure</div>
+    <script>
+        let myArr = [1, 4, 6, 3, 6, 3, 6, 3, 644, 23, 32, 2, 3, 4, 5, 6, 7, 87, 2, 3, 4, 3, 43, 33];
+        console.log(myArr);
+
+        function removeDup(a) {
+            return [...new Set(a)];
+        }
+        let mapArray = myArr.map(function (a) {  //  In here we are "map"ing the array "myArr" and looping in all the values, then we use the "*=" to multiply each value by 10. 
+            return a *= 10;
+        })
+        console.log(mapArray);
+        let myMap = new Map();  //  This is the way we can create a "new Map" using 'let myMap = new Map();', and then  we can "set" or add values to the "map", and in the console instead of showing "key, pair" it will add a fat arrow "=>". 
+        myMap.set("Hello", "World");
+        myMap.set("myName", "Laurence");
+        myMap.set("Hello", "World");
+        myMap.set("myName", "Laurence");
+        //myMap.delete("Hello");  // We can also delete a value inside the map using the "myMap.delete("Hello");"
+        console.log(myMap);
+        console.log(myMap.size);  // We also have the "size" of the map to see how many items are inside the "map". 
+        console.log(myMap.has("World"));  // And with the "has" that will return a boolean value to check if the "value" is inside the "map" or 
+        console.log(myMap.get("Hello"));  // if the "get" to get the value of the "data" we are looking for. 
+        let items = [{
+            name: 'iPhone'
+            , details: 'White'
+            , cost: 50000
+        }, {
+            name: 'iPad'
+            , details: 'White'
+            , cost: 80000
+        }, {
+            name: 'Cable'
+            , details: '3 foot'
+            , cost: 1000
+        }, {
+            name: 'Camera'
+            , details: '25MP'
+            , cost: 30000
+        }, {
+            name: 'Laptop'
+            , details: 'Intel i7'
+            , cost: 120000
+        }, {
+            name: 'LCD Monitor'
+            , details: '24 inch'
+            , cost: 20000
+        }, {
+            name: 'TV'
+            , details: '50 inch'
+            , cost: 45000
+        }];
+        console.log(items);
+        let holderNames = items.map(function (items) {
+            return items.name;
+        })
+        console.log(holderNames);
+        let holderCosts = items.map(items => items.cost);  // We also use the Fat Arrow "=>" as a function shortener and return the "items.cost" values
+        console.log(holderCosts);
+    </script>
+</body>
+</html>

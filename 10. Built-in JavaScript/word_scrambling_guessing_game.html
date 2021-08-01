@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Scrambling Guessing Game</title>
+</head>
+<body>
+
+    <!-- *** With this game we use the String Manipulation Method to scramble the words using a "for loop" and create a guessing game. Then we check the answer with the word that we input using the "if else" method -->
+
+    <div><h3>Word Scrambling Guessing Game</h3></div>
+    <div id="message">Word Scrambling Guessing Game</div>  <!--This will take the first message to give a random word from the array and scramble it so we can guess it-->
+    <div id="message1"></div>  <!--and this will tell us the answer if it is correct or if it is wrong-->
+    <input type="text" id="myString">
+    <input type="button" value="Guess" onclick="rGuess()">
+    <script>
+        var message = document.getElementById('message');
+        var message1 = document.getElementById('message1');
+        var myArr = ["javascript", "Hello", "world", "course"];
+        window.onload = sWord;  // This will start as soon as the page loads the function sWord
+        var randomWord;
+
+        function sWord() {
+            var w = myArr[Math.floor(Math.random() * myArr.length)];  // This will select any item on the array and store it on the variable "w" so we can scramble it
+            randomWord = w;  // and with this we store the random word selected from the array and store it in this variable
+            w = w.toLowerCase();  // This will only lowercase the word selected
+            var s = "";  // This is the variable to store the scrambled word
+            var wLength = w.length;  // This will store the number of the length of the word
+            for (var x = 0; x < wLength; x++) {  // And with this "for loop" we can scramble the word to attach it to the "message"
+                var i = Math.floor(Math.random() * w.length);  // this will take the index of every letter and randomize it
+                s += w[i];  // this will be adding each random letter to the word and store it on this variable
+                w = w.substr(0, i) + w.substr(i + 1);  // This is taking the original word and as asoon as we take any letter it will remove it from the variable "w" so it will take any new letter from the remaining letter inside the variable.
+                }
+                message.innerHTML = "Guess this word " + s;
+            }
+
+        function rGuess() {
+            var guess = document.getElementById('myString').value;  // This will take the value of the text inserted in the input box
+            if (guess.toLowerCase() == randomWord.toLowerCase()) {  // and this will compare if the 2 words match
+                message1.innerHTML = 'Correct';
+            }
+            else {
+                message1.innerHTML = 'Wrong it was ' + randomWord;
+            }
+            sWord();  // and with this we restart the game again to look for a new word
+            //check to see if correct
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Event Listener</title>
+    <style>
+        .holder {
+            display: inline-block;
+            background-color:rgb(0, 132, 255);
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+        
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Multiple Event Listener</div>
+    <div class="holder">  <!-- This will call the css part of the style to create the box-->
+        <div id="output"></div> <!-- and inside the box we will display a message-->
+    </div>
+    <script>
+        var ele = document.querySelector('.holder');  // This will get the class holder (it is a class because it started with a ".")
+        ele.addEventListener('mouseover', function () {  // then the variable ele (element) will be listening to the "type" "mouseover" and when it happend it will trigger this function that
+            this.classList.add('active'); // will activate the class and add the class "active" (it does not start with the "." because is not calling the class, is adding the class to "this" element) changing the color of the box
+        })
+        ele.addEventListener('mouseout', function () {  // then the variable ele (element) will be listening to the "type" "mouseout" and when it happend it will trigger this function that
+            this.classList.remove('active'); // will remove the class "active" changing the color of the box
+        })
+        ele.addEventListener('mousemove', coordin);  // With this addEventListener we will take the target and when the "mousemove" it will trigger the function "coordin" that takes the coodenates of the mouse inside the box
+
+        function coordin() {
+            var html = "X:" + event.clientX + " | Y:" + event.clientY;  // This will call the "event.clientX" for the position of the mouse at the "axis X" and "event.clientY" at the position of the mouse at the "axis Y" and store it at the variable "html"
+            document.getElementById('output').innerHTML = html;  // since inside the first div there is a second div with the id called ouput it will take the value of the variable "html" and insert it at the div
+        }
+    </script>
+
+</body>
+</html>

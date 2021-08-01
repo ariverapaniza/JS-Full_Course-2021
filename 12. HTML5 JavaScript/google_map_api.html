@@ -1,0 +1,43 @@
+https://developers.google.com/maps/documentation/javascript/get-api-key
+
+https://maps.googleapis.com/maps/api/js?key=
+
+<html>
+
+<head>
+    <title>Google Maps API</title>
+    <style>
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="output">Google Maps API</div>
+    <div id="map"></div>  <!--In here is where the map is going to be placed-->
+    <script src="https://maps.googleapis.com/maps/api/js?key="></script>  <!--We have to add the API but is through GCP and they could create charges for the usage of the API because we have to create a "GCP Project" to pull the API Key-->
+    <script>
+    
+        window.onload = init;  // This will loads the function "init"
+        var m = document.getElementById('map');  // and in here we are going to store the information needed for the Google Maps to get the current location or an specific location
+
+        function init() {
+            navigator.geolocation.getCurrentPosition(placeMap);  //  This will get the latitude and longitude of our current position on the map
+        }
+
+        function placeMap(data) {
+            var options = {  // and with this function we are going to pick the values for latitude and longitude
+                center: {
+                    lat: data.coords.latitude
+                    , lng: data.coords.longitude
+                }
+                , zoom: 50  // we can put the value for the zoom that we want, in this case just 50%
+            }
+            var map = new google.maps.Map(m, options);  // and this is the key value that google maps "new google.maps.Map" is going to take for the information taken from the previous function. The "m" is the first object and then some options for the position that we desire
+            console.dir(data);  //  This will pick the information from the previous function and place it in the "console.dir"
+        }
+    </script>
+</body>
+
+</html>

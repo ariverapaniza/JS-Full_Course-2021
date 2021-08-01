@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requesting Numbers</title>
+</head>
+<body>
+    <script>
+        var a = prompt("First Number");
+        var b = prompt("Second Number");
+        var myTotal = Number(a) + Number(b);
+        document.write(myTotal)
+        alert("Total of: " + myTotal)
+
+        a = 5;
+        b = 4;
+        c = "5";
+
+        a == b; // This should return a boolean false
+        a == (b + 1); // This should return a boolean true
+        a == c; // this should return a boolean true since both are 5 even though one is a number and the otherone is a string
+        a === c; // this should return a boolean false since one is a number and the otherone is a string because it compares absolutes and also the typeof 
+        
+        a != b; // This should return a boolean true since a is not equal to b
+        a !== (b+1); // This should return a boolean false since is a is absolute equals to b+1
+        a !== b; // This should return true since a is not absolute equal to b
+        a > b; // This is true since a is greater than b
+        a < b; // This is false since b is not greater than a
+        a >= b; // This is true since a is "greater than or equal to" b
+        a <= b; // This is false since a is not "less than or equal to" b
+        (a == 5 && a == c); // This will return true since they are both 5 even though one is a string and another is a number. The && means "and" so in order to return a boolean it has to compare both values.
+        (a == 5 && a === c); //This will return false since a is equal to 5 but on absolute values (including typeof) they are not equals because one is a string and the otherone is a number. 
+        (a == 5 && a === c && a !== b); // This will return false. 
+        !(a === c); // This will reverse the results instead of false it will be true because of the "!".
+
+        b++;
+        var h = ((b%5) > 0) ? "odd" : "even";
+        console.log(typeof a == "Number");
+        console.log(typeof c == typeof "number");
+        console.log((h=="odd" && b>10 && b>=(a*2)));
+
+        var d = 5;
+        var e = "5";
+        var myTernary = (d == e) ? "Equals" : "Not"; // Basically is making the operations and instead of returning a boolean it will return the predefined answer. 
+
+        var f = prompt("First Number");
+        var g = prompt("Second Number");
+        var message = (Number(a) > Number(b)) ? " First number is larger: " + a : " First number is smaller: " + b;
+        document.write(message);
+    </script>
+</body>
+</html>

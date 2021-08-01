@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect to API endpoint return data</title>
+</head>
+<body>
+    <div id="output">Connect to API endpoint return data</div>
+    <input type="button" id="myButton" value="Load Data">
+    <script>
+        window.onload = init;
+        var pick = "";  //  this will store the information randomly pulled from the Rest API from the web address
+
+        function init() {
+            document.getElementById('myButton').addEventListener('click', myLoader, false);  //  this will get the element with the ID of "myButton" and "addEventListener" for a "click", triggers the "myLoader" function 
+        }
+
+        function myLoader() {
+            var xHR = new XMLHttpRequest();  // this will request the information from the "rest api"
+            xHR.onload = rOutput;  // this will trigger the "rOutput" function or Request Output
+            xHR.open('get', 'https://restcountries.eu/rest/v2/all', true);  // "true" remains Asynchronous
+            xHR.send();  // remember that the xHR or "XML HTTP Request" open with the previous command and sends or initiates the information using this command
+        }
+
+        function rOutput() {
+            var myObj = JSON.parse(this.responseText);  // this will parse the entire document converting it as an object
+            pick = myObj[Math.floor(Math.random() * myObj.length)];  // and this will select a random country from the object "myObj" containing all the countries
+            console.log(pick);  // and this will put the randomly picked country in the console log.
+        }
+    </script>
+    
+</body>
+</html>

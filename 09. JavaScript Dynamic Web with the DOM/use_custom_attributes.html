@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Custom Attributes</title>
+    <style>
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+  <!-- THIS IS THE SECOND PART OF THE MANUPULATING ATTRIBUTES, REFFER TO THE FIRST ONE FOR THE FIRST COMMENTS-->
+</head>
+<body>
+    <div id="message">Complete JavaScript Course</div>
+    <div id="output"></div>
+    <script>
+        window.onload = build;
+        var myArray = ["Laurence", "Mike", "John", "Larry", "Kim", "Joanne", "Lisa", "Janet", "Jane"];
+        var message = document.getElementById('message');
+
+        function build() {
+            var html = "<h1>My Friends Table</h1><table>";
+            for (var x = 0; x < myArray.length; x++) {
+                html += '<tr data-row="' + x + '" data-vote="0"><td class="box" >' + (x + 1) + '</td><td>' + myArray[x] + '</td><td>0</td></tr>';  // "tr" has the data row is x that x is the number of the position on the array, "data-vote = 0" is the place where the votes are going to be incremented when we click the position next to the name. // "td" "class box" will call the css to create the lines on the table, x+1 is the position number plus one to not to start at 0. Next "td" is the name that is "myArray[x]" and the next "td" is the number of votes and we end it with a "</tr>"
+            }
+            html += '</table>';  // This will increment the table rows and when is finished it will add the </table>
+            document.getElementById('output').innerHTML = html;
+            var elbox = document.querySelectorAll('#output .box');
+            var a;
+            var v;  // this is the variable we are going to use for the voting
+            for (var x = 0; x < elbox.length; x++) {
+                elbox[x].onclick = function () {
+                    //a = this.parentElement.getAttribute('data-row');
+                    a = this.closest('[data-row]').getAttribute('data-row');
+                    message.innerHTML = myArray[a] + " is on row #" + a;
+                    v = this.closest('[data-vote]').getAttribute('data-vote');  // "this" "[data-vote]" "closest" will look for the closest value in the data row to get the attribute in the data row. The first "[data-vote]" should be in brackets [] because is like when we try to get the [x]
+                    v++; // This will continue to add the numbers as soon as we keep clicking on one name
+                    console.log(this.parentElement.lastElementChild);
+                    this.parentElement.lastElementChild.innerText = v;  // With this we are going to take the last element on the table, the last <td> that is 0 and with this we can start incrementing the value, but with this we only increment it up to 1, with the "this.parentElement" we are taking the attribute ("this" is the <tr> where we click, the <tr> is the parent element, <td> is the child element)
+                    this.parentElement.setAttribute("data-vote", v);  // this will take again the parent element <tr> and then set the attribute "data-vote" and increment the "v" of vote of how many clicks we vote for the name
+                }
+            }
+        }
+    </script>
+    
+</body>
+</html>

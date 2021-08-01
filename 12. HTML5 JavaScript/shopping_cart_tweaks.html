@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Tweaks</title>
+    <style>
+        .item {
+            border: 1px solid black;
+            padding: 2%;
+            width: 29%;
+            float: left;
+            height: 300px;
+        }
+        
+        .img-fluid {
+            max-width: 100%;
+        }
+        
+        .productItem,
+        .btn {
+            border: 1px solid black;
+            text-decoration: none;
+            background-color: green;
+            color: azure;
+            border-radius: 10px;
+            padding: 5px;
+            font-size: 0.6em;
+            display: inline-block;
+        }
+        
+        .remove {
+            background-color: red;
+        }
+        
+        td {
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+        
+        th {
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">Shopping Cart Tweaks</div>
+    <div id="output2">Shopping Cart</div>
+    <script>
+        var items = [{
+            name: 'iPhone'
+            , details: 'White'
+            , cost: 50000
+        }, {
+            name: 'iPad'
+            , details: 'White'
+            , cost: 80000
+        }, {
+            name: 'Cable'
+            , details: '3 foot'
+            , cost: 1000
+        }, {
+            name: 'Camera'
+            , details: '25MP'
+            , cost: 30000
+        }, {
+            name: 'Laptop'
+            , details: 'Intel i7'
+            , cost: 120000
+        }, {
+            name: 'LCD Monitor'
+            , details: '24 inch'
+            , cost: 20000
+        }, {
+            name: 'TV'
+            , details: '50 inch'
+            , cost: 45000
+        }];
+        var html = '<br>';
+        var shopcart = [];  // We need to have a blank array to add the items into the cart or objects into the cart
+        window.onload = init;  // This will trigger the function as soon as the page loads.
+
+        function init() {
+            buildItems();
+            var q = document.querySelectorAll('.productItem');  //  we are selecting the ".productItem" class through the "querySelectorAll" and loop 
+            for (var x = 0; x < q.length; x++) {  // with a "for" loop to loop in each item listening to a click
+                q[x].addEventListener('click', function (e) { // and when we click the "add to cart" button it will trigger an anonymous function and the "e" is the "event"
+                    e.preventDefault();  // preventing the default option or "event" that is taking the hyperlink "#" 
+                    addToCart(); // and triggering the "addToCart" funtion
+                })
+            }
+            outputCart();  // we added this because since we are now using the "localStorage" if we refresh the page all the items can still be accessible
+        }
+
+        function addToCart() {
+            var iteminfo = event.target.dataset;  // and with this when clicked in the "addToCart" button it will take the "dataset" value in this case the object with all the information of the item we picked
+            var itemincart = false;  // This will start false since it will start checking if the "id" of the item is in the cart, and if is in the cart it will be updated later to "true"
+            iteminfo.qty = 1;  // when we add the ".qty" we are adding the quantity to the cart and we put the value to 1 to start. Then we can increase the quantity
+            shopcart.forEach(function (v) {
+                if (v.id == iteminfo.id) {  // "if" the value.id is the same as iteminfo.id then
+                    v.qty = parseInt(v.qty) + parseInt(iteminfo.qty);  // the "parseInt()" function parses a string and returns an integer. The parseInt function converts its first argument to a string, parses that string, then returns an integer or NaN
+                    itemincart = true;  // if the item is in the cart within the same "id" this will be updated to "true"
+                }
+            });
+            if (!itemincart) {  // "if" the item is not in the cart,
+                shopcart.push(iteminfo);  // we have to push it into the array
+            }
+            localStorage.setItem('scart', JSON.stringify(shopcart));  // we updated from "sessionStorage" to "localStorage" because "localStorage"  is more permanent and if the session ends the items will not be deleted
+            outputCart();  // we added this because since we are now using the "localStorage" if we refresh the page all the items can still be accessible
+        }
+
+        function outputCart() {
+            if (localStorage.getItem('scart') != null) {  // we updated from "sessionStorage" to "localStorage" because "localStorage"  is more permanent and if the session ends the items will not be deleted
+                shopcart = JSON.parse(localStorage.getItem('scart'));  // now we are going to "parse" or transform from a string to an object (key:pair) and add it to the "shopcart" variable
+            }
+            var html = '<table><tr><th>Item</th><th>Quantity</th><th>cost</th><th>id</th><th>subtotal</th><th>Options</th></tr>';  // we have to start a table so we can see the items that we are adding to the shopping cart stays in the table. The "<th>" means Table Heading
+            var total = 0;  // and we start the total value at "0"
+            shopcart.forEach(function (v) {  // and this is like a "for" loop where it loops "forEach" item inside the "shopcart" array and triggers an anonymous function where "v" or value
+                var stotal = v.qty * v.price;  // the "stotal" or Subtotal where the "v.qty" or the quantity of the items picked is multiplied "*" for the "v.price" or the price of the item. For example 3 * $50.00
+                total += stotal;  // then this is the "total" ammount of the value of the items
+                html += '<tr><td>' + v.name + '(' + v.s + ')</td><td>' + v.qty + '</td><td>' + v.price + '</td><td>' + v.id + '</td><td>' + fMoney(stotal) + '</td><td><span class="remove btn" onclick="remove(' + v.id + ')">x</span></td></tr>';  // The "fMoney(stotal)" will format the number to a Money number. The <span> tag is an inline container used to mark up a part of a text, or a part of a document, The <span> tag is easily styled by CSS or manipulated with JavaScript using the class or id attribute, The <span> tag is much like the <div> element, but <div> is a block-level element and <span> is an inline element.
+            });
+            html += '<tr><td colspan=6>Total ' + fMoney(total) + '</td></tr></table>';  // "colspan=6" is to set the number of columns. The "fMoney(total)" will format the number to a Money number and this is to close the table
+            document.getElementById('output2').innerHTML = html;  // and this will place the content in the "output2"
+        }
+
+        function buildItems() {
+            var x = 0;  //  This will represent the ID so each time an "object" is added to the html it will increment the value of "x" setting that value as an "ID". The first item will take the "0" as the first ID
+            items.forEach(function (v) {  //  This will kind of use a for loop for each item but since this is an object (dictionary for python) is going to loop "forEach" "items". The "v" is for value 
+                html += '<div class="item"><h3>' + v.name + '</h3><img src="http://placehold.it/350x150" class="img-fluid"><div>' + v.details + ' <br><a href="#" class="productItem" data-name="' + v.name + '" data-s="' + v.details + '"  data-price="' + v.cost + '" data-id="' + x + '" >Add to Cart</a></div>' + fMoney(v.cost) + '</div>';  // Since we are looping on "forEach" "item" we take inside the "object" the "v.name" taking the name of the object and so on. 
+                x++;
+            })
+            document.getElementById('output').innerHTML += html;  // and with this we are going to call the "output" ID and increment the HTML for each item
+        }
+
+        function remove(id) {  // with this we are going to remove the item that we wanted to remove. 
+            for (var x = 0; x < shopcart.length; x++) {  // and then we are going to use the "for" loop to take the specific item in the array and 
+                if (shopcart[x].id == id) {  // it the "array index item" or "x" with the "id" is the same as the ID we want to remove
+                    var rem = shopcart.splice(x, 1);  // remove it with the "splice" array method
+                    console.log(rem);
+                }
+            }
+            localStorage.setItem('scart', JSON.stringify(shopcart));  // and with this we are updating the "localStorage" and
+            outputCart();  // with this we are rebuilding our shopping cart without the element we just removed
+        }
+
+        function fMoney(n) {  //  this will format the number to a Money number
+            return '$' + (n / 100).toFixed(2);  // and it will "return" the "$" plus ("n" or te number divided by 100) and ".toFixed" formats that allow us to fix the format to a number of decimals using "fixed-point notation" (2) to just 2 decimals
+        }
+    </script>
+    
+</body>
+</html>

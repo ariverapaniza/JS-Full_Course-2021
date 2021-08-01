@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw on Canvas with Mouse</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">Draw on Canvas with Mouse</div>
+    <canvas id="canvas"></canvas>
+    <input type="color" id="bgColor">  <!-- this will take the color pallet so we can pick any color-->
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        var output = document.getElementById('output');
+        canvas.width = 700;
+        canvas.height = 700;
+        window.onload = init;
+        var pos = {  //  this is the position where the mouse is moving. this is the starting point
+            x: 0
+            , y: 0
+        };
+        var bgColor = "red";  // this will set the color in RGB
+        var bgC = document.getElementById('bgColor');
+        bgC.addEventListener('change', function () {  // this will "addEventListener" to listen to any "change" and triggers the anonymous function
+            bgColor = event.target.value;  //  and this will take the value of the color we pick from the pallet
+        })
+
+        function init() {
+            canvas.addEventListener('mousemove', draw);  // with the "mousemove" we are locking the position with the x y axis of where the mouse is located inside the canvas
+            canvas.addEventListener('mousemove', sPos);  // sPos is "set position"
+            canvas.addEventListener('mouseenter', sPos);  // y "mouseenter" is where the mouse enters into the canvas
+        }
+
+        function draw(e) {
+            if (e.buttons !== 1) return;  // this means that if the "buttons" of the mouse are not pressed dont do anything and unless the click is done then 
+            output.innerHTML = "X = " + pos.x + " Y = " + pos.y;  // it will list the position inside the canvas and output it in the HTML
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);  // this is taking where inside the canvas the mouse is moving so
+            sPos(e);  // it can trigger this function and
+            ctx.lineTo(pos.x, pos.y);  //create a line acording to the "pos.x" and "pos.y"
+            ctx.strokeStyle = bgColor;  // this will set the color of the stroke
+            ctx.lineWidth = 10;  // this will give the thickness of the line
+            ctx.lineCap = 'round';  // this will round the tip of the line
+            ctx.stroke();  // this will draw te line
+        }
+
+        function sPos(e) {
+            console.dir(e);
+            pos.x = e.pageX;  //  this will have the position where the mouse is located in the x axis
+            pos.y = e.pageY;  // and in the y axis
+        }
+    </script>    
+</body>
+</html>

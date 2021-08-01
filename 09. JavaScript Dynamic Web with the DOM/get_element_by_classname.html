@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Element By ClassName</title>
+    <style>
+        .highlight{
+            background-color: aqua;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">Get Element by ClassName</div>
+    <div id="output"></div>
+    <form name="myForm">
+
+        <input type="url" name="url" id="url" class="highlight">
+        <input type="text" name="first" id="first">
+        <input type="text" name="last" id="last">
+        <textarea name="output1" cols="30" rows="10" class="highlight"></textarea>
+        <div id="another">Parent
+            <div id="one">Test 1</div>
+            <div id="two">Test 2</div>
+            <div id="three">Test 3</div>
+            <div id="four" class="highlight">Test 4</div>
+            <div id="five">Test 5</div>
+            <div id="six">Test 6</div>
+
+        </div>
+
+        <input value="Click Here" id="btn1" onclick="myFun1()" type="button">
+
+    </form>
+
+    <script>
+
+        var output = document.getElementById('output');
+        var highlightList = document.getElementsByClassName('highlight');  // With this we can call all the classname and select the items and in the CSS part we can determine that each classname called "highlight" has the color aqua. 
+
+        function myFun1() {   // When clicked the "Click Here" button it will trigger the function and change a couple of things with the classname
+            var html = "<h1>highlightList list</h1>";
+            for (var x = 0; x < highlightList.length; x++) {
+                if (highlightList[x].innerText) {
+                    html += highlightList[x].innerText + "<br>";
+                }
+                else if (highlightList[x].value) {
+                    html += highlightList[x].value + "<br>";
+                }
+            }
+            document.getElementById('output').innerHTML = html;
+        }
+
+
+
+
+    </script>
+</body>
+</html>

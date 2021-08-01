@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Loops</title>
+</head>
+<body>
+
+    <div id="output1"></div>
+
+    <script>
+
+        var output1 = document.getElementById("output1");
+
+        for(var x = 0; x <= 31; x++){  // The FOR loop is doing almost the same as the WHILE loop but the variables are inside the parenthesis. Variable X is inside and also the breaking point to make the condition (x <= 31) and the x++ to sum up 1 each time it loops
+            if(x % 2 !== 0){
+            output1.innerHTML += "Value of x is = " +x+ "<br>";
+            };
+        };
+
+
+    </script>
+
+    <br>
+    <br>
+
+    <div id="output2"></div>
+
+    <script>
+
+        var output2 = document.getElementById("output2");
+        var caloriesBanana = 89;
+        var bananas = prompt("How many bananas do you want to eat?");
+        var total = 0;
+        var holder;
+
+        for(var x = 1; x <= bananas; x++){
+            total += caloriesBanana;
+            holder = x > 1 ? "Bananas, another " : "Banana, it just added "
+            output2.innerHTML += "You ate " + x + " " + holder + caloriesBanana + " calories, your total is now " + total + "<br>";
+        };
+        output2.innerHTML += "Your total calories count is " + total + " because you ate " + (x - 1) + " bananas!";
+
+
+    </script>
+
+</body>
+</html>

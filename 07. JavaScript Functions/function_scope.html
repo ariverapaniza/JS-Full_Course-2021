@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Scope</title>
+</head>
+<body>
+    <div id="output"></div>
+    <div id="output1"></div>
+
+    <script>
+
+        var outsideFun = "outside the function";
+
+        function myFun(){
+            var insideFun = "inside the function";  // If we remove the "var" word it will be displayed since even though the variable is inside a function, but if the "var" is written it will not be displayed outside the function
+            output.innerHTML = outsideFun;
+            output1.innerHTML = insideFun;
+        }
+
+        myFun();  // If the function is not triggered the inside variable will not be displayed even though we remove the "var"
+
+        console.log(outsideFun);
+        console.log(insideFun);  // This will not be triggered because the value is inside the function and not outside on a variable by itself it will not be triggered or added at the console or if we used the innerHTML it will not be displayed
+
+
+
+
+    </script>
+</body>
+</html>

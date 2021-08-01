@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Functions</title>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+
+        var output = document.getElementById("output");
+        
+
+        var a = function(b = " Arturo"){  // We can place the value inside the parenthesis or we can create inside the function a local variable
+          //  var b = " Arturo"
+            output.innerHTML = "Welcome to my Anonymous Function " + b;
+        }
+
+        a();  // This will trigger the function. It is called an anonymous function since it is inside a variable and not by itself, we have to trigger the function in order to be displayed on the html
+
+        
+
+
+    </script>
+</body>
+</html>

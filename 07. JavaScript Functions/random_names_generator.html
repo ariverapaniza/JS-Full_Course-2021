@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Name Generator</title>
+</head>
+<body>
+    <!-- <div> <h1>Random Name Generator</h1> </div> -->
+    <div id="output"> <h1>Random Name Generator</h1> </div>
+    <input type="button" onclick="myFunc()" value="Click Me!">  <!--Each time we click the button we will trigger the function myFunc-->
+
+    <script>
+
+        var output = document.getElementById("output");
+        var adj = ["super","wonderful","bad","angry","careful"];
+        
+
+        function myFunc(){
+            var question = prompt("What is your name?");  // This will not need to pull the .value because it is not a input box so it will store automatically the value we input
+            var selAdj = Math.floor(Math.random()*adj.length);  // This will randomly select an adjetive from the array
+            output.innerHTML += adj[selAdj] + " " + question + "<br>"; 
+        }
+
+
+
+    </script>
+</body>
+</html>

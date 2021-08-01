@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Target From Content</title>
+</head>
+<body>
+    <div id="wrapper">Event Target From Content</div>
+
+    <form>
+
+        First Name: <input type="text" id="e1" value="Arturo"><br>  <!--We can call it from the id or we can rename it instead of id to name-->
+        Last Name: <input type="text" id="e2" value="Rivera"><br>  <!--We pre entered the value but we can change it on the html and it will be called on the function-->
+        <input type="button" value="submit" onclick="sendInfo()">
+
+    </form>
+
+    <script>
+
+        // var output = document.getElementById("wrapper");
+
+        function sendInfo(){  // This function will call the values from the input and call it to add it to the html with the next function.  We shrink it on the next part of this html
+            var parent = event.target.parentElement;
+            message("Welcome " + parent.e1.value + " " + parent.e2.value + ", to the Event Target From Content");    
+        }
+
+        function message(m){  // "m" is the argument we are going to use to add the message to the html
+            document.getElementById("wrapper").innerHTML = m;
+        }
+
+
+    </script>
+
+    <br>
+    <br>
+
+    <div id="wrapper1">Event Target From Content</div>
+
+    <form>
+
+        First Name: <input type="text" name="e1" value="Arturo"><br>
+        Last Name: <input type="text" name="e2" value="Rivera"><br>
+        <input type="button" value="submit" onclick="sendInfo1()">
+
+    </form>
+
+    <script>
+
+       //  var output1 = document.getElementById("wrapper1");
+
+        function sendInfo1(){
+            var parent1 = event.target.parentElement;
+            message1("Welcome " + parent1.e1.value + " " + parent1.e2.value + ", to the Event Target From Content");  
+            function message1(m1){
+            document.getElementById("wrapper1").innerHTML = m1;
+        }  
+        }
+
+        // function message1(m1){
+        //     document.getElementById("wrapper1").innerHTML = m1;
+        // }
+
+
+    </script>
+
+    <br>
+    <br>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows SetTimeOut</title>
+</head>
+<body>
+    <div id="wrapper">Page 1</div> <a href="index3.html">Index3</a> <a href="index.html">Index</a> <a href="index2.html">Index2</a>
+    <input type="button" onclick="startInt()" value="start">
+    <input type="button" onclick="clearInt()" value="stop">
+    <script>
+        var output = document.getElementById('wrapper');
+        window.setTimeout(updateWrapper, 5000);  // This will set the function to add to the html the text that we determined
+        var myTimer;
+
+        function startInt() {  // This will initiate the function as soon as the start button is initiated
+            myPopup();
+            myTimer = window.setTimeout(startInt, 2000);  //  The timer is set that after 2 seconds of being clicked the button it will popup a window
+        }
+
+        function updateWrapper() {  // This will add the text as soon as the start button is clicked. After 5 seconds it will be added to the html
+            document.getElementById('wrapper').innerHTML = "welcome to my website :)";
+        }
+
+        function clearInt() {  // When the stop button is clicked it will stop the function that entered into a loop
+            window.clearInterval(myTimer);
+        }
+
+        function myPopup() {  // When clicked the window this is what will be triggered
+            alert("Hello");
+        }
+    </script>
+
+</body>
+</html>

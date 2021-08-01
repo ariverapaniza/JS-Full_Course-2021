@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <form name="myForm">
+        <input type="url" id="url" name="url">
+        <input type="text" id="first" name="first">
+        <input type="text" id="last" name="last">
+        <textarea name="output"></textarea>
+        <div id="another">Parent
+            <div id="one">Test 1</div>
+            <div id="two">Test 2</div>
+            <div id="three">Test 3</div>
+            <div id="four">Test 4</div>
+            <div id="five">Test 5</div>
+            <div id="six">Test 6</div>
+        </div>
+        </form>
+    
+    <script>
+        var a = document.body.children.myForm.childNodes[9].children.four
+        console.log(a.parentElement.lastElementChild.id);
+    </script>
+
+    <!-- ******************************** -->
+
+
+    <div id="message">Message 1</div>
+    <div id="message1">Message 2</div>
+    <div class="output">Test Me 1</div>
+    <div class="output">Test Me 2</div>
+    <div id="pickme">
+        <div class="output highlight">Test Me 3</div>
+    </div>
+    <input type="text" name="first">
+    <input type="text" name="last">
+    <div class="output">Test Me 4</div>
+    <div class="output">Test Me 5</div>
+    <div class="output">Test Me 6</div>
+    <div class="output highlight">Test Me 7</div>
+    <div class="output">Test Me 8</div>
+    <div class="output">Test Me 9</div>
+    <div class="output">Test Me 10</div>
+    <script>
+        var el = document.querySelector('.output');
+        console.log(el.innerHTML);
+    </script>
+</body>
+</html>

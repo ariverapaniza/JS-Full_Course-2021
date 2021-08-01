@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 Build Game Components</title>    
+    <style>
+        .btn {
+            background-color: red;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 1em;
+            padding: 15px;
+            color: white;
+        }
+        
+        .btn:hover {
+            background-color: crimson;
+        }
+        
+        .gameTile {
+            display: inline-block;
+            padding: 3px;
+        }
+        
+        .flipImage {
+            max-width: 150px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="output">02 Build Game Components</div>
+    <div id="wrapper">
+        <div id="start" class="btn">Start</div>
+        <div id="score"></div>
+        <div id="message"></div>
+        <div id="gameboard"></div>
+    </div>
+    <script>
+        var playLockout = false;
+        var gamePlay = false;
+        var tileImages = []  //  This will create 3 arrays, and the "," comma will add the other arrays
+            , tileArray = []
+            , tileFlippedOver = [];
+        var sb = document.getElementById('start');  // start button
+        var message = document.getElementById('message');  // This will add to the HTML in the "message id"
+        var score = document.getElementById('score');
+        var gameBoard = document.getElementById('gameboard');
+        sb.addEventListener('click', startGame);  // We add the "addEventListener" where the first part is listening to the "click" and the second is going to call the function "startGame"
+
+        function startGame() {
+            // hide start button
+            sb.style.display = 'none';  //  this will hide the start button as soon as clicked
+            message.innerHTML = "Its working" + gamePlay;  // This will add to the HTML in the "message id"
+            if (!gamePlay) {  // if "!gamePlay" is not true 
+                gamePlay = true;  // change it to "true"
+                buildArray();
+                tileArray = tileImages.concat(tileImages);  // This will duplicate the "tileImages" concatenating them by itself having 2 sets to match on the game
+                shuffleArray(tileArray);  //  this will activate the "shuffleArray" function and shuffle the "tileArray"
+                buildBoard();
+            }
+        }
+
+        function buildBoard() {
+            var html = "";
+            var x = 0;
+            tileArray.forEach(function (ele) {  // This will take the "tileArray" function and use the "forEach" method for each item inside the array and give them each one a value of "ele"
+                x++;  // then it will be increment the "x"
+                html += '<div class="gameTile">'; //  and this will create and add to the html the "div class="gameTile">"
+                html += '<img id="cardz' + x + '" src="http://via.placeholder.com/250/000000/ffffff?text=click" onclick="pickCard(' + x + ',this)" class="flipImage"></div>';  // and this will be added after the previous "div" adding an image and each one will be unique since we are incrementing "x", and then we have an "onclick" event triggering a function called "pickCard" with the value of "x" and the "this" method and then use the "flipImage" class
+            });
+            gameBoard.innerHTML = html;  // This will update the "div" with the id "gambeBoard"
+        }
+
+        function buildArray() {  //  this will create the Array for the image tiles. 
+            for (var x = 1; x < 7; x++) {  // and with a "for loop"  and it will be less than 7 (1,2,3,4,5,6)
+                tileImages.push(x + '.jpg');  // and it will be pushed to the array being like 1.jpg, 2.jpg, up to 6.jpg and then since it will be concatenated (Duplicated) it will be 12 item inside the array inside the "startGame" function
+            }
+        }
+
+        function shuffleArray(array) {
+            for (var x = array.length - 1; x > 0; x--) {  // this will shuffle it  when is greater than 0 and when is shuffling it it will remove it and place it in another "array"
+                var holder = Math.floor(Math.random() * (x + 1));  // this will give us a random index value for the array
+                var itemValue = array[x];  //  this will take that value
+                array[x] = array[holder];  // and then when we get the random index value, we are going to replace it with the item in the array
+                array[holder] = itemValue;  // and with that random item and place it in the "itemValue" array
+            }
+            return array;
+        }
+    </script>
+</body>
+</html>

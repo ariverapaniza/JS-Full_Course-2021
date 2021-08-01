@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript String Methods</title>
+</head>
+<body>
+    <div id="message">JavaScript String Methods</div>
+    <input type="text" id="myString" placeholder="Type some text">
+    <input type="number" id="guess" placeholder="Guess the length of text">
+    <input type="button" value="Guess" onclick="checkGuess()">
+    <script>
+        // input for string
+        // input to guess the length of the string
+        // button to trigger function
+        // check if the guess is correct 
+        var a = "world hello";
+        var b = new String("Hello World");  // the "new String" what is doing is taking the string and place it into each character to a position and the "PrimitiveValue" is taking the entire string "Hello World". When we go to the console is telling us that it is a string and the value is "Hello World" and then if we expand it will tell us the position of each character
+        var message = document.getElementById('message');  // This will change the message depending on the results of the IF loop at the function checkGuess
+
+        function checkGuess() {
+            var myString = document.getElementById('myString').value;  // Place some string 
+            var myGuess = document.getElementById('guess').value;  // Guess the length of the string
+            if (myString.length == myGuess) {  // This will define the message displayed in case you did it Right or Wrong
+                message.innerHTML = "Correct it was " + myString.length;
+            }
+            else {
+                message.innerHTML = "WRONG it was  " + myString.length;
+            }
+        }
+    </script>
+
+</body>
+</html>

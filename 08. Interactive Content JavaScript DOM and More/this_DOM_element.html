@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THis DOM Element</title>
+</head>
+<body>
+    <div id="wrapper">Page 1</div>
+
+    <form name="myForm">
+
+        <input type="button" value="click 1" onclick="myFun(this)">  <!--"this" is a DOM element that take "this" element acording what is the function triggered or the ID triggered and change it with the value inserted on the function -->
+        <input type="button" value="click 2" onclick="myFun(this)">
+        <input type="button" value="click 3" onclick="myFun(this)">
+
+
+    </form>
+
+    <script>
+
+        var output = document.getElementById("wrapper");
+
+        function myFun(t){ //This is the function that will change "this" element acording to the selected ID. The t is a letter or a word we put on the parenthesis to call the myFun(this) added on the input onclick part
+            console.log(t);
+            console.dir(t);
+            output.innerHTML = t.value; 
+            t.value = "CLICKED!" // This will change the name click 1 or click 2 or click 3 and change it with CLICKED!
+        }
+
+
+    </script>
+</body>
+</html>

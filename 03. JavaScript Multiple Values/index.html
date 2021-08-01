@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Multiple Values</title>
+</head>
+<body>
+    <script>
+
+        var myArray = ["String", 100, false];
+        var myArray3 = [];
+
+        var myArray1 = new Array("String", 101, true);
+        var myArray2 = Array();
+
+        console.log(myArray);
+        console.log(myArray1[1]);
+
+        myArray[1] = "New Value";
+        console.log(myArray[1]);
+
+
+        var task = ["take out garbage","read a book","write javascript","go to work","sleep"];
+        var progress = ["done","in progress","to do"];
+
+        var question1 = prompt("which task 1-"+task.length+"?");
+        var question2 = prompt("status 1 = done 2 = in progress 3 = to do?");
+        
+        console.log("today you will " + task[(question1-1)] + " status of task = " + progress[(question2-1)]);
+
+        task[task.length] = "Wacth TV";
+
+        task[100] = "Final Value";
+        task[44] = "Middle value";
+        task[task.length] = "Final added Value"; // This will add to the last position the item. 
+        
+        console.log(task[(task.length-1)]);
+        console.log(task);
+        console.log(typeof task);
+        console.log(Array.isArray(task));
+        console.log(Array.isArray(task[1]));
+        console.log(typeof task[2]);
+        
+
+
+
+
+    </script>
+</body>
+</html>

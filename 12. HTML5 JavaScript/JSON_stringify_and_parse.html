@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Stringify and Parse</title>
+</head>
+<body>
+    
+    <div id="output">JSON Stringify and Parse</div>
+    <div>JSON: JavaScript Object Notation</div>
+    <script>
+        var message = "hello world";
+        var myObj = {
+            "message": "Hello World"
+            , "count": 1
+            , "secret": "JavaScript"
+        };
+        var myStr = JSON.stringify(myObj);  // This is a built-in method where with the "stringify" we conver a string to "JSON string", since is transformed it is just a string
+        if (localStorage.getItem('mes')) {
+            var myObj2 = JSON.parse(localStorage.getItem('mes'));   // This is a built-in value where with the "parse" we conver a "JSON string" to a object. And when it is transform to an object is like a dictionary in python
+            document.getElementById('output').innerHTML = myObj2.message + '<br>' + myObj2.count + '<br>' + myObj2.secret;
+            myObj2.count = Number(myObj2.count) + 1;
+            myObj = {
+                "message": "Updated"
+                , "count": myObj2.count
+                , "secret": "JavaScript 2"
+            };
+            myStr = JSON.stringify(myObj);
+        }
+        localStorage.setItem('mes', myStr);
+
+    </script>
+</body>
+</html>

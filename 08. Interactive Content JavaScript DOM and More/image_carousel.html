@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build an Image Carousel</title>
+</head>
+<body onload="startImg()">  <!-- This will call the image as soon as the html loads placing the image -->
+    <div id="wrapper">Build an Image Carousel</div>
+    <img id="myImage">  <!--This is the place for the image in the html-->
+    <script>
+
+        var imagePlace = 0;  // This will be the first image, it will be incremented as soon as we call the function 
+        var images = ["1","2","3","4","5","6","7"];  // This will swap the images from 1 to 2 to 3 and so on
+        var imagesC = ["111","222","FF0000","00FF00","0000FF","000","333"];  // Also it will change the color as we predefined here
+        
+        function startImg(){
+            myImage.src = "http://via.placeholder.com/350x150/"+imagesC[imagePlace]+"/fff?text=Image"+images[imagePlace];  // This will add the first image before the carousel start
+            setInterval(swapImage,2000);  // With this it will change the image every 2 seconds, calling the swapImage function
+        }
+
+        function swapImage(){
+            imagePlace++;  // This will increment the value so it will pass each image every 2 seconds
+            if(imagePlace > images.length){  // With this conditional statement if the image called is greater than the image length (in this case 7), it will be reseted and get back to 0 starting the carousel again
+                imagePlace = 0;
+            }
+            var myImage = document.getElementById("myImage");
+            myImage.src = "http://via.placeholder.com/350x150/"+imagesC[imagePlace]+"/fff?text"+images[imagePlace];
+        }
+
+
+
+    </script>
+</body>
+</html>

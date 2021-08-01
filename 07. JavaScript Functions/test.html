@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <div id="output1"></div>
+
+    <script>
+
+        var output1 = document.getElementById("output1");
+        var response = "55"; // global
+        var a = "hello ";
+        var b = "world";
+        output1.innerHTML = myFun2();
+        function myFun2() {
+            var b = a + "world";
+            return b;
+        }
+
+
+    </script>
+
+    <br>
+    <br>
+    <div id="output2"></div>
+    <script>
+        var output2 = document.getElementById("output2");
+        output2.innerHTML = function ("hello");
+        var a = function (b) {
+            var c = b + 'world';
+        }
+    </script>
+    <br>
+    <br>
+    <div id="output3"></div>
+    <script>
+        var a = " World";
+        var output3 = document.getElementById("output3");
+        (function () {
+            var a = "Hello";
+            output3.innerHTML = a;
+        })();
+        output3.innerHTML += a;
+    </script>
+
+    <br>
+    <br>
+
+    <div id="output4"></div>
+    <script>
+        var a = " Hello";
+        var output4 = document.getElementById("output4");
+        (function () {
+            var a = "World";
+            output4.innerHTML = a;
+        })();
+        output4.innerHTML += a;
+    </script>
+
+    <br>
+    <br>
+
+    <script>
+        var outsideFun = "outside";
+        function myFun() {
+            var insideFun = "inside";
+            console.log(outsideFun);
+            console.log(insideFun);
+        }
+        myFun();
+        console.log(outsideFun);
+    </script>
+
+    <br>
+    <br>
+
+    <div id="output5"></div>
+    <script>
+        var output5 = document.getElementById("output5");
+        var a = 50;
+        function outsideFun() {
+            var b = 635;
+            function insideFun() {
+                b++;
+                return b;
+            }
+            insideFun();
+            var c = insideFun();
+            var d = function () {
+                b++;
+                return b;
+            }
+            d();
+            var e = d();
+            return b;
+        }
+        console.log(outsideFun());
+    </script>
+
+
+</body>
+</html>

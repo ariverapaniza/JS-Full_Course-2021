@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursive Function Game</title>
+</head>
+<body>
+    <input type="button" onclick = "start()" value = "Star Game">
+    <br>
+    <br>
+    <div id="output"></div>
+
+    <script>
+
+        var secretWord = ["JavaScript","HTML","CSS","Python"];
+        var misteryNum ;
+        var output = document.getElementById("output");
+
+        function start(){
+            misteryNum = Math.floor(Math.random()*secretWord.length);  // This will get the random number to get the word according to the length of the array
+            getSecret(prompt("What is the secret word?. Hint: can be JavaScript, HTML, CSS or Python"));
+        }
+        function getSecret(secret){  // This function will compare the randomly selected item from the array to the word we just write to guess the word
+            if(secret == secretWord[misteryNum]){  // secretWorld is the array and the misteryNum is the position inside the array
+                output.innerHTML = "<h3>You Are Correct!";
+            }else{
+                getSecret(prompt("Guess Again!"));  // This will loop to the begining of the function to write another answer because we did not guess
+            }
+        }
+
+
+
+
+    </script>
+</body>
+</html>

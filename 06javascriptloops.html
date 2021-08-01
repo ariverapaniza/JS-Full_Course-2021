@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>06 JavaScript Loops</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="https://cdn11.bigcommerce.com/s-h28kc1m5v1/images/stencil/640w/products/113/377/6b1749b802f3818c7f99e21b2daff8ef__68321.1511409131.png?c=2" style="width: 20%;" alt="Logo"> <strong>Complete JavaScript Course</strong>
+      </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">JavaScript Menu <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="01gettingstarted.html">01 Getting Started</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="02javascriptessencials.html">02 JS Essencials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="03javascriptmultiplevalues.html">03 JS Multiple Values</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="04dombasics.html">04 DOM Basics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="05javascriptlogicstatements.html">05 JS Logic Statements</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="06javascriptloops.html">06 JS Loops</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="07javascriptfunctions.html">07 JS Functions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="08interactivejavascriptcontentdom.html">08 Interactive Content with DOM</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="09javascriptdynamicwebwithdom.html">09 JS Dynamic Web With DOM</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="10builtinjavascript.html">10 Built-In JS</a>
+            </li>
+          </ul>
+        </li>
+        
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">  JavaScript Menu 2 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class="nav-item">
+                <a class="nav-link" href="11intermediatejavascript.html">11 Intermediate JavaScript</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="12html5javascript.html">12 HTML5 JavaScript</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="13jsonNajaxJS.html">13 JSON and AJAX JS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="14whatsnewecmascript6.html">14 ECMAScript 6</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="15javascriptinaction.html">15 JS InAction</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="16reactiongamesetup.html">16 Reaction Game Setup</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="17qnacodesnipper.html">17 Q n A Code Snipper</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="18jsnextsteps.html">18 JS Next Steps</a>
+              </li>
+
+
+              </ul>
+          </li>
+    
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">JavaScript
+      <small>Loops</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">Home</a>
+      </li>
+      <li class="breadcrumb-item active">06. JavaScript Loops</li>
+    </ol>
+
+    <!-- Image Header -->
+    <img class="img-fluid rounded mb-4" src="https://theconciergeofficesuites.com/wp-content/uploads/2017/08/AdobeStock_104891480-Large-1200x300.jpeg" alt="">
+
+
+    <!-- Files Index -->
+    <br>
+    <div class="card h-100 card-header">
+     <center> <a href="06. JavaScript Loops"> <h4> 06. JavaScript Loops </h4></a> </center>
+    </div>
+    <br>
+
+
+    <!-- Marketing Icons Section -->
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Do While Loops</h4>
+          <div class="card-body">
+            <p class="card-text">The "Do While Loops" means that "DO this WHILE..." this condition is not met yet. In this case the "DO" is the thing that we have to do "WHILE" the condition is not met, when is met we can continue with the next line of code.8</p>
+          </div>
+          <div class="card-footer">
+            <a href="06. JavaScript Loops/do_while_loops.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">While Loops</h4>
+          <div class="card-body">
+            <p class="card-text">The "WHILE" loop is doing the same as the "DO WHILE" but is shortening the code. Also we can use it to compare 2 values using the "JavaScript Comparison Methods" (==, !=, ===, etc.). In this case we can compare a predefined string (like a password) to the one that we input in the prompt.</p>
+          </div>
+          <div class="card-footer">
+            <a href="06. JavaScript Loops/while_loops.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">For Loops</h4>
+          <div class="card-body">
+            <p class="card-text">The FOR loop is doing almost the same as the WHILE loop but the variables are inside the parenthesis. The form used is "for(var x = 0; x <= 31; x++){if(x % 2 !== 0){output1.innerHTML += "Value of x is = " +x+ ;};};". Variable X is inside and also the breaking point to make the condition (x <= 31) like a "while loop" and the x++ to sum up 1 each time it loops.</p>
+          </div>
+          <div class="card-footer">
+            <a href="06. JavaScript Loops/for_loops.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Nested Loops</h4>
+          <div class="card-body">
+            <p class="card-text">Nestes loops can work when you have a for loop inside a for loop, on this case one is for the rows and the other is for the columns.</p>
+          </div>
+          <div class="card-footer">
+            <a href="06. JavaScript Loops/nested_loops.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Break and Continue</h4>
+          <div class="card-body">
+            <p class="card-text">This will use inside the "for loops" the "break" and "continue", for example when it gets to an specific point it will break, and if that point is not met, it will continue until it gets a breaking point.</p>
+          </div>
+          <div class="card-footer">
+            <a href="06. JavaScript Loops/break_and_continue_loops.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Get Multiples</h4>
+          <div class="card-body">
+            <p class="card-text">This will use the for loop with the variable x = 0 looping up to 1000. Then it will compare, if x % 5 === 0 (or is divided and does not let any decimals) it will be added, otherwise will be discarded.</p>
+          </div>
+          <div class="card-footer">
+            <a href="06. JavaScript Loops/get_multiplies.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Loops and Arrays</h4>
+          <div class="card-body">
+            <p class="card-text">With this "for loop" we are going to loop on the array, in this case (var userNames = ["Emma","Evelyn","Arturo"];) and in the output.innerHTML will print on the html the content of the array, it can be increasing (x++) or decreasing (x--), it can start at the begining (var x = 0) or start at the end (var x = userNames.length - 1) where the -1 is the last item on the array. We can also use the "while loop"</p>
+          </div>
+          <div class="card-footer">
+            <a href="06. JavaScript Loops/loops_and_arrays.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Loops and Objects</h4>
+          <div class="card-body">
+            <p class="card-text">Objects are like dictionaries in python, like arrays are like list in python, and we can loop inside the object to print on the html the information inside the variable. For example var userNames = {a: "Emma",b: "Evelyn", c:"Arturo"}; where userNames is the "variable", a, b and c is the "properties" or "names", and Emma, Evelyn and Arturo are the "values". The name:values pairs in JavaScript objects are called properties.</p>
+          </div>
+          <div class="card-footer">
+            <a href="06. JavaScript Loops/loops_and_objects.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Introduction to JavaScript Loops</h4>
+          <div class="card-body">
+            <p class="card-text">This will create a Shopping List using objects and for loops. Also we added a breaking point, in case we write the word "no" it will stop asking for more items on the input box.</p>
+          </div>
+          <div class="card-footer">
+            <a href="06. JavaScript Loops/introduction_to_javascript_loops.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Shopping List Array Exercise</h4>
+          <div class="card-body">
+            <p class="card-text">This will create a Shopping List using objects and for loops. Also we added a breaking point, in case we write the word "no" it will stop asking for more items on the input box.</p>
+          </div>
+          <div class="card-footer">
+            <a href="06. JavaScript Loops/shopping_list_array_exercise.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript --> 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

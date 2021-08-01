@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Values Ternary Operators</title>
+    <style>
+        .toggle {
+            padding: 10px;
+            background-color: aliceblue;
+            font-size: 1.3em;
+            margin: 10px;
+        }
+        
+        .active {
+            background-color: aquamarine;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>Party invite Checklist</div>
+    <div id="output">Toggle Values Ternary Operators</div> Guest Name :
+    <input type="text" id="guestName"> +
+    <input type="number" id="guestNum" value="0">
+    <input type="button" value="add">
+    <script src="parse_string_into_object.json"></script>
+    <script>
+        var party = [];  // this will be an empty array
+        var el;  // this is "element"
+        var output = document.getElementById('output');
+        window.onload = buildList;
+        var addGuest = document.querySelector('input[type="button"]');  // with this we are going to "querySelector" or search and select for the 'input[type="button"]' and we specify the "type" since there is more input and we have to be specific otherwise it will grab the first input
+        addGuest.addEventListener('click', function (e) {  //  and as soon as the selects the input it will trigger the "addEventListener" for the "click" and triggers this anonymous function
+            var g = document.getElementById('guestName'); // and take the "id" of "guestName". and it is very important to clear the value after the function ends is no to have in here the ".value" and instead calling them in the "push" part so the values can be reseted to "blank" and "0"
+            var n = document.getElementById('guestNum');  // and "guestNum"
+            message('💯', g.value + ' +' + n.value, party.length);  // and creates a message with the value of "g" and "n" with the lenght of the "party" where it will be added in the function "message"
+            party.push({  // then it will "push" the new values added to this variable but not to the json file
+                name: g.value  // by the value of "g"
+                , guests: Number(n.value)  // and the value of "n"
+                , status: false  // and gave the status of "false"
+            })  // and after they are added
+            g.value = "";  // it will be updated again in blank
+            n.value = 0;  // and in value of "0"
+        })
+        output.addEventListener('click', function (e) {  // we create this "addEventListener" for a "click" and when we click in a name we added
+            el = e.target;  // it will select the target of the name or "e" "element" that we selected
+            var ds = el.dataset;  // we can grab the information via "ds" or "dataset" grabbing all the dataset information of that element
+            el.classList.toggle('active');  // and the "classList" will select the class and "toggle" or "add/remove" the word "active" to the class and with this it will change the color of the "active" class
+            el.children[0].innerHTML = el.children[0].innerHTML == '✓' ? '✘' : '✓';  // so it will select the "el" element "children" or the "span" where the symbol ✘ is located and use the ternary operator to flip the symbol from ✓ and to ✘ 
+            party[ds.id].status = party[ds.id].status ? false : true;  // and with this ternary operator to flip back and forth the status false from and to false 
+            console.log(party);
+        })
+
+        function buildList() {
+            party = JSON.parse(data);  // and with "JSON.parse()" A common use of JSON is to exchange data to/from a web server. When receiving data from a web server, the data is always a string. Parse the data with "JSON.parse()", and the data becomes a JavaScript object
+            for (var x = 0; x < party.length; x++) {  // with this for loop we are getting the ID
+                var person = party[x].name + ' +' + party[x].guests;  // the "x" represents the index position in the array therefor the ID
+                if (party[x].status) {  // if the party status is "true"
+                    message('✓', person, x, 'active');
+                }
+                else {  // else if is false
+                    message('✘', person, x, '');
+                }
+            }
+        }
+
+        function message(m, person, id, c) {  // this will get the "m" message is the symbol like "✘", "person" and the "id" and the id is the "lenght" of the "party" and "c" means "class"
+            output.innerHTML += '<div class="toggle ' + c + '" data-id="' + id + '" data-person="' + person + '" ><span>' + m + '</span> ' + person + ' </div>';
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multidimentional or Nested Arrays</title>
+</head>
+<body>
+    <script>
+
+        var arr = [["cat","dog","fish"],[1,2,3,4,5,6,7,8,9],"hello",50];
+        console.log(arr[3]) // This will bring the number 50 since this array has 3 inside arrays, but since the "hello" and 50 are not inside the square brackets it will bring the number 50 that is on the position 3.
+        console.log(arr[0][1]); // This will bring inside of the first array the second position (remember the position is 0,1,2... and so on) 
+        console.log(arr[1][4]);
+
+        var ourFriends = [["Mike","John","Larry"],[1980,1990,2016]];
+        var q = prompt("which friend?");
+        console.log("You met " + ourFriends[0][q] + " in " + ourFriends[1][q]); // In order to work we have to put the position not the name
+
+
+    </script>
+</body>
+</html>

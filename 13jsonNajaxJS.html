@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>13. JSON and AJAX JavaScript</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="https://cdn11.bigcommerce.com/s-h28kc1m5v1/images/stencil/640w/products/113/377/6b1749b802f3818c7f99e21b2daff8ef__68321.1511409131.png?c=2" style="width: 20%;" alt="Logo"> <strong>Complete JavaScript Course</strong>
+      </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">JavaScript Menu <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="01gettingstarted.html">01 Getting Started</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="02javascriptessencials.html">02 JS Essencials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="03javascriptmultiplevalues.html">03 JS Multiple Values</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="04dombasics.html">04 DOM Basics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="05javascriptlogicstatements.html">05 JS Logic Statements</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="06javascriptloops.html">06 JS Loops</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="07javascriptfunctions.html">07 JS Functions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="08interactivejavascriptcontentdom.html">08 Interactive Content with DOM</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="09javascriptdynamicwebwithdom.html">09 JS Dynamic Web With DOM</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="10builtinjavascript.html">10 Built-In JS</a>
+            </li>
+          </ul>
+        </li>
+        
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">  JavaScript Menu 2 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class="nav-item">
+                <a class="nav-link" href="11intermediatejavascript.html">11 Intermediate JavaScript</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="12html5javascript.html">12 HTML5 JavaScript</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="13jsonNajaxJS.html">13 JSON and AJAX JS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="14whatsnewecmascript6.html">14 ECMAScript 6</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="15javascriptinaction.html">15 JS InAction</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="16reactiongamesetup.html">16 Reaction Game Setup</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="17qnacodesnipper.html">17 Q n A Code Snipper</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="18jsnextsteps.html">18 JS Next Steps</a>
+              </li>
+
+
+              </ul>
+          </li>
+    
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">13. JSON and AJAX
+      <small>JavaScript</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">Home</a>
+      </li>
+      <li class="breadcrumb-item active">13. JSON and AJAX JavaScript</li>
+    </ol>
+
+    <!-- Image Header -->
+    <img class="img-fluid rounded mb-4" src="https://www.haydonbolts.com/wp-content/uploads/2014/06/1200-x-300-1.png" alt="">
+    <br>
+
+    <!-- Files Index -->
+    <div class="card h-100 card-header">
+     <center> <a href="13. JSON and AJAX JavaScript"> <h4> 13. JSON and AJAX JavaScript Files </h4></a> </center>
+    </div>
+    <br>
+
+    <!-- Marketing Icons Section -->
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">JSON Format Checker and Storage</h4>
+          <div class="card-body">
+            <p class="card-text"> <a href="http://myjson.dit.upm.es/">MyJSON Storage and Hosting</a>, <a href="http://jsonlint.com/">JSON Checker</a>, and <a href="http://en.wikipedia.org/wiki/JSON">JSON Example</a> and <a href="http://myjson.dit.upm.es/api/bins/1owo">a Stored JSON Example</a> .</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/JSON_storage_n_checker.html" class="btn btn-primary">Open HTML</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Parse String Into Object</h4>
+          <div class="card-body">
+            <p class="card-text">JSON.parse() A common use of JSON is to exchange data to/from a web server. When receiving data from a web server, the data is always a string. Parse the data with JSON.parse(), and the data becomes a JavaScript object. <a href="https://www.w3schools.com/js/js_json_parse.asp">More Info Here!</a> </p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/parse_string_into_object.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Update Data Add to List</h4>
+          <div class="card-body">
+            <p class="card-text">With this we are going to "querySelector" or search and select for the 'input[type="button"]' and we specify the "type" since there is more input and we have to be specific otherwise it will grab the first input, and as soon as the selects the input it will trigger the "addEventListener" for the "click" and triggers this anonymous function and take the "id" of "guestName". And it is very important to clear the value after the function ends is no to have in here the ".value" and instead calling them in the "push" part so the values can be reseted to "blank" and "0" then it will "push" the new values added to this variable but not to the json file.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/update_data_add_to_list.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Toggle Values Ternary Operators</h4>
+          <div class="card-body">
+            <p class="card-text">We create this "addEventListener" for a "click" and when we click in a name we added it will select the target of the name or "e" "element" that we selected we can grab the information via "ds" or "dataset" grabbing all the dataset information of that element and the "classList" will select the class and "toggle" or "add/remove" the word "active" to the class and with this it will change the color of the "active" class.  Using ternary operators it will select the "el" element "children" or the "span" where the symbol ✘ is located and use the ternary operator to flip the symbol from ✓ and to ✘ and with this ternary operator to flip back and forth the status false from and to false .</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/toggle_values_ternary_operators.html" class="btn btn-primary">Open HTML</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Local Storage Stringify Parse</h4>
+          <div class="card-body">
+            <p class="card-text">We set the "localStorage" and use the stringify to make it a string and parse to make it back as an object.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/local_storage_stringify_parse.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Asynchronous JavaScript And XML</h4>
+          <div class="card-body">
+            <p class="card-text">"new XMLHttpRequest;" this is like the DOM but in XML HTTP Request. "xHR.open('GET', 'https://myjson.dit.upm.es/api/bins/1owo', true);"   the "GET" is the HTML Request to get the "web address" "true" is "Asynchronous" and "false" is "Synchronous". "xHR.send();" is to send the request.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/asynchronous_js_and_XML.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div><div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Asynchronous JavaScript And XML 2</h4>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/asynchronous_js_and_XML_2.html" class="btn btn-primary">Open HTML</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Party List App using AJAX</h4>
+          <div class="card-body">
+            <p class="card-text">We added the URL inside the "init" function and it was called when we load the "loadJSON" function.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/party_list_app_using_AJAX.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Connect to API endpoint return data</h4>
+          <div class="card-body">
+            <p class="card-text">We are going to trigger a function to call from the Rest API containing from a web address all the countries information, we use the "addEventListener" where we listen to a "click" and triggers a function called "myLoader" where we use "New XMLHttpRequest()" to pull all the information and then using the "JSON.parse" to transform it to an object so we can randomly select any country using "Math.random() * myObj.length".</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/connect_to_api_endpoint_data.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div><div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Create Random Letter Order</h4>
+          <div class="card-body">
+            <p class="card-text">We use the "Math.floor(Math.random())*pick.lenght" to randomyze the word to be guessed. Also we used a "for Loop" to create an array for the word picked.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/create_random_letter_order.html" class="btn btn-primary">Open HTML</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Exercise Solution Guess Check</h4>
+          <div class="card-body">
+            <p class="card-text">We updated the code to loop through the guessed word to match the picked word and also we added the flag taking the info from the "json" using AJAX.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/exercise_solution_guess_game.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Update</h4>
+          <div class="card-body">
+            <p class="card-text">The following lessons discusses setting up an endpoint for posts from JavaScript.  There is some PHP code provided for the endpoint as sometimes  when posting POST to an endpoint you may encounter CORS errors which occur when cross origin requests are made.  (Browser security feature to prevent script from posting).</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/update.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div><div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">AJAX Post Data and Receive Response</h4>
+          <div class="card-body">
+            <p class="card-text">We used PHP but we have to create a "localhost" server using XAMMP.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/AJAX_postdata_n_receive_response.html" class="btn btn-primary">Open HTML</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Youtube API Search using AJAX</h4>
+          <div class="card-body">
+            <p class="card-text">We created a search box where we can search youtube videos using the youtube API but we have to use the GCP in order to make it work.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/youtube_api_search_using_AJAX.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Display Youtube Search Results</h4>
+          <div class="card-body">
+            <p class="card-text">We now display in the HTML the results of the Youtube Search.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/dispay_youtube_search_results.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div><div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">JSON AJAX Practice Exercise</h4>
+          <div class="card-body">
+            <p class="card-text">we are pulling the information from a json file in the web and taking it to our html.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/json_ajax_practice.html" class="btn btn-primary">Open HTML</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Dynamic Quiz using AJAX</h4>
+          <div class="card-body">
+            <p class="card-text">We are creating functions so when the JSON files loads we can click on each of the elements using the "addEventListener" for a "click" and depending of the "correct" answer we can create a DIV to put the ID of the answer if is "true" or "false".</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/dynamic_quiz_using_AJAX.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Event Handlers and Adding Classes</h4>
+          <div class="card-body">
+            <p class="card-text">We take the values of the indexes to get the answer and also we created a function to move to the previous or next question.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/event_handlers_n_adding_classes.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div><div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Quiz Bug fixes and Tweaks</h4>
+          <div class="card-body">
+            <p class="card-text">We created a function for the answers and also we created to classes, one for the questions and anotherone for the answers.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/quiz_bugs_n_fixes.html" class="btn btn-primary">Open HTML</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Test</h4>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript/test.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Card Title</h4>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+          </div>
+          <div class="card-footer">
+            <a href="13. JSON and AJAX JavaScript" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript --> 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

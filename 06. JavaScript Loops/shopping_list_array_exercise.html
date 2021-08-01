@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List Array Exercise</title>
+</head>
+<body>
+    <div id="output"> <h1>Shopping List</h1> <br> </div>  <!--This will be the title in the html, then it will use the <br> to add the items-->
+    <script>
+
+        var output = document.getElementById("output");
+        var addItem;
+        var shoppingList = [];  // This will create an object (like a dictionary in python)
+        var howManyItems = prompt("How Many Items Do You Want To Add?");
+
+        for(var x = 0; x < howManyItems; x++){
+            addItem = prompt("What do you want to add?, If you want to stop just write 'no'.");
+            if(addItem == "no"){break};  // This break should be here because if is after this line it will add also to the list the word "no"
+            shoppingList.push(addItem);  // This will push each item to the list or array
+        }
+
+        for(myItem of shoppingList){
+            output.innerHTML += myItem + "<br>";
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

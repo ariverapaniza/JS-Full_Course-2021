@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Strict Mode</title>
+</head>
+<body>
+    
+    <div id="output">Use Strict Mode</div>
+    <script>
+        //"use strict";    // if we use this line of code and inside the function we create a variable but we do not added the word "var" it will not work, but if we do not use this line of code "use strict" it does not matter if we add the word "var" in the variable, it will still runs and be called as a global variable
+        myFun();
+        console.log(a);
+
+        function myFun() {
+            a = "Hello World";
+        }
+    </script>
+</body>
+</html>

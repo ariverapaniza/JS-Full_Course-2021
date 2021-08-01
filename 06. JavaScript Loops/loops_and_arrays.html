@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops and Arrays</title>
+    <style>
+        td { border:1px solid black;}  /*  This is to style the table to make the lines appears */
+        
+    </style>
+
+</head>
+<body>
+    
+    <div id="output1"></div>
+    <script>
+
+        var output1 = document.getElementById("output1");
+        var userNames = ["Emma","Evelyn","Arturo"];
+
+        for(var x = 0; x < userNames.length; x++){  // This will loop for all the array items and print it on the next command
+            output1.innerHTML += "<h3>" + userNames[x] + "<br>";  // On the <h3> added without the </h3> will change the font size on the html
+        }
+
+        for(var x = userNames.length - 1; x >= 0; x--){  // Instead of looping starting from item 0 it will start looping at the final item (-1) and then x is equal or more than 0 so the final item is the item 0, and the final item (x--) is going to be decreasing instead of increasing (x++)
+            output1.innerHTML += "<h5>"+userNames[x] + "<br>";
+        }
+
+        var x = 0;
+        while(userNames[x]){
+            output1.innerHTML += "<h1>"+userNames[x] + "<br>";
+            x++;
+        }
+
+        for(value of userNames){  // Value can be any name and is the variable or the holder that will call each item and loop on the array. This is a synthesized version
+            output1.innerHTML += value + "<br>";
+        }
+
+        
+
+    </script>
+
+</body>
+</html>

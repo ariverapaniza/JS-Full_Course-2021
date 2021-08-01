@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Card Deck</title>
+</head>
+<body>
+
+    <div id="wrapper">
+        <div id="start"></div> <h3>How many Players ?</h3>
+        <input type="number" id="players" min="1" max="5" value="3">  <!--Instead of using type text we are using type number with a maximum and a minimum-->
+        <button id="btnDeal" type="button" onClick="startDeal()">Deal</button>
+        <div id="output"></div>
+    </div>
+
+    <!-- <div id="output"></div> -->
+
+    <script>
+
+        // var output = document.getElementById("output");
+
+        var suits = ["spades","hearts","clubs","diams"];
+        var cardFace = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"];
+        var cards = [];
+        var players = [];
+
+        function startDeal(){  // As soon as the button is clicked it will start passing through all the functions
+            players = [];  // this is calling the first array
+            cards = [];  // this is calling the second array
+            var num = Number(document.getElementById("players").value); // this will take the value we selected on the input in the html
+            for(var i = 0; i < num;i++){  // i is the number of the player ( 1 to 5 )
+                players[i] = [];
+            }
+            buildCards();  // This will call all the next function in order so it can work the game
+            shuffleCards(cards);
+            deal(cards);
+            console.log(cards);
+        }
+
+        function buildCards(){  // This will group the parts of the card together, the suits, the cardFace and the number
+            for(s in suits){
+                var bgColor = (suits[s] == "hearts" || suits[s] == "diams") ? "red" : "black"  // This will tell which ones has to be in red or in black. It uses Conditional (ternary) operator
+                for(c in cardFace){
+                    var card = {
+                        suit:suits[s],
+                        num:cardFace[c],
+                        bgColor:bgColor
+                    }
+                    cards.push(card);
+                }
+            }
+
+        }
+
+        function shuffleCards(array){  // THis will shuffle the cards and add the new order to the array to display it depending of the amount of players
+            for(var x = array.length - 1; x > 0; x--){
+                var ii = Math.floor(Math.random() * (x + 1));
+                var temp = array[x];
+                array[x] = array[ii];
+                array[ii] = temp;
+            }
+            return array;
+
+        }
+
+        function deal(cards){  // This will deal the cards to each player randomly
+            var num = players.length;
+            var output = document.getElementById("output");
+            var p = 0;
+            for(var i = 0; i < cards.length; i++){  // THis will loop each player and assign a card to each player adding it to the array
+                players[p].push(cards[i]);
+                p++;
+                if(p >= num){p=0;}
+            }
+            for(var i = 0; i < num; i++){
+                output.innerHTML += "<br>Players: " + (i + 1) + "<br>";
+                for(x = 0; x < players[i].length; x++){
+                    var p = players[i][x];
+                    output.innerHTML += "<span style=\"color:" + p.bgColor + "\">" + p.num + "&" + p.suit + ";</span>";  
+                }
+                output.innerHTML += "<br>";
+            }
+
+        }
+
+    </script>
+</body>
+</html>

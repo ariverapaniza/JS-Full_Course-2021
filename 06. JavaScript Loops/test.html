@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Loops</title>
+</head>
+<body>
+    <div id="output1"></div>
+
+    <script>
+
+        var myTime = 9;
+        var output1 = document.getElementById("output1");
+        var x = 10;
+        do {
+            x++;
+            output1.innerHTML += "value x = " + x + "<br>";
+        }
+        while (x < myTime);
+ 
+
+
+
+
+
+
+
+    </script>
+    <br>
+    <br>
+    <div id="output2"></div>
+
+    <script>
+
+        var myTime = 9;
+        var output2 = document.getElementById("output2");
+        var x = 10;
+        x = 0;
+        do {
+            if (x % 2 === 0) {
+                output2.innerHTML += "value x = " + x + "<br>";
+            }
+            x++;
+        }
+        while (x < 17);
+
+
+
+
+
+
+
+
+    </script>
+    <br>
+    <br>
+    <div id="output3"></div>
+
+    <script>
+
+        var output3 = document.getElementById("output3");
+        for (var x = 3; x <= 31; x++) {
+            if (x % 2 !== 0) {
+                output3.innerHTML = "value of x is =" + x + "<br>";
+            }
+        }
+
+
+
+
+
+
+
+
+    </script>
+    <br>
+    <br>
+    <div id="output4"></div>
+
+    <script>
+
+        var output4 = document.getElementById("output4");
+        var html = "<table>";
+        for (var row = 0; row < 5; row++) {
+            html += "<tr>";
+            for (var col = 0; col < 3; col++) {
+                html += "<td>Cell = " + ((col + 1) + (row * 3)) + "</td>";
+            }
+            html += "</tr>";
+        }
+        html += "</table>";
+        output4.innerHTML = html;
+
+
+
+
+
+
+
+
+    </script>
+    <br>
+    <br>
+    <div id="output5"></div>
+
+    <script>
+
+        var output5 = document.getElementById("output5");
+        var userNames = ["mike", "john", "larry"];
+        for (var x = 0; x < userNames.length; x++) {
+            output5.innerHTML += userNames[x] + " - ";
+        }
+    
+
+
+
+
+
+
+
+    </script>
+    <br>
+    <br>
+
+
+
+
+
+
+</body>
+</html>

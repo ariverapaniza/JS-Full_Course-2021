@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Matching Game</title>
+    <style>
+        #output {
+            width: 400px;
+            height: 400px;
+            display: block;
+            border: 1px solid black;
+        }
+        
+        #cButtons > div {
+            width: 100px;
+            display: inline-block;
+            height: 50px;
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="message">Color Matching Game</div>
+    <input type="button" value="start" onclick="start()">
+    <div id="output"></div>
+    <div id="cButtons"> </div>
+    <div id="guess"></div>
+    <script>
+        var arr1 = [];
+        var arr2 = [];
+        var myT;
+        var loop = 0;  // This will count how many times it loops
+        var output = document.getElementById('output');
+        var message = document.getElementById('message');
+ 
+        function start() {
+            var colorArr = ["red", "green", "blue", "yellow"];
+            var html = "";
+            for (var x = 0; x < colorArr.length; x++) {  // this will loop into the "colorArr" to create the boxes at the bottom to click to guess the color.
+                html += '<div class="' + colorArr[x] + '" style="background-color:' + colorArr[x] + '" onclick="oGuess()">' + colorArr[x] + '</div>';  //and this will be added to the "cButtons" ID. 
+            }
+            document.getElementById('cButtons').innerHTML = html;  // This will place it in the html
+            for (var x = 0; x < 4; x++) {  // This is "x" is less than "4" because it loops in the 4 color items
+                var r = colorArr[Math.floor(Math.random() * colorArr.length)];
+                arr1.push(r);  // This will push the color randomly selected into the first variable "arr1"
+            }
+            loop = 0;
+            console.log(loop)
+            myT = setTimeout(goWhite, 400);  // This will set the timeout to pass to the next color, the "goWhite()" is a function and will change from the color to white to then put the next color
+        }
+ 
+        function oGuess() {  // This function will select the color that we clicked and store it in the variable "g" so then we can compare the "arr1" with the "arr2" and use an "if else" loop to get if the answer is correct or wrong
+            var g = event.target.className;  // The "event.target.classname" is the method that we can pick the name of the classname clicked and store it in the variable
+            arr2.push(g);
+            if (arr2.length == arr1.length) {
+                if (arr1.toString() == arr2.toString()) {  // This will change the order of the colors that we picked and transform them into "toString" and compare it to the second array "arr2" also transformed "toString"
+                    message.innerText = "you were correct :)";
+                }
+                else {
+                    message.innerHTML = "you were wrong <br> Your guess " + arr2 + "<br>correct order was " + arr1;
+                }
+            }
+        }
+ 
+        function goWhite() {  // This will change the color from the random color to white to the next random color
+            output.style.backgroundColor = "white";  // This will select the background color to white
+            myT = setTimeout(goColor, 400);
+        }
+ 
+        function goColor() {
+            output.style.backgroundColor = arr1[loop];  // This will give us the color and then it will
+            loop++;  // move to the next color
+            if (loop >= arr1.length) { // This will break the loop and when the loop is greater or equal than the length of the array it will
+                clearTimeout(myT);  // clear the timeout
+            }
+            myT = setTimeout(goWhite, 1000);
+        }
+    </script>
+</body>
+</html>

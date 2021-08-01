@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generators and Interators</title>
+</head>
+<body>
+    
+    <div id="output">Generators and Interators</div>
+    <script>
+        "use strict"  //  "use strict" this is the command that when we use the JSON we have to put it at the top.
+
+        function* pgGen() {  // The "Generators" are identified because after the word "function" it has an asterisk "*" attached to it. Also they use a "yield" keyword. The "yield" keyword is like the "return" value that it will be increased "while" we do not reach in this case "20".
+            let counter = 0;
+            while (counter < 20) {  // So "while" the counter is less than 20, it will be true and it will increase the value, and the "done" will be "false", when it reaches the ens it will return the "value" of "undefined" and the "done" will be "true" since it finish. So it means that each time we use the "pg.next();" it will "yield" or increment the value to 1 more.
+                yield counter++;
+            }
+        }
+        let pg = pgGen();
+        for (let i = 0; i < 10; i++) { // We can also use this in a "for" loop to make it more dynamic
+            let holder = pg.next();
+            if (holder.done) {
+                break;
+            }
+            console.log(holder.value);
+            //console.log(holder.done);
+        }
+        console.log(pg);
+        console.log(pg.next());
+        console.log(pg.next());
+        console.log(pg.next());
+        console.log(pg.next());
+    </script>
+</body>
+</html>

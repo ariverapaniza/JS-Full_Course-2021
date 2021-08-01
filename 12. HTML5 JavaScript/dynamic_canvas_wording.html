@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Canvas Wording</title>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">Dynamic Canvas Wording</div>
+    <input type="text" id="myWords">
+    <input type="button" onclick="draw()" value="Draw">
+    <br>
+    <canvas id="canvas1"></canvas>
+    <script>
+        var canvas = document.getElementById('canvas1');
+        var ctx = canvas.getContext('2d');  // "ctx" means context. The method to call the canvas is using the "canvas.getContext('2d')" and the "2d" means 2 dimentions
+        canvas.width = 400;  //  we can set the width and height of the canvas but the border we have to pre-stablish in CSS
+        canvas.height = 800;
+        ctx.fillStyle = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);  // the "fillStyle" canvas method will fill the color that we determined, we can use RGB or Hexadecimal denominatios like "0xFFFFFF" and also we can like this use a Math.random to pick a random color
+        ctx.fillRect(10, 30, 100, 100);  //  the "fillRect" is a "canvas method" and this will draw a rectangle, the 10 means the "x axis" and the "y axis" will be 30 for the starting position of the rectangle and the 100 will be the width and the 100 will be the height
+        ctx.lineWidth = 10;  // this canvas method will select the thickness of the line
+        ctx.strokeStyle = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);  // the "strokeStyle" canvas method will fill the color that we determined, we can use RGB or Hexadecimal denominatios like "0xFFFFFF" and also we can like this use a Math.random to pick a random color
+        ctx.strokeRect(10, 150, 100, 100);  //  the "strokeRect" is a "canvas method" and this will draw a rectangle, the 10 means the "x axis" and the "y axis" will be 150 for the starting position of the rectangle and the 100 will be the width and the 100 will be the height
+        ctx.moveTo(10, 270);  // we are moving our "cursor" or "starting point to draw a line" to this point
+        ctx.lineTo(110, 370);  // and the line we are drawing is goint to end in this "x y" axis
+        ctx.stroke();  // and with this canvas method we draw the line
+        ctx.beginPath();
+        ctx.arc(60, 430, 50, 0, 2 * Math.PI);  // this will line a circle, the first 2 numbers are the starting point of "x and y" and the third number is the radius, the fourth number is the starting angle and the last one is the "float" times "Math.PI" 
+        ctx.stroke();  // and to draw it we have to use this method
+
+        ctx.moveTo(25, 390);  // we are moving our "cursor" or "starting point to draw a line" to this point
+        ctx.lineTo(90, 470);  // and the line we are drawing is goint to end in this "x y" axis
+        ctx.stroke();  // and with this canvas method we draw the line
+
+        ctx.font = "24px Arial";
+        var y = 540;
+
+        function draw() {
+            var myWords = document.getElementById('myWords').value;
+            ctx.fillText(myWords, 10, y);  // this "fillText" canvas method will put the words we write in the input box and insert it in the canvas
+            y = y + 30;
+        }
+    </script>    
+</body>
+</html>

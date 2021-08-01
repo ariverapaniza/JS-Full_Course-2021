@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Shopping Cart</title>
+    <style>
+        .item {
+            border: 1px solid black;
+            padding: 2%;
+            width: 29%;
+            float: left;
+            height: 300px;
+        }
+        
+        .img-fluid {
+            max-width: 100%;
+        }
+        
+        .productItem {
+            border: 1px solid black;
+            text-decoration: none;
+            background-color: green;
+            color: azure;
+            border-radius: 10px;
+            padding: 5px;
+            font-size: 0.6em;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">Build Shopping Cart</div>
+    <div id="output2">Shopping Cart</div>
+    <script>
+        var items = [{
+            name: 'iPhone'
+            , details: 'White'
+            , cost: 500
+        }, {
+            name: 'iPad'
+            , details: 'White'
+            , cost: 800
+        }, {
+            name: 'Cable'
+            , details: '3 foot'
+            , cost: 10
+        }, {
+            name: 'Camera'
+            , details: '25MP'
+            , cost: 300
+        }, {
+            name: 'Laptop'
+            , details: 'Intel i7'
+            , cost: 1200
+        }, {
+            name: 'LCD Monitor'
+            , details: '24 inch'
+            , cost: 200
+        }, {
+            name: 'TV'
+            , details: '50 inch'
+            , cost: 450
+        }];
+        var html = '<br>';
+        var shopcart = [];  // We need to have a blank array to add the items into the cart or objects into the cart
+        window.onload = init;  // This will trigger the function as soon as the page loads.
+
+        function init() {
+            buildItems();
+            var q = document.querySelectorAll('.productItem');  //  we are selecting the ".productItem" class through the "querySelectorAll" and loop 
+            for (var x = 0; x < q.length; x++) {  // with a "for" loop to loop in each item listening to a click
+                q[x].addEventListener('click', function (e) { // and when we click the "add to cart" button it will trigger an anonymous function and the "e" is the "event"
+                    e.preventDefault();  // preventing the default option or "event" that is taking the hyperlink "#" 
+                    addToCart(); // and triggering the "addToCart" funtion
+                })
+            }
+        }
+
+        function addToCart() {
+            var iteminfo = event.target.dataset;  // and with this when clicked in the "addToCart" button it will take the "dataset" value in this case the object with all the information of the item we picked
+            iteminfo.qty = 1;  // when we add the ".qty" we are adding the quantity to the cart and we put the value to 1 to start. Then we can increase the quantity
+            shopcart.push(iteminfo);  // In here we are going to push the items selected in the variable "iteminfo" with the "event.target.dataset" that will call the information when we click the "add to cart" button
+            sessionStorage.setItem('scart', JSON.stringify(shopcart));  // "sessionStorage" will work the same as the "localStorage" that we learned in previous lession where we store the information in the current session that we have BUT the sessionStorage only works when the session of the page is ongoing, as soon as it finnish the information will be deleted, AND the "localStorage" has NO expiration. Then the "setItem" we take the value of the item that we selected when we clicked the "add to cart button". "scart" means Shopping Cart that we will use later because it will store the info in the "scart". The "JSON.stringify(shopcart)" as we learn in a previous lesson we are going to take an object (the ones inside in dictionares in python "key:pair") and convert it to a string. 
+            outputCart(); // then this function will be triggered
+        } 
+
+        function outputCart() {  // and This function will take the value obtained in the previous function and 
+            if (sessionStorage.getItem('scart') != null) { // "if" the "scart" is not "null" we can add it to the "shopcart". And with "sessionStorage.getItem('scart')" now we are GETTING the item info from the "scart"
+                shopcart = JSON.parse(sessionStorage.getItem('scart'));  // now we are going to "parse" or transform from a string to an object (key:pair) and add it to the "shopcart" variable
+            }
+            var html = '<table>';  // we have to start a table so we can see the items that we are adding to the shopping cart stays in the table
+            var total = 0;  // and we start the total value at "0"
+            shopcart.forEach(function (v) {  // and this is like a "for" loop where it loops "forEach" item inside the "shopcart" array and triggers an anonymous function where "v" or value
+                var stotal = v.qty * v.price;  // the "stotal" or Subtotal where the "v.qty" or the quantity of the items picked is multiplied "*" for the "v.price" or the price of the item. For example 3 * $50.00
+                total += stotal;  // then this is the "total" ammount of the value of the items
+                html += '<tr><td>' + v.name + '</td><td>' + stotal + '</td></tr>';  // and in the table we pick the name of the item selected plus the total ammount of money to pay
+            });
+            html += '</table>';  // and this is to close the table
+            document.getElementById('output2').innerHTML = html;  // and this will place the content in the "output2"
+        }
+
+        function buildItems() {
+            var x = 0;  //  This will represent the ID so each time an "object" is added to the html it will increment the value of "x" setting that value as an "ID". The first item will take the "0" as the first ID
+            items.forEach(function (v) {  //  This will kind of use a for loop for each item but since this is an object (dictionary for python) is going to loop "forEach" "items". The "v" is for value 
+                html += '<div class="item"><h3>' + v.name + '</h3><img src="http://placehold.it/350x150" class="img-fluid"><div>' + v.details + ' <br><a href="#" class="productItem" data-name="' + v.name + '" data-s="' + v.details + '"  data-price="' + v.cost + '" data-id="' + x + '" >Add to Cart</a></div></div>';  // Since we are looping on "forEach" "item" we take inside the "object" the "v.name" taking the name of the object and so on. 
+                x++;
+                console.log(v);
+            })
+            document.getElementById('output').innerHTML += html;  // and with this we are going to call the "output" ID and increment the HTML for each item
+        }
+    </script>
+    
+</body>
+</html>

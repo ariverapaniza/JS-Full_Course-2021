@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Event Listener</title>
+</head>
+<body>
+    <div id="message">Select Event Listener</div>
+    <div id="output"> </div>
+    <input type="text" value="This is some dummy text Complete JavaScript Course" id="myT">
+    <script>
+        document.getElementById('myT').addEventListener('select', myFun);
+
+        function myFun() {  // This function will be activated when we select some text at the input area
+            var e = event.target; // This will select the begining and the end of the target from the event. The event is the selection
+            var str = event.target.value;  // This will select the value of the text selected
+            var result = str.substring(e.selectionStart, e.selectionEnd);  // The method "substring" will select the selected element from the begining of the selection to the end of the selection. 
+            document.getElementById('output').innerText = result;  // This will output the result on the html
+        }
+    </script>
+
+</body>
+</html>

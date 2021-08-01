@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debugging Try Catch Throw</title>
+</head>
+<body>
+    <div id="message">Debugging Try Catch Throw</div>
+    <script>
+        function testMe() {
+            var x = 500;
+            try {  // The "try" is to try this line of code to see if it works
+                if (x > 100) {
+                    throw "Yes its greater than 100";  // The "throw" part is the "error message" that will be displayed in case this is correct, otherwise it will activate the next error
+                }
+                if (x < 100) {
+                    throw "Oh no its less than 100";
+                }
+                concole(x);  // This will be an error since "concole" is not a 'defined' element
+            }
+            catch (e) {  //  The "catch" will catch the error and in this case it will display it in the console. Also if we use the console.dir we will have more information
+                document.getElementById('message').innerHTML = e.message;
+                console.dir(e);
+            }
+        }
+    </script>
+</body>
+</html>

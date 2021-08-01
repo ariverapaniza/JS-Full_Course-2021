@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend Vote List Builder</title>
+    <style>
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+  <!-- The first part of this exercise is the "creating new elements" for the explanation -->
+</head>
+<body>
+    <div id="message">Complete JavaScript Course</div>
+    <div>
+        <input type="text" id="addFriend">
+        <input type="button" id="addNew" value="Add Friend"> </div>
+        <div id="output"></div>
+    <script>
+        window.onload = build;
+        var myArray = ["Laurence", "Mike", "John", "Larry"];
+        var message = document.getElementById('message');
+        var addNew = document.getElementById('addNew');
+        addNew.onclick = function () {  // We can see in here that we shortened the previous version, see the "creating new elements" html with the previous version
+            var q = document.getElementById('addFriend').value;
+            var tr = document.createElement('tr');
+            tr.setAttribute('data-row', myArray.length);
+            tr.setAttribute('data-vote', 0);
+            tr.innerHTML = '<td class="box">' + (myArray.length + 1) + '</td><td>' + q + '</td><td>0</td>';
+            var container = document.querySelector('#output table tbody');
+            container.appendChild(tr);
+            myArray.push(q);
+            voteCount();   // We added this trigger to call the voteCount function
+        }
+
+        function build() {
+            var html = "<h1>My Friends Table</h1><table>";
+            for (var x = 0; x < myArray.length; x++) {
+                html += '<tr data-row="' + x + '" data-vote="0"><td class="box" >' + (x + 1) + '</td><td>' + myArray[x] + '</td><td>0</td></tr>';
+            }
+            html += '</table>';
+            document.getElementById('output').innerHTML = html;
+            voteCount(); 
+        }
+
+        function voteCount() {  // This function will count the votes of the names that we add to the array.  Adding this to a function it will count all the votes incliding the names that we are going to add.
+            var elbox = document.querySelectorAll('#output .box');  // this will select the id "output" (remember that the # is to call the id and the "." is to call the class)
+            var a;   // This is the "attribute" that is the number of the position inside the array
+            var v;   // This will store the votes
+            for (var x = 0; x < elbox.length; x++) {
+                elbox[x].onclick = function () {  // As soon as the elbox is called (because is calling the id "output") 
+                    a = this.closest('[data-row]').getAttribute('data-row');  //closest () method in javascript. closest () method is used to retrieve the parent or the closet ancestor of the given element which matches the selectors given in parameter. If there is no ancestors or parent element, it returns null.
+                    message.innerHTML = myArray[a] + " is on row #" + a;  // myArray[a] will call the name because with [a] we are telling the array in which position is the name that we need, and with the "a" alone is just telling the position number
+                    v = this.closest('[data-vote]').getAttribute('data-vote'); // "this" "[data-vote]" "closest" will look for the closest value in the data row to get the attribute in the data row. The first "[data-vote]" should be in brackets [] because is like when we try to get the [x]
+                    v++;
+                    this.parentElement.lastElementChild.innerText = v;  // With this we are going to take the last element on the table, the last <td> that is 0 and with this we can start incrementing the value, but with this we only increment it up to 1, with the "this.parentElement" we are taking the attribute ("this" is the <tr> where we click, the <tr> is the parent element, <td> is the child element)
+                    this.parentElement.setAttribute("data-vote", v);  // this will take again the parent element <tr> and then set the attribute "data-vote" and increment the "v" of vote of how many clicks we vote for the name
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

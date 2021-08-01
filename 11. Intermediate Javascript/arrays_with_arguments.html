@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays with arguments</title>
+</head>
+<body>
+    
+    <div id="output">Arrays with arguments</div>
+    <script>
+        var myArr = ["Laurence", "Mike", "Larry"];
+
+        function showNames() {
+            console.log(arguments);  // arguments is an Array-like object accessible inside functions that contains the values of the arguments passed to that function.
+            console.log(arguments[0]);
+        }
+        showNames(myArr, "JavaScript");
+    </script>
+</body>
+</html>

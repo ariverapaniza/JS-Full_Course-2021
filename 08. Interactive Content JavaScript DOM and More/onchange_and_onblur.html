@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnChange and OnBlur</title>
+</head>
+<body>
+    <div id="wrapper">OnChange and OnBlur</div>
+
+    <form>
+
+        First Name: <input type="text" name="e1" value="Arturo" onchange="cFun()">  <!-- OnChange will change after we click the submit button-->
+        Last Name: <input type="text" name="e2" value="Rivera" onchange="cFun()">
+
+        <input type="button" value="Submit" onclick="sendInfo()">
+
+
+    </form>
+
+    <script>
+
+        function cFun(){
+            var parent = event.target;
+            if(parent.name == "e1"){
+                message("First name changed to " + parent.value);
+            }else{
+                message("Last name changed to " + parent.value);
+            }
+            function message(m){
+            document.getElementById("wrapper").innerHTML = m;
+        }
+        }
+
+
+    </script>
+
+    <br>
+    <br>
+
+    <div id="wrapper1">OnChange and OnBlur</div>
+
+    <form>
+
+        First Name: <input type="text" name="e11" value="Arturo" onblur="cFun1()">  <!-- OnBlur will take the html that something has changed without clicking on the submit button, just clicking outside the input box and it will fire up the message we created-->
+        Last Name: <input type="text" name="e21" value="Rivera" onblur="cFun1()">
+
+        <input type="button" value="Submit" onclick="sendInfo1()">
+
+
+    </form>
+
+    <script>
+
+        function cFun1(){
+            var parent1 = event.target;
+            if(parent1.name == "e11"){
+                message1("First name changed to " + parent1.value);
+            }else{
+                message1("Last name changed to " + parent1.value);
+            }
+            function message1(m1){
+            document.getElementById("wrapper1").innerHTML = m1;
+        }
+        }
+
+
+    </script>
+
+    <br>
+    <br>
+
+
+</body>
+</html>

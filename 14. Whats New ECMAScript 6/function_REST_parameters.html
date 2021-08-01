@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function REST Parameters</title>
+</head>
+<body>
+    <div id="output">Function REST Parameter</div>
+    <script>
+
+        const output = document.getElementById("output");
+
+        function myFun(a,b,...whateverIwant){  // Since we are passing the parameters "a,b,...whateverIwant" when we call the function in "myFun(1,2,3)" it will take the "...whateverIwant" as the 3rd index value, in this case the number "3", and the "length" will be only '1'. The important part in this new ES6 method is that the "...whateverIwant" will take the remaining values, so in case we called again the function "myFun" adding new values "myFun(8,7,4,5,9,11,15,78,16,45)", the "a" will take the value "8", "b" will take the value "7" and "...whateverIwant" will take the remaining values.
+            console.log(whateverIwant);
+            console.log(whateverIwant.length);
+        }
+
+        myFun(1,2,3);
+        myFun(8,7,4,5,9,11,15,78,16,45);
+
+        function myFun2(a,b,...c){
+            for(let i=0; i<c.length;i++){
+                console.log(c[i]);
+            }
+            console.log(c.length);
+        }
+        myFun2(18,7,4,5,9,11,15,78,16,45,26);
+
+        function myFun3(){
+            let name = arguments.callee.name;  // In here we can take the "name" of the function using this "arguments.callee.name" and add it to the for loop to call each element
+            for(let i=0; i<arguments.length;i++){
+                console.log(name + " says this value is " + arguments[i]);
+            }
+            console.log(arguments.length);
+        }
+        myFun3(18,7,4,5,9,11,15,78,16,45,26);
+
+
+    </script>
+</body>
+</html>

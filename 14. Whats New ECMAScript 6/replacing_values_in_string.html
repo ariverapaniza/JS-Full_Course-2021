@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replacing Values on a String</title>
+</head>
+<body>
+    <script>
+
+        let name = "Emma";
+        let message1 = `${name} was here today`;  // this are not quotes (""), this is the BACKTICK ( ` )
+        console.log(message1);
+
+        function updateMessage(p) {
+ 
+            let message = `${p} was here today`;
+ 
+            console.log(message);
+ 
+            return message;
+ 
+        }  
+
+        for(let i = 0; i < 10; i++){
+            let message = `${i} count now`;
+            console.log(message);
+        }
+
+        console.log(updateMessage("Evelyn"));
+
+
+    </script>
+</body>
+</html>

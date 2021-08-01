@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 Arrays Find</title>
+</head>
+<body>
+    <div id="output">ES6 Arrays Find</div>
+    <script>
+        let myArr = [2, 5, 7, 4, 7, 89, 5, 32, 5, 23, 3, 2, 23, 55];
+        var a = myArr.find(function (x) {  // This is the old way to try to find something in the array
+            return x > 50;
+        })
+        let b = myArr.find(x => x > 50);  // And this is the new way to find something in the array using the "fat arrows =>" instead of using the word function. Also we use the method "find" to find the highest value above 50
+        console.log(b);
+        let c = myArr.findIndex(x => x > 50);  // and with this method we are finding the index position using "findIndex" for the highest value above 50. 
+        console.log(c);
+        console.log(myArr[myArr.findIndex(x => x > 50)]);  // and this is a shortened version of the previous code. 
+
+        function makeArray() {
+            return Array.from(arguments);  // With this method we can take some "arguments" in this case the "("test", "test2", "tet3")" and "return Array from" the "arguments" we previously selected. 
+        }
+        let d = makeArray("test", "test2", "tet3");
+        console.log(d);
+        console.log(d.findIndex(a => a == "test2"));  // and with this method like before we can find the index in the "d" array for the value "test2"
+    </script>    
+</body>
+</html>

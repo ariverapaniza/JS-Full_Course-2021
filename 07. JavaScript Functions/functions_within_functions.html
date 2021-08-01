@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions Within Functions</title>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+
+        var output = document.getElementById("output");
+        var a = 1000;
+
+        function outsideFun(){
+            var b = 2000;
+            function insideFun(){
+                b++;
+                return b;  //this will be 2001
+            }
+            insideFun();
+            var c = insideFun();  // this will be 2002
+            var d = function(){
+                b++;
+                return b;  // this will be 2003
+            }
+            d();
+            var e = d();  // this will be 2004
+            console.log(b);  // The result will be 2004 because is incremented at the begining of the function and then is called at "c", then called again at "d" and then called "d" again at "e" incrementing again "b"
+        }
+
+        outsideFun();
+
+    </script>
+</body>
+</html>

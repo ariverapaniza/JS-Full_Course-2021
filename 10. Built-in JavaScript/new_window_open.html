@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Window Open</title>
+</head>
+<body>
+    <div id="message">New Window Open</div>
+    <input type="text" name="newUrl" id="newUrl" placeholder="Enter a new URL">
+    <input type="button" value="Go to Site" onclick="goTo()" id="goToSite">
+    <input type="button" value="pop" onclick="popup()">
+    <input type="button" value="close" onclick="popUpClose()">
+
+    <script>
+        var wn;
+        function goTo(){  // This function will open a new window taking the web address that we want like a search bar
+            var goTo1 = newUrl.value  // This will take the value of the input box
+            window.open("http://"+goTo1); // and open a new tab as a search bar
+        }
+
+
+        function popup(){
+            var url = "new_window_open.html";  // This is the default variabla for the url to be stored
+            wn = window.open(url, "_blank", "top=0, width=200, height=200");  // this is to open a new window with the accorded measures. the "_blank" will open that link in a new window but if we use the "_self" it will reload the same page in the same window
+
+            window.open("http://www.google.com/");  // this will open the link as a tab instead of a new window
+            window.open("https://www.w3schools.com/");
+            goTo();
+        }
+
+        function popUpClose(){
+            window.close();  //  This will close the window that we just open using the "pop" button. If we open another one we are going to close the one that we just open
+        }
+
+        
+    </script>
+</body>
+</html>

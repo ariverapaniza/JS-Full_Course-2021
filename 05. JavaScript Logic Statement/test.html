@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="output1"></div>
+    <script>
+        var output1 = document.getElementById("output1");
+        var q = '1';
+        switch (q) {
+        case '1':
+            answer = "one";
+            break;
+        case 1:
+            answer = 1;
+            break;
+        case 2:
+            answer = "this is the one";
+            break;
+        default:
+            answer = "not working";
+        }
+        output1.innerHTML = answer;
+    </script>
+
+
+    <div id="output2"></div>
+    <script>
+        var output2 = document.getElementById("output2");
+        var q = 1;
+        switch (q) {
+        case '1':
+            answer = "one";
+        case 1:
+            answer = 1;
+        case 2:
+            answer = "this is the one";
+            break;
+        default:
+            answer = "not working";
+        }
+        output2.innerHTML = answer;
+    </script>
+
+    <div id="output3"></div>
+    <script>
+        var output3 = document.getElementById("output3");
+        var login = false;
+        var outputHolder = "";
+        var userOkay = login ? outputHolder = "logout" : outputHolder = "login";
+        output3.innerHTML = userOkay;
+    </script>
+
+    <div id="output4"></div>
+    <script>
+        var userNames = ["mike","john","larry"];
+        var userInput = "John";
+        var output4 = document.getElementById("output4");
+        var htmlOutput = "";
+        if(userNames.indexOf(userInput) > -1) {
+            htmlOutput = "welcome it was true";
+        } else {
+            htmlOutput =  "denied was not true ";   
+        }
+        output4.innerHTML = htmlOutput + ", "+ userInput; 
+    </script>
+
+    
+    <div id="output5"></div>
+    <script>
+        var myTime = 9;
+        var output5 = document.getElementById("output5");
+        if (myTime >= 8 && myTime < 12) {
+            output5.innerHTML = "Wake up its morning";
+        }
+        else if (myTime >= 12 && myTime < 13) {
+            output5.innerHTML = "go to Lunch";
+        }
+        else if (myTime >= 13 && myTime <= 16) {
+            output5.innerHTML = "Go to work";
+        }
+        else if (myTime > 16 && myTime < 20) {
+            output5.innerHTML = "Dinner Time";
+        }
+        else if (myTime >= 22) {
+            output5.innerHTML = "Time to go to sleep";
+        }
+        else {
+            output5.innerHTML = "You should be sleeping";
+        }
+    </script>
+
+
+</body>
+</html>

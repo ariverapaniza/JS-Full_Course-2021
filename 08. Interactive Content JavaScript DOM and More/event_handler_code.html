@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handler Code</title>
+</head>
+<body>
+    <div id="wrapper">Event Handler Code</div>
+
+    <form name="myForm">
+
+        <input type="button" value="click 1" id="id1">  <!--This does not have the onclick with the name of the function to be triggered because it will be triggered by the id -->
+        <input type="button" value="click 2" id="id2">
+        <input type="button" value="click 3" id="id3">
+
+
+    </form>
+
+    <script>
+
+        var output = document.getElementById("wrapper");
+
+        document.getElementById("id1").onclick = function(){  // This is located the onclick part of the input, so when clicked it will change the name of "click 1" to "WORKED" because the function is calling the id1, the id2 and id3 will not work since the does not have any function to activate
+            output.innerHTML = "WORKED"
+        }
+
+
+    </script>
+
+    <br>
+    <br>
+
+    <div id="wrapper1">Event Handler Code1</div>
+
+    <form name="myForm1">
+
+        <input type="button" value="click1 1" id="id11">
+        <input type="button" value="click1 2" id="id12">
+        <input type="button" value="click1 3" id="id13">
+
+
+    </form>
+
+    <script>
+
+        var output1 = document.getElementById("wrapper1");
+
+        document.getElementById("id11").onclick = myFun;  // This will trigger the myFun function calling the ID id11
+
+        function myFun(){
+            console.log(this);
+            this.value = "CLICKED"  // when clicked the button it will be changed to "CLICKED". The "this" DOM function will be triggered according of the clicked button, in this case id11, and take "this" element and change it
+            output1.innerHTML = "WORKED" // And this will put on the div with the id "wrapped" WORKED on the html
+        }
+
+
+    </script>
+
+
+
+</body>
+</html>

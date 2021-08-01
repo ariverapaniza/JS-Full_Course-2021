@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Multiplies</title>
+    <style>
+        td { border:1px solid black;}  /*  This is to style the table to make the lines appears */
+        
+    </style>
+
+</head>
+<body>
+    <div id="output1"></div>
+    <script>
+
+        // Loop to 1000
+        // Get all numbers multiples of 5 add them together 
+        // output the numbers being added together
+        // output total after the loop completes
+        var output1 = document.getElementById("output1");
+        var total = 0 ;
+        for(var x = 0; x <1000; x++){
+            if(x % 5 === 0){ // this means that if the number on the loop is divided (% is a remainder) by 5 we can added to te countdown, if not it will be discarded
+                total += x; // This means total is equal to total plus x
+                output1.innerHTML += "value of x = "+x+" subTotal = "+total+"<br>";
+            }
+        }
+        output1.innerHTML += "Total = "+total;
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegEx Email Extractor</title>
+</head>
+<body>
+    <div id="output">RegEx Email Extractor</div>
+    <form name="myForm">   <!--we have to create a form to call it from the JS function using "document.myForm.txtarea.value" and get the value-->
+        <textarea name="txtarea" rows=12 cols=100></textarea>
+        <input type="button" onclick="lookUp()" value="get emails">
+        <textarea name="txtarea2" rows=12 cols=100></textarea>
+    </form>
+    <script>
+        function lookUp() {
+            var rawTxt = document.myForm.txtarea.value;  // With this we are going to get the text inserted in the textarea to extract the emails
+            var eData = rawTxt.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);  // Then we pull from the "rawTxt" anything that "match" the pattern to pull the emails and use the "gi" meaning "global" and "ignore case (upper or lower)" In case of being more than one it will create an array
+            var html = "";  // This will take the html and start incrementing it
+            var holder = [];  // This will create an empty array
+            //document.myForm.txtarea2.value = eData.toString();
+            for (var x = 0; x < eData.length; x++) { // and with this for loop we are going to loop from the string
+                if (holder.indexOf(eData[x]) == -1) {  // and if the email is not on the array meaning that the "-1" means that is not inside the array and return unique values with the "-1"
+                    holder.push(eData[x]);  // it will be pushed or added inside the array
+                }
+            }
+            document.myForm.txtarea2.value = holder.join('|');  // and with this we are going to return the newly extracted values to the second "textarea". The "join" is to be used instead of a comma, if we want to display another format
+        }
+    </script>
+</body>
+</html>

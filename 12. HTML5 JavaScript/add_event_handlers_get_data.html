@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Event Handlers get Data</title>
+    <style>
+        .item {
+            border: 1px solid black;
+            padding: 2%;
+            width: 29%;
+            float: left;
+            height: 300px;
+        }
+        
+        .img-fluid {
+            max-width: 100%;
+        }
+        
+        .productItem {
+            border: 1px solid black;
+            text-decoration: none;
+            background-color: green;
+            color: azure;
+            border-radius: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="output">Add Event Handlers get Data</div>
+    <script>
+        var items = [{
+            name: 'iPhone'
+            , details: 'White'
+            , cost: 500
+        }, {
+            name: 'iPad'
+            , details: 'White'
+            , cost: 800
+        }, {
+            name: 'Cable'
+            , details: '3 foot'
+            , cost: 10
+        }, {
+            name: 'Camera'
+            , details: '25MP'
+            , cost: 300
+        }, {
+            name: 'Laptop'
+            , details: 'Intel i7'
+            , cost: 1200
+        }, {
+            name: 'LCD Monitor'
+            , details: '24 inch'
+            , cost: 200
+        }, {
+            name: 'TV'
+            , details: '50 inch'
+            , cost: 450
+        }];
+        var html = '<br>';
+        window.onload = init;  // This will trigger the function as soon as the page loads.
+
+        function init() {
+            buildItems();
+            var q = document.querySelectorAll('.productItem');  //  we are selecting the ".productItem" class through the "querySelectorAll" and loop 
+            for (var x = 0; x < q.length; x++) {  // with a "for" loop to loop in each item listening to a click
+                q[x].addEventListener('click', function (e) { // and when we click the "add to cart" button it will trigger an anonymous function and the "e" is the "event"
+                    e.preventDefault();  // preventing the default option or "event" that is taking the hyperlink "#" 
+                    addToCart(); // and triggering the "addToCart" funtion
+                })
+            }
+        }
+
+        function addToCart() {
+            console.log(event.target.dataset);  // and with this when clicked in the "addToCart" button it will take the "dataset" value in this case the object with all the information of the item we picked
+        }
+
+        function buildItems() {
+            var x = 0;  //  This will represent the ID so each time an "object" is added to the html it will increment the value of "x" setting that value as an "ID". The first item will take the "0" as the first ID
+            items.forEach(function (v) {  //  This will kind of use a for loop for each item but since this is an object (dictionary for python) is going to loop "forEach" "items". The "v" is for value 
+                html += '<div class="item"><h3>' + v.name + '</h3><img src="http://placehold.it/350x150" class="img-fluid"><div>' + v.details + ' <a href="#" class="productItem" data-name="' + v.name + '" data-s="' + v.details + '"  data-price="' + v.cost + '" data-id="' + x + '" >Add to Cart</a></div></div>';  // Since we are looping on "forEach" "item" we take inside the "object" the "v.name" taking the name of the object and so on. 
+                x++;
+                console.log(v);
+            })
+            document.getElementById('output').innerHTML += html;  // and with this we are going to call the "output" ID and increment the HTML for each item
+        }
+    </script>
+</body>
+</html>

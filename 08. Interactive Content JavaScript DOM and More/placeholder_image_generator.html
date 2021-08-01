@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placeholder Image Generator</title>
+</head>
+<body>
+    <div id="wrapper">Placeholder Image Generator</div>
+    
+    <form>  <!--Inside the Form-->
+        Select Size: 
+        <select onchange="imgU()"> <!--We create a multiple select options determined as the following-->
+            <option value="">Select</option> <!--This is displayed so er can click and display the following options-->
+            <option value="150x150">Small</option>
+            <option value="350x150">Medium</option>
+            <option value="750x150">Large</option>
+
+        </select>
+        <br>
+        Add Text
+        <input type="text" onchange="imgU()"> <!--This will add the text that we want to place on the image-->
+        <br>
+        Select Color
+        <input type="color" onchange="imgU()">  <!--With this we are going to select the color of the image-->
+
+        <br>
+        <img src = "http://via.placeholder.com/350x150/222/fff?text=image1" id = "myImage">  <!--This will display the image before selecting any options previously determined-->
+
+
+    </form>
+
+    <script>
+
+        var iColor = "222";  // This is the default options of the variables, that will change as soon as we select some options
+        var iText = "Image1";
+        var iSize = "350x150";
+
+        function imgU(){ // This is the function that will be triggered when change some options like color, text or size.
+            console.dir(event.target);
+            console.dir(event.target.value);
+            console.dir(event.target.parentElement.myImage.src);
+
+            if(event.target.type == "select-one"){  // We use an "if else if" command because if we change one thing it will be triggered, change the three options it will change the 3 options at the image
+                iSize = event.target.value;
+            }else if(event.target.type == "text"){
+                iText = event.target.value;
+            }else if(event.target.type == "color"){
+                var nColor = event.target.value;
+                iColor = nColor.replace("#","");
+            }
+
+            var imsrc = "http://via.placeholder.com/"+iSize+"/"+iColor+"/fff?text="+iText;  // When selecting the previous options it will fill the link and call the new image like if we where selecting the options on the via.placeholder.com
+            message(imsrc);
+            event.target.parentElement.myImage.src = imsrc;
+        }
+
+
+    </script>
+
+    <br>
+    <br>
+
+    <div id="wrapper">Complete JavaScript Course</div>
+    <form>
+        <select onchange="imgU()">
+            <option value="">Select</option>
+            <option value="150x150">Small</option>
+            <option value="350x150">Medium</option>
+            <option value="750x150">Large</option>
+        </select>
+        <br> Add Text
+        <input type="text" onchange="imgU()">
+        <br> Select Color
+        <input type="color" onchange="imgU()">
+        <br> <img src="http://via.placeholder.com/350x150/222/fff?text=Image1" id="myImage"> </form>
+    <script>
+        var iColor = "222";
+        var iText = "Image1";
+        var iSize = "350x150";
+
+        function imgU() {
+            console.dir(event.target);
+            console.dir(event.target.value);
+            console.log(event.target.parentElement.myImage.src)
+            if (event.target.type == "select-one") {
+                iSize = event.target.value;
+            }
+            else if (event.target.type == "text") {
+                iText = event.target.value;
+            }
+            else if (event.target.type == "color") {
+                var nColor = event.target.value;
+                iColor = nColor.replace("#", "");
+            }
+            var imsrc = "http://via.placeholder.com/" + iSize + "/" + iColor + "/fff?text=" + iText;
+            message(imsrc);
+            event.target.parentElement.myImage.src = imsrc;
+        }
+
+        function message(m) {
+            document.getElementById('wrapper').innerHTML = m;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handlers and Adding Classes</title>
+    <style>
+        .active {
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">Event Handlers and Adding Classes</div>
+    <div id="output1"></div>
+    <div>
+        <input type="button" id="prev" value="prev">
+        <input type="button" id="next" value="next">
+        <script>
+            window.onload = init;
+            var myData = {};  // this is an object and in here we will add the "response" or the content of the JSON file
+        var page = 0; //  this is the variable "page" where it should start at "0". in here since in the JSON file there are 4 indexes questions and answers, each page is the combination of question and answer
+        var score = 0;  // the score will start at 0
+        var userAnswer = [];  // this is an array and all the answer will be stored in here
+        var output = document.getElementById('output1');  // and we are going to added in this DIV ID "output1"
+            document.getElementById('next').addEventListener('click', function () {
+                move(page + 1);  // this is an "addEventListener" to listen to the "click" and triggers the function to "move" to the "next page" triggering the "move" function
+            })
+            document.getElementById('prev').addEventListener('click', function () {
+                move(page - 1);  // this is an "addEventListener" to listen to the "click" and triggers the function to "move" to the "previous page" triggering the "move" function
+            })
+
+            function move(a) {  // then this function will change page. The "a" means "allow to move to the next pages"
+                page = a;  //  and we store it in the "page" variable the value of "a" to move back and forth
+                buildPage();
+            }
+            output.addEventListener('click', function () {  // this will trigger the function when we click an element of the list
+                userAnswer[page] = Number(event.target.dataset.index);  // this will pick the "event.target.dataset.index" or the index position of the dataset
+                for (var x = 0; x < this.children.length; x++) {  //with this for loop we can remove for "this.children" element 
+                    this.children[x].classList.remove('active'); // the classList "active" so it means that if it was active and clicked another one it will remove the the "active" in the previous class and added to the new one
+                }
+                event.target.classList.add('active');  // when we make a selection it will toggle the selection and use the css to change the color of the selected target
+            })
+
+            function init() {
+                getJSON('http://discoveryvip.com/shared/json.php?f=quiz', function (response) {  // i here we are going to pull the web json to get the info
+                myData = response;  // and this is an OBJECT where all the data of the json file will be added
+                    buildPage();
+                })
+            }
+
+            function buildPage() {  // and in here from the json file we are going to get the information  
+            var p = myData[page];  // this is the variable "p" or "page"
+            var html = '';  // and this variable will add the information to the html
+            html += '<div>' + p.question + '?</div>';  // and keep adding it and for every question we have multiple answer so
+            for (var x = 0; x < p.answers.length; x++) {  // so we use a "for loop" to loop on every answer and place it in the html
+                var answer = x == p.correct ? true : false;  // then we use a ternary operator to check if the value of "x" is equals to the value of "p.correct" (that is inside the json file) and if its "true" we will have a value of "true" otherwise it will be a value of "false"
+                    html += '<div data-id="' + answer + '" data-index="' + x + '">' + p.answers[x] + '</div>';  // and this will create a div to add if we select the correct answer will be "true" as an ID, otherwise the ID will be "false"
+                }
+                output.innerHTML = html;
+                console.log(p);
+            }
+
+            function getJSON(url, callback) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('get', url, true);
+                xhr.responseType = 'json';
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
+                        callback(xhr.response);
+                    }
+                }
+                xhr.send();
+            }
+        </script>
+    
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+</head>
+<body>
+    <div id="message">Shopping List</div>
+    <div>
+        <input type="text" id="addItem">
+        <input type="button" id="addNew" value="Add to List"> </div>  <!--As soon as we click this button, the id will be called under the function "addOne"-->
+        <div id="output">
+            <h1>Shopping List</h1>
+            <ol id="sList"> </ol>
+        </div>
+    <script>
+        // click add new
+        // get the value of the new item
+        // create new li
+        // add text to li
+        // append li to the ol
+        document.getElementById('addNew').onclick = function () {  // This will call the function when the button is clicked it will call the id "addNew" and when this happend it will call the function "addOne"
+            addOne();
+        }
+
+        function addOne() {
+            var a = document.getElementById('addItem').value;  // This will take the value of the element we write inside the box
+            var li = document.createElement('li');  //  This will create the list 
+            li.appendChild(document.createTextNode(a));  // And this will append to the list that we are just creating
+            document.getElementById('sList').appendChild(li);  // Also this will get the id of sList and append it to the list, instead of a div we use a "ol" but this is inside the "div" and since it is inside a "ol" it will add the number of the item by itself. "ol" stands for "ordered list"
+        }
+    </script>
+    <br>
+    <br>
+    <h1>The ol (Ordered List) element</h1>
+
+    <ol>
+        <li>Coffee</li>  <!-- This is how we add manually each item inside the "ordered list"-->
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+
+    <ol start="50">  <!-- Take importance that we can start the list at any number that we wanted to-->
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+</body>
+</html>

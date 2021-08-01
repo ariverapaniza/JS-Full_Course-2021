@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Game Setup</title>
+
+    <style>
+        .btn{
+            height: 50px;
+            width: 100px;
+            background-color:crimson;
+            color:rgb(255, 255, 255);
+            border-radius: 15px;
+            font-size: 1.2em;
+        }
+        .box{
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            border: 1px solid black;
+            display: inline-block;
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <center>
+    <div id="wrapper"><h3>Name Game Setup</h3></div>
+    <input type="button" value="Start!" class="btn" onclick="start()">
+    <div id="message1">Welcome!</div>
+    <div id="message2">Click to Start!</div>
+    <div id="output"></div>  <!--Since this is the last div, this is where the "build function" will place everything that is being triggered from the function creating as many items as needed-->
+    </center>
+
+    <script>
+
+        var myArray=[];
+        var people = ["Emma","Evelyn","Arturo","Erick","Judith","Monica","Marcel","Laura","Sara","Roberto","Amelly"];
+        var key;
+
+        function start(){
+            myArray = people.slice();  // This will duplicate the list to myArray but is the best way to copy the values without joining them together in myArray deleting the content of people
+            myArray.sort(function(a,b){  // This will randomize the order of the array each time we click the start button
+                return 0.5 - Math.random()
+            });
+            console.log(myArray);
+            build();  // This will call the build function
+            findPerson();  // and this the findPerson function
+        }
+
+        function findPerson() {
+            key = myArray[Math.floor(Math.random() * myArray.length)];  //This will take one random value from myArray and add it to the key (the name that the game is telling us to find) and put it on message1
+            message1("Find this name: " + "<h3>" + key);
+        }
+
+        function build() {  // This is the main function that will build the game as soon as we click the Start button
+            var html = "<h1>Name Game</h1>";
+            for (var x = 0; x < myArray.length; x++) {  // This will disect the myArray and take the number of items on the array to know dynamically how much elements are on the array to create the boxes 
+                var str = myArray[x]; // then it will store it that number on the variable str
+                var shuffled = str.split('').sort(function () { // This will divide the array items and each letter of the item will be shuffled
+                    return 0.5 - Math.random()  // randomized 
+                }).join('');  // and then joining them and store them on the shuffled variable
+                html += '<div class="box" onmouseover="uText(this,\'' + shuffled + '\')" onmouseout="uText(this,\'Hidden ' + (x + 1) + '\')" onclick="eEle(this,\'' + str + '\')" >Hidden ' + (x + 1) + '</div>';  // this is the div that will add all the boxes according to the length of the array myArray, the class box is calling the css to create the box, onmouseover will display the name inside the box when the mouse is inside the box triggering the uText function, onmouseout will display the word hidden plus the number of the box depending of the length of the array triggering the uText function, and onclick will trigger the eEle (eliminate element) when clicked if the answer is correct. The 3 onclick, onmouseover and onmouseout will use the "this" element that apply to the particular box that will be storing the value of the item. the += on the html += is to add as many boxes as the length of the array.
+            }
+            document.getElementById('output').innerHTML = html;
+        }
+
+        function uText(t, mes) {  // t is for "this" or the box where the mouse is over, and mess is the message depending of the onmouseover, onmouseout or onclick predefined configuration
+            t.innerHTML = mes;
+        }
+
+        function eEle(t, s) {  // This function is to eliminate the element as soon as we click the correct element. t is for "this" and "s" is for string or the item selected on myArray[x]
+            if (s == key) {  // if the str is equal to the key selected myArray item
+                var n = myArray.indexOf(s);  // It will take the number of the item inside the myArray and
+                message2('correct');  // display that the answer is correct
+                t.parentNode.removeChild(t); // then remove "this" element 
+                myArray.splice(n, 1);  // n is for the number of the item inside the array.  The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place
+                findPerson();  // triggering again the findPerson function calling a new name to be found
+            }
+            else {
+                message2('wrong');
+            }
+            if (myArray.length <= 0) {  // and when there are no more elements to be found, it will display a game over message
+                message1('GAME OVER');
+            }
+        }
+
+        function message1(message) {
+            document.getElementById('message1').innerHTML = message;
+        }
+
+        function message2(message) {
+            document.getElementById('message2').innerHTML = message;
+        }
+    </script>
+</body>
+</html>

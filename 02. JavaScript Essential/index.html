@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Essential</title>
+</head>
+<body>
+    <script>
+        
+
+        var a = 5;
+        var b = 10;
+        var c = "5";
+        
+        b++;
+        var d = ((b%5) > 0) ? "odd" : "even";
+        
+        console.log(typeof a == "number");
+        console.log(typeof c == typeof "number");     
+        console.log((d=="odd" && !(b<5) && b >= (a*2)));
+
+        // <!-- This is from the Video --> //
+
+        var myString = "Hello World";
+
+        var myStringInQuotes = "Hello \"World's\"";  // before the quote " " characters we have to add the backslash \ in order to be shown  //
+
+        var myNumber = 100;
+
+        var myBoolean = true;
+
+        var myNone = null; // This is an object, and it is null because it is empty //
+
+        var question = "What is your name";
+
+        // prompt(question);   This will prompt it and add it on the console
+
+        document.write("Hello! My name is: " + prompt(question));  // This will be added on the HTML 
+
+        
+        
+        
+        
+    </script>
+
+    <h1>Hello! My name is: <script>document.write(prompt(question));</script> </h1>  <!-- This will be added on the HTML-->
+
+</body>
+</html>

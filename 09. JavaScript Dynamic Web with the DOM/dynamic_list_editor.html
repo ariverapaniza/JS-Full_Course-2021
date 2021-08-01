@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic List Editor</title>
+    <style>
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        
+        td:first-child {
+            width: 300px;
+        }
+    </style>
+
+</head>
+<body>
+        <div id="message">Dynamic List Editor</div>
+        <!--SECOND PART OF THE EVENT LISTENER LISTMAKER-->
+        <div>
+        <input type="text" id="addFriend">
+        <input type="button" id="addNew" value="Add Friend"> </div>
+        <div class="output"></div>
+    <script>
+        var myArray = ["Laurence", "Mike", "John", "Larry", "Kim", "Joanne", "Lisa", "Janet", "Jane"];
+        window.onload = build;
+        document.getElementById('addNew').addEventListener('click', addN, false);  // This will select the id "addNew" and listen for the event "click", then trigger the function "addN" and it is false because 
+
+        function addN() {
+            var a = document.getElementById('addFriend').value;  // This will take the value inside the input text and push it to the myArray
+            myArray.push(a);
+            build();
+        }
+
+        function build() {
+            var html = "<h1>Click Table</h1><table>";
+            for (var x = 0; x < myArray.length; x++) {
+                html += '<tr id="id' + x + '" data-row="' + x + '"><td>' + myArray[x] + '</td><td><a href="#" data-action="delete">Del</a></td><td><a href="#" data-action="edit">Edit</a></td></tr>';
+            }
+            document.querySelector('.output').innerHTML = html;
+            var dad = document.querySelectorAll('[data-action="delete"]');
+            for (var x = 0; x < dad.length; x++) {
+                dad[x].addEventListener('click', function () {
+                    event.preventDefault();
+                    var iValue = this.closest('[data-row]').getAttribute('data-row');
+                    var r = myArray.splice(iValue, 1);
+                    build();
+                    console.log(r);
+                })
+            }
+            var dae = document.querySelectorAll('[data-action="edit"]');  // The "dae" or "data action edit" variable will store all the queries that has that information
+            for (var x = 0; x < dae.length; x++) {
+                dae[x].addEventListener('click', function () {  // when is clicked
+                    event.preventDefault();  // this will prevent the previous action and 
+                    var row = this.closest('[data-row]');  // select the one that is clicked
+                    var rid = row.getAttribute('data-row');  // This will get the id (row id)
+                    row.style.backgroundColor = "Yellow";  // when clicked the "edit" button it will be yellow the background
+                    var td = row.firstElementChild;  // then it will take the first element child in this case the <td>
+                    var input = document.createElement('input'); // then it will create the input box to edit the name that we just selected
+                    input.type = "text";  // like in html we put the type of the input
+                    input.value = td.innerText; // and take the value of the <td> 
+                    td.innerHTML = "";
+                    td.appendChild(input);  // then it will append the <td> child (the <tr> is the parent)
+                    input.focus();  //  what this does is that when click on the edit button it will jump right on the input text so we can edit the text
+                    input.onblur = function () {  // the "onBlur" method means that when clicked outside the input box it will store the modified value
+                        td.removeChild(input);  // this will remove the input box and 
+                        td.innerHTML = input.value;  // add to the innerHTML inside the <td> the new modified value inside the input box
+                        myArray[rid] = input.value;  // This will take the value we input on the modified name and store it inside the myArray
+                        row.style.backgroundColor = "White"  // This will restore the background color from yellow to white
+                    }
+                })
+            }
+            console.log(dad);
+        }
+    </script>
+
+</body>
+</html>

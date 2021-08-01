@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises And Then AJAX</title>
+</head>
+<body>
+    <div id="output">Promises And Then AJAX</div>
+    <script>
+        function getData(url) {
+            return new Promise(function (response) {  // The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value. A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url);
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
+                        response(xhr.response);
+                    }
+                }
+                xhr.send();
+            })
+        }
+        getData('https://myjson.dit.upm.es/api/bins/1owo').then(function (response) {
+            console.log(response);
+        })
+    </script>    
+</body>
+</html>

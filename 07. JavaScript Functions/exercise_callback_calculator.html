@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Callback Calculator</title>
+</head>
+<body>
+    First: <input type="text" id="num1">  <!-- This will create the box where we are going to put the number that we are going to call later-->
+    Second: <input type="text" id="num2">
+    <br>
+    <input type="button" onclick="addBy()" value="Add"> <!--This will create the button to call the javascript function and make the math function-->
+    <input type="button" onclick="substractBy()" value="Substract">
+    <input type="button" onclick="multiplyBy()" value="Multiply">
+    <input type="button" onclick="divideBy()" value="Divide">
+    <input type="button" onclick="remainderBy()" value="Remainder">
+    <input type="button" onclick="exponentBy()" value="Exponent">
+
+
+    <div id="output"></div>
+
+    <script>
+
+        var output = document.getElementById("output");
+        var num1 = document.getElementById("num1"); // We have to create the variable to call the html input 
+        var num2 = document.getElementById("num2");
+
+        function addBy(){
+            outCallback(Number(num1.value), Number(num2.value),"+", function(a,b){  //The order is "function outCallback(a,b,s,cback)" which "a" is "num1", "b" is "num2", "s" is the "symbol" and "cback" is the "function(a,b)"
+                return a + b;
+            })
+        }
+
+        function substractBy(){
+            outCallback(Number(num1.value), Number(num2.value),"-", function(a,b){
+                return a - b;
+            })
+        }
+
+        function multiplyBy(){
+            outCallback(Number(num1.value), Number(num2.value),"*", function(a,b){
+                return a * b;
+            })
+        }
+
+        function divideBy(){
+            outCallback(Number(num1.value), Number(num2.value),"/", function(a,b){
+                return a / b;
+            })
+        }
+
+        function remainderBy(){
+            outCallback(Number(num1.value), Number(num2.value),"%", function(a,b){
+                return a % b;
+            })
+        }
+
+        function exponentBy(){
+            outCallback(Number(num1.value), Number(num2.value),"**", function(a,b){
+                return a ** b;
+            })
+        }
+
+
+
+        function outCallback(a,b,s,cback){  // a is the first number, b is the second number, s is the symbol used on the mathematical function and cback is calling the callback function
+            var result = cback(a,b);
+            output.innerHTML += a + " " + s + " " + b + " = " + result + "<br>";
+        }
+
+
+
+    </script>
+</body>
+</html>

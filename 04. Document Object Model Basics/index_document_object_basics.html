@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Document Object Models</title>
+</head>
+<body>
+    <div id="output">Hello World!</div>  
+    <input type="text" id="val" >
+    <script>
+        var output = document.getElementById('output');
+        var val = document.getElementById('val');      
+        val.value = output.innerHTML; // This will put the in the input element inside the text detailed on the div
+
+        output.innerHTML = "Hello <br> World";  // This will use the html br
+        output.innerText = "Hello <br> World";  // This will show the <br>
+
+        document.getElementById('output').innerHTML = "Welcome to my page!"
+
+        console.dir(document);
+
+        var userName = prompt("What is your name?");
+        document.write("Hello " + userName);
+    </script>
+
+</body>
+</html>

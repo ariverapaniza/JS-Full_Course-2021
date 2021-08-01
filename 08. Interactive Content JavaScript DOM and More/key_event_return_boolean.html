@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Event Return Boolean</title>
+</head>
+<body>
+    <div id="wrapper">Key Event Return Boolean</div>
+    <br>
+    <input type="text" name="myNum1" onkeypress="return numCheck()" onpaste="return true">  <!--This onkeypress will check if what we put on the input it is a number.  The onpaste since it is true is letting us paste only letters and not numbers, if we put "false" we can only paste numbers-->
+
+    <script>
+
+        function numCheck(){  // When this function return a message, the next function will add it to the html
+            // message(event.target.value);  // as soon as we write on the input box it will be automatically updating the value on the html
+            message(!isNaN(event.key));  // It will return only the value that is typed, for example if I type "a" it will display "a" and when I type "b" it will replace the value displayed and change it to "b".  To check in the console we type "isNaN("dfgd")" (NaN stands for "Not a Number") and return a boolean if is a number or not/ !isNaN(234) will return "true" since it has the "!" at the begining is the oposite
+            return !isNaN(event.key);  // With this it will return a boolean on the html. With the "!" it will only allow to type letters because numbers will be "false". And also with this return if it is a letter it will not allow us to type, if it is a number we can type it. 
+        }
+
+        function message(m){
+            document.getElementById("wrapper").innerHTML = m;
+        }
+
+
+    </script>
+
+    <br>
+    <br>
+    <div id="wrapper1">Key Event Return Boolean Numbers</div>
+    <br>
+    <input type="text" name="myNum2" onkeypress="return numCheck1()" onpaste="return true">
+
+
+    <script>
+
+function numCheck1(){
+            message1(isNaN(event.key)); // Since this one does not have the "!" it will only allow letters
+            return isNaN(event.key);
+        }
+
+        function message1(m1){
+            document.getElementById("wrapper1").innerHTML = m1;
+        }
+
+    </script>
+</body>
+</html>

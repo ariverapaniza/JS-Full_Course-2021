@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listeners on Elements</title>
+</head>
+<body>
+    <div id="message">Event Listeners on Elements</div>
+    <div id="wrapper">Page 1</div> <img id="imgSwap">  <!--id wrapper will change the message when the mouseover is activated from "Page 1" to "over" or "out" or "clicked"-->
+    <script>
+        var i = document.getElementById('imgSwap');  // this will call the imgSwap id and replace it as soon as the function gets activated. When the function gets activated it will call the variable imgHolder and place the content of the variable (in this case the link) i the img on the body of the html
+        var imgHolder = "http://via.placeholder.com/350x150/fff000/fff?text=Image10";   // This image will be loaded as soon as the page is loaded, with this we can know that the variable can hold also a image link
+        var t;
+        window.onload = function () {  // As soon as the page loads it will call this function which 
+            i.src = imgHolder;  // will call the source of the i variable and place the imgHolder link in the img inside the html
+        }
+        i.addEventListener('click', function () {  // This will register an event to a target // The EventTarget method addEventListener() sets up a function that will be called whenever the specified event is delivered to the target. Common targets are Element, Document, and Window, but the target may be any object that supports events. Syntax: "target.addEventListener(type, listener);" . "type" A case-sensitive string representing the event type to listen for. "listener" The object that receives a notification (an object that implements the Event interface) when an event of the specified type occurs. This must be an object implementing the EventListener interface, or a JavaScript function.
+            console.log(event);  // When clicked (because this is the type or event we are listening) it will log on the console the event and
+            message("clicked");  // add the message "clicked" at the div id wrapper
+        })
+        i.addEventListener('mouseover', function () {  // When "mouseover" at the event listener it will trigger the function that "this" element change the source from the previous image to the new image
+            t = this.src;  // t variable will take the source (image link) and place it on the t variable
+            this.src = "http://via.placeholder.com/350x150/ff0000/fff?text=Image2"; // variable "t" has this value that is the "Image2" and the "Image10" is stored in the variable "i"
+            message("Over");  // And change the message instead of "clicked" to "Over"
+        })
+        i.addEventListener('mouseout', function () {  // Also when the mouse is out "this" element will change again
+            this.src = t;  // this is inverted as the previous addEventListener
+            message("Out"); //a
+        })
+
+        function cImg(t) {  // this function will change the image stored at variable "t"
+            message(t.src);
+            imgHolder = t.src;  // 
+    
+            t.src = "http://via.placeholder.com/350x150/ff0000/fff?text=Image2";
+        }
+
+        function bImg(t) {  // This will change back the image from "t" to "i"
+            t.src = imgHolder;
+        }
+
+        function message(m) {  // This will change the message as soon as the addEventListener function is called depeding if is clicked, mouseover or mouseout
+            document.getElementById('wrapper').innerHTML = m;
+        }
+    </script>
+
+</body>
+</html>

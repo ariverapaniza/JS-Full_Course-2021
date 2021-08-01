@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Ternary Operator</title>
+</head>
+<body>
+
+    <div id="output">Ternary Operator</div>  <!--This will be displayed if the script is not running-->
+    <div id="output1">Ternary Operator</div>
+
+    <script>
+
+        var userName = ["Evelyn","Emma","Arturo","Erick","Judith","Monica","Marcel"];
+        var userInput = prompt("What name do you want to look for?");
+        var checkUser = userName.indexOf(userInput) > -1 ? true : false;
+        var output1 = document.getElementById("output1");
+        output1.innerHTML = checkUser ? "Welcome" : "Denied";
+        output1.innerHTML += ", " + userInput
+        
+    </script>
+    <script>
+
+        var output = document.getElementById("output");
+        var login = true;   // This will determine the userOkay variable if it is okay or not okay
+        var outputHolder = "";
+        var userOkay = login == true ? outputHolder = "Okay" : outputHolder = "Not Okay";  // This will determine the output on the next command according to the login variable
+        output.innerHTML = userOkay; // This will display on the html the answer
+
+        // login ? alert("okay") : alert("denied");
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

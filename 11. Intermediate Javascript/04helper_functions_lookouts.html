@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 Helper Functions Lockouts</title>  
+    <style>
+        .btn {
+            background-color: red;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 1em;
+            padding: 15px;
+            color: white;
+        }
+        
+        .btn:hover {
+            background-color: crimson;
+        }
+        
+        .gameTile {
+            display: inline-block;
+            padding: 3px;
+        }
+        
+        .flipImage {
+            max-width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">04 Helper Functions Lockouts</div>
+    <div id="wrapper">
+        <div id="start" class="btn">Start</div>
+        <div id="score"></div>
+        <div id="message"></div>
+        <div id="gameboard"></div>
+    </div>
+    <script>
+        var playLockout = false;
+        var gamePlay = false;
+        var tileImages = []  //  This will create 3 arrays, and the "," comma will add the other arrays and at the end is placed the ";"
+            , tileArray = []
+            , tfo = [];
+        var cardFlipped = -1;  // this value as a "-1" is because we do not have any value in the array
+        var timer;
+        var sb = document.getElementById('start');  // start button
+        var message = document.getElementById('message');  // This will add to the HTML in the "message id"
+        var score = document.getElementById('score');
+        var gameBoard = document.getElementById('gameboard');
+        sb.addEventListener('click', startGame);  // We add the "addEventListener" where the first part is listening to the "click" and the second is going to call the function "startGame"
+
+        function startGame() {
+            // hide start button
+            sb.style.display = 'none';  //  this will hide the start button as soon as clicked
+            message.innerHTML = "Its working" + gamePlay;  // This will add to the HTML in the "message id"
+            if (!gamePlay) {  // if "!gamePlay" is not true 
+                gamePlay = true;  // change it to "true"
+                buildArray();
+                tileArray = tileImages.concat(tileImages);  // This will duplicate the "tileImages" concatenating them by itself having 2 sets to match on the game
+                shuffleArray(tileArray);  //  this will activate the "shuffleArray" function and shuffle the "tileArray"
+                buildBoard();
+            }
+        }
+
+        function buildBoard() {
+            var html = "";
+            var x = 0;
+            tileArray.forEach(function (ele) {  // This will take the "tileArray" function and use the "forEach" method for each item inside the array and give them each one a value of "ele"
+                x++;  // then it will be increment the "x"
+                html += '<div class="gameTile">'; //  and this will create and add to the html the "div class="gameTile">"
+                html += '<img id="cardz' + x + '" src="http://via.placeholder.com/250/000000/ffffff?text=click" onclick="pickCard(' + (x - 1) + ',this)" class="flipImage"></div>';  // and this will be added after the previous "div" adding an image and each one will be unique since we are incrementing "x", and then we have an "onclick" event triggering a function called "pickCard" with the value of "x" and the "this" method and then use the "flipImage" class  // Also in the "(x - 1)" is because the index value gets from 0 to 11 but the numbers should be 1 to 12 at the "cardz" ID
+            });
+            gameBoard.innerHTML = html;  // This will update the "div" with the id "gambeBoard"
+        }
+
+        function pickCard(i, t) {  // This will pick the card "i" or "index" for example "1 or 2 or 3 or so on" and the "t" stands for "this" "index"
+            console.log(event.target);  // This will log in the console which image is being clicked, it will record "onclick=pickCard(2,this)"
+            // not in array of flipped over
+            // not locked out
+            if (!playLockout && !isinArray(t.id, tfo)) {  // if "!playLockout" is false and "!isinArray" is in array, the "t.id" is the id of the tile and the "tfo" means Tile Flip Over and is going to look if the value is in there
+                if (cardFlipped >= 0) {
+                    cardFlip(i, t);
+                    playLockout = true;  //  This will be true when the 2 cards or tiles are flipped out blocking more tiles to be turn or also the ones that has been matched
+                    if (checkSrc(tfo[tfo.length - 1]) == checkSrc(tfo[tfo.length - 2])) {  //  "tfo" means Tile Flip Over and is the shortened word of the previous lesson
+                        message.innerHTML = "Match Found";
+                        cardFlipped = -1;  // we have to add this because we have to reset it after the the match is found
+                        playLockout = false;  //  this will return to false as soon as the match is found so we can continue searching for matches
+                    }
+                    else {  // otherwise
+                        message.innerHTML = "No Match";  //  it will display this message
+                        timer = setInterval(hideCard, 1000);  // and then triggers this "hideCard" where it will hide the card after 1 second
+                    }
+                    //check to see if its a match
+                }
+                else {
+                    cardFlipped = i;
+                    cardFlip(i, t);
+                }
+            }
+            else {
+                message.innerHTML = "Locked Out";
+            }
+        }
+
+        function isinArray(v, array) {  // the first "v" is the index value and the second is the "array"
+            return array.indexOf(v) > -1;  // if we return "-1" is not in the array returning a boolean value
+        }
+
+        function hideCard() {
+            for (var x = 0; x < 2; x++) {  // When a match is not found
+                var vid = tfo.pop();  // we are going to remove it from the array
+                document.getElementById(vid).src = 'http://via.placeholder.com/250/000000/ffffff?text=click';  // and turn it to the original value
+            }
+            clearInterval(timer);  // this will stop the timer
+            cardFlipped = -1;  // since the cards where flip back we can set the value of the cardFllipped to empty or "-1"
+            playLockout = false;  // 
+            message.innerHTML = "Select Again";  // And add this message since there is not match
+        }
+
+        function checkSrc(a) {  //  this will check the source of the element
+            return document.getElementById(a).src;  // and bring the source of that element to match the element and see if we found a match
+        }
+
+        function cardFlip(i, t) {  // This function will pick the same values the "i" or index and the "this"
+        t.src = "http://via.placeholder.com/250/ffffff/000000?text=" + tileArray[i];  // and this will add the flipped "tile" the tileArray value, example "1.jpg"
+            tfo.push(t.id);
+        }
+
+        function buildArray() {  //  this will create the Array for the image tiles. 
+            for (var x = 1; x < 7; x++) {  // and with a "for loop"  and it will be less than 7 (1,2,3,4,5,6)
+                tileImages.push(x + '.jpg');  // and it will be pushed to the array being like 1.jpg, 2.jpg, up to 6.jpg and then since it will be concatenated (Duplicated) it will be 12 item inside the array inside the "startGame" function
+            }
+        }
+
+        function shuffleArray(array) {
+            for (var x = array.length - 1; x > 0; x--) {  // this will shuffle it  when is greater than 0 and when is shuffling it it will remove it and place it in another "array"
+                var holder = Math.floor(Math.random() * (x + 1));  // this will give us a random index value for the array
+                var itemValue = array[x];  //  this will take that value
+                array[x] = array[holder];  // and then when we get the random index value, we are going to replace it with the item in the array
+                array[holder] = itemValue;  // and with that random item and place it in the "itemValue" array
+            }
+            return array;
+        }
+    </script>
+    
+</body>
+</html>

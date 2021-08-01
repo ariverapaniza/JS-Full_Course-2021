@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Selector Element</title>
+    <style>
+
+    #pickme .output {  /* This will style the selected class   */
+            background-color: aqua;
+        }
+        
+        input[name="last"] {  /* This will style the selected class and name  */
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="message">Message 1</div>
+    <div id="message1">Message 2</div>
+    <div class="output">Test Me 1</div>
+    <div class="output">Test Me 2</div>
+    <div id="pickme">
+        <div class="output highlight">Test Me 3</div>
+    </div>
+    <input type="text" name="first">
+    <input type="text" name="last">
+    <div class="output">Test Me 4</div>
+    <div class="output">Test Me 5</div>
+    <div class="output">Test Me 6</div>
+    <div class="output highlight">Test Me 7</div>
+    <div class="output">Test Me 8</div>
+    <div class="output">Test Me 9</div>
+    <div class="output">Test Me 10</div>
+    <script>
+        var message = document.getElementById('message');
+        var message1 = document.getElementById('message1');
+        var el = document.querySelector('input[name="last"]');  // with the querySelector we can select a class or a type or an id because it will search for the word that resembles the one that we are looking for.
+        el.value = "It worked";
+    </script>
+
+
+</body>
+</html>

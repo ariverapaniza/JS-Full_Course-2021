@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Image Uploads</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">Canvas Image Uploads</div>
+    <input type="file" id="imgLoader">
+    <br>
+    <canvas id="canvas"></canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        var imgLoader = document.getElementById('imgLoader');  // since we are getting the image from the DOM by its ID
+        imgLoader.addEventListener('change', upImage, false);  // we are going to have an "addEventListener" where we are looking for a "change" in the DOM, then we are going to trigger the function "upImage" and set it to false
+
+        function upImage() {
+            var r = new FileReader();  // this "FileReader" give us the ability to read the file content and since it is in a variable we can store it there. 
+            r.readAsDataURL(event.target.files[0]);  // the "readAsDataURL" will get the url from the uploaded file and select the "[0]" or "first index" file  
+            r.onload = function (e) {  // and when the file is uploaded we use the method "onload" to trigger the function 
+                var img = new Image();  // this will create a brand new "image object"
+                img.src = event.target.result;  // so the result of the loads is the src. 
+                img.onload = function () {  // and when is loaded it will insert it into the canvas taking the width and height values from the image to insert it there
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);  // the canvas "drawImage" method will insert the "img" into the position x 0 and y 0
+                    ctx.font = "30px Arial";
+                    ctx.fillText("JavaScript Course", 10, 100);
+                }
+                console.log(r);
+            }
+        }
+    </script>
+    
+</body>
+</html>

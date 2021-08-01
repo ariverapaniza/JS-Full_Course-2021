@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <script>
+
+        var arr = ["cat", "dog", "fish",4,2,1,3,5,7];  // Array
+        var object = {color:"red", make:"Ford",doors:5,model:"Mustang"};  // First way to make an object list. This is the Literal way
+        var properties = "doors"
+        object.driver = "Arturo"
+        console.log(object);
+        console.log(object[properties]) // This will list the item of the requested property
+        for(var prop in object){
+            console.log(prop);  // This will loop on the properties
+            console.log(object[prop]);  // This will loop on the items of the properties
+            console.log(prop + ": " + object[prop]);  
+        }
+
+
+        var object1 = new Object();  // Second way to create an object list
+        object1.color = "blue";
+        object1.make = "Honda";
+        var prop = prompt("What did you want to know about the car?");
+        console.log(object1);
+        console.log(object1[prop]);
+        object1.color = "brown";  // This is the way to update the object in case we want to change some values
+        console.log(object1);
+        delete object1.color; // This is a boolean and a way to delete a property from the object
+        console.log(object1);
+        object1.color = "white";
+        console.log(object1);
+        console.log(typeof object1);
+
+
+    </script>
+</body>
+</html>

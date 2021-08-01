@@ -1,0 +1,1 @@
+data = '[{"name":"John", "guests":3,"status":true}, {"name":"Jack", "guests":2,"status":false},{"name":"Jenny", "guests":4, "status":false}]';  // we have an error because we had to give it a variable name since its going to be called from the html file

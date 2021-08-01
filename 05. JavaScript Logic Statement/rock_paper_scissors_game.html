@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+    <div id="output">JavaScript Course</div>
+
+    <script>
+
+        var output = document.getElementById('output');
+        var player = prompt("Do you choose Rock Paper or Scissors?"); // You can type r s or p or Rock Paper Scissors and it will interprete it without issues
+        var ps = player.charAt(0).toUpperCase(); // charAt will take the first (0) character and .toUpperCase will change it to uppercase
+        var win = false;  // This is a boolean value since the winner is not decided it has to be false
+        var computer = Math.random(); // This will take the random number between 0.00 to 0.99 to select the desition of the computer
+        if (computer < 0.34) {  // This will select the value according to the random number previously taken
+            computer = "Rock";
+        }
+        else if (computer < 0.67) {
+            computer = "Paper";
+        }
+        else {
+            computer = "Scissors";
+        }
+        var cs = computer.charAt(0).toUpperCase();  // charAt will take the first (0) character and .toUpperCase will change it to uppercase
+        console.log(computer);  // On the console log will be logged the desition of the computer variable
+        var html = "";  // This is the variable that will select if it is a tie or you win or loose
+        if (cs == ps) {  // This if statements will compare the 2 answers and select the boolean WIN to see the result
+            html += "Its a Tie";
+        }
+        else {
+            if (ps == "R") {
+                player = "Rock";
+                if (cs == "S") {
+                    win = true;
+                }
+            }
+            else if (ps == "P") {
+                player = "Paper";
+                if (cs == "R") {
+                    win = true;
+                }
+            }
+            else {
+                player = "Scissors";
+                if (cs == "P") {
+                    win = true;
+                }
+            }
+            if (win) {
+                html += " You Win";   // This is in case it is true any of the previous options
+            }
+            else {
+                html += " You Lost";  // In case is false then you loose
+            }
+        }
+        output.innerHTML = "You      vs    Computer<br>" + player + " vs " + computer + "<br>" + html;
+
+
+    </script>
+</body>
+</html>

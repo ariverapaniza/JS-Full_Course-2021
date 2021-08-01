@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elements Click Handler</title>
+    <style>
+
+
+
+    </style>
+</head>
+<body>
+    <div id="message">Message 1</div>
+    <div id="message1">Message 2</div>
+    <div class="output">Test Me 1</div>
+    <div class="output">Test Me 2</div>
+    <div class="output highlight">Test Me 3</div>
+    <div class="output">Test Me 4</div>
+    <div class="output">Test Me 5</div>
+    <div class="output">Test Me 6</div>
+    <div class="output highlight">Test Me 7</div>
+    <div class="output">Test Me 8</div>
+    <div class="output">Test Me 9</div>
+    <div class="output">Test Me 10</div>
+    <div class="highlight">Test Me 11</div>
+    <script>
+        var elClass = document.getElementsByClassName('output');
+        var highClass = document.getElementsByClassName('highlight');  // The ones that on the Class has the name highlight will be stored on this variable and when we click them it will change the message at the top at message1
+        var message = document.getElementById('message');
+        var message1 = document.getElementById('message1');
+        for (var x = 0; x < elClass.length; x++) {
+            elClass[x].onclick = function () {  // The onclick is allowing us as soon as we click the text (it does not have to be a button since it is inside a div) we can trigger a hidden function inside the for loop
+                message.innerHTML = event.target.innerHTML;  // With this for loop when we activate the onclick it will change "message" depending on which div we click, and change the "message" to the div that we just click because is calling the "output" class
+            }
+        }
+        for (var x = 0; x < highClass.length; x++) {
+            highClass[x].onclick = function () {
+                message1.innerHTML = "CLICKED highlighted"; // With this for loop when we activate the onclick it will change "message1" depending on which div we click, and change the "message1" to the div that we just click because is calling the "highlight" class
+            }
+        }
+    </script>
+
+
+</body>
+</html>

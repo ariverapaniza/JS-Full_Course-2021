@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local File Reader</title>
+</head>
+<body>
+    
+    <div id="output">Local File Reader</div>
+    <input type="file" multiple onchange="upFiles(this.files)">  <!-- the "type=file" is the input type, the "multiple" means that we can select multiple files at the same time, and the "onchange" is the "event handler" named "upFiles" using the "this.files" object-->
+    <div id="message"></div>  <!-- this is where the content of the file will be displayed-->
+    <script>
+        var message = document.getElementById('message');  // This is to get access to the "div" and place the "message" into the "div" HTML
+        if (window.FileReader) {  // With this "if" method we are going to check if the browser supports the import of the files using the "window.FileReader" method
+            message.innerHTML = "file reader is available";  // and place the answer in the HTML as soon as the page loads
+        }
+        else {
+            message.innerHTML = "file reader NOT available";
+        }
+
+        function upFiles(files) {  // This is the function that is going to be called as soon as we upload the file
+            for (var x = 0; x < files.length; x++) {  // With this "for" loop we are going to pass to each file and 
+                var fReader = new FileReader();  // with the "new FileReader()" we are creating an object and store it in the variable
+                var fileName = files[x].name;  // store the "fileName" inside a variable to place it in the HTML. Also since we are using a "for" loop the "files" is the name of the file, the "x" is the name of EACH file and the ".name" is taking the actual name of the file
+                fReader.onload = function (e) {  // we take the "fReader.onload" to take the event handler to load the file and with the "function(e)" the "e" stands for that event handler and we use the "e.target.result" for the "e" event handler and pick the "target" and get the "result"
+                    message.innerHTML += '<br>' + fileName;  // This will place the name in the HTML of the file we uploaded, if we selected multiple files it will also add each name on a line by name
+                    message.innerHTML += '<br>' + e.target.result;  // And with this we are going to place in the HTML the content of the text file
+                }
+                fReader.readAsText(files[x]);  // and with this at the end is going to take what is stored in the variable "fReader" and "readAsText" each "x" "files"
+            }
+        }
+    </script>
+</body>
+</html>

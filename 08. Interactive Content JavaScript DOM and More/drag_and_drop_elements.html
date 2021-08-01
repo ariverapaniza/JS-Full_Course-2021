@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Elements</title>
+    
+    <style>  /* We have to create the box in CSS */
+        .box{
+            height:270px;
+            width: 270px;
+            padding: 20px;
+            margin: 0 15px;
+            display:inline-block;
+            border:1px solid black;
+            background-color:burlywood;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div id="wrapper">Drag and Drop Elements</div>
+
+    <div class="box" ondrop="dDrop()" ondragover="nDrop()">1<div id="getEle" ondragstart="dStart()" draggable="true"><img src="https://avatarfiles.alphacoders.com/122/122743.jpg" alt="Drag Me Please!"></div></div>  <!--This is the first box which have the element to be dragged. Inside the first div there is a second div which contains the element to be dragged, and since the inside div is being dragged to the other boxes, the elements inside the div like dStart() is also being dragged, so when in theo other boxes we can continue dragging the element since is calling the event.target element-->
+        <div class="box" ondrop="dDrop()" ondragover="nDrop()">2</div>
+        <div class="box" ondrop="dDrop()" ondragover="nDrop()">3</div>  <!--We can add as many boxes as we want using the same line of code as the box 2-->
+        <div class="box" ondrop="dDrop()" ondragover="nDrop()">4</div>
+
+    <script>
+
+        var holderItem;  // This is the element that we are going to be dragging. When we click on the image it will be added to this variable
+
+        function dStart(){
+            message("Drag Started!");
+            holderItem = event.target; // event.target calls the image in this case or if we had a text will call the text
+            console.dir(event.target); // we add this here to see what event.target calls
+        }
+
+        function nDrop(){
+            event.preventDefault();  // This will prevent defaults of the drag and drop to be activated so we can use our selected definitions to work
+
+        }
+
+        function dDrop(){
+            event.preventDefault();
+            message("Drop It!");
+            if(event.target.className=="box"){  // If the element that we are trying to drag is inside the box, 
+                event.target.appendChild(holderItem);  // we can drag the element, in this case the image
+            }
+        }
+
+
+        function message(m){
+            document.getElementById("wrapper").innerHTML = m;
+        }
+
+
+    </script>
+</body>
+</html>

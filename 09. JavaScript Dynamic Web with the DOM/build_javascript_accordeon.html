@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build JavaScript Accordeon</title>
+    <style>
+        .content{
+            border: 1px solid black;
+            padding: 20px;
+            font-size: 0.8em;
+            display: none;
+        }
+        .accordeon{
+            font-size: 1.5em;
+            background-color: #ddd;
+        }
+        .active{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="accordeon">Information About JavaScript</div>
+    <div class="content">Complete JavaScript Course Complete JavaScript Course Complete JavaScript Course Complete JavaScript Course Complete JavaScript Course <img src="http://via.placeholder.com/350x150?text=Image1" alt=""> </div>
+    <div class="accordeon">Read More About JavaScript</div>
+    <div class="content">blah blah blah blah <img src="http://via.placeholder.com/150x150?text=Image2" alt=""> </div>
+    <div class="accordeon">More Read JavaScript</div>
+    <div class="content">Blah blah blah blah e <img src="http://via.placeholder.com/150x150?text=Image2" alt=""> </div>
+    <div class="accordeon">More Read JavaScript</div>
+    <div class="content">Blah blah blah blah e <img src="http://via.placeholder.com/150x150?text=Image2" alt=""> </div>
+    <div class="accordeon">More Read JavaScript</div>
+    <div class="content">Blah blah blah blah e <img src="http://via.placeholder.com/150x150?text=Image2" alt=""> </div>
+    <script>
+        // To have the accordeon effect we got to have 3 classes, the "accordeon" that is the one to click and open the "accordeon", the second one is to display the "content" and the third  is "active" and is to activate and deactivate the class to display and hide the div
+        var aTitle = document.querySelectorAll('.accordeon');  // This will grab the class "accordeon"
+        var c = document.querySelectorAll('.content');  // This will grab the class "content"
+        for (var x = 0; x < aTitle.length; x++) {  // With this for loop we are going to activate the accordeon and it will loop on each of the ones that has '.accordeon' to loop on each one
+            aTitle[x].onclick = function () {  // when click on the div that has the class .accordeon it will activate the cCon funtion
+                cCon(this.nextElementSibling);  //when clicked on the div ".accordeon" it will take the nextElementSibling and it will toggle the "active" css
+                this.nextElementSibling.classList.toggle('active');  // This will add and remove the "active" css toggleing them
+            }
+        }
+
+        function cCon(t) {  // "t" stands for toggle
+            for (var x = 0; x < c.length; x++) {  // With this for loop we are going to loop on each div element with the class        .content and remove the active on the class
+                if (t != c[x]) {
+                    c[x].classList.remove('active');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

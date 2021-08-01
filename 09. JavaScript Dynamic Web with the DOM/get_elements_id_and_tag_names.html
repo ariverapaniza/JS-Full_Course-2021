@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Elements id and Tag Names</title>
+</head>
+<body>
+    <div id="output"></div>
+    <form name="myForm">
+
+        <input type="url" name="url" id="url">
+        <input type="text" name="first" id="first">
+        <input type="text" name="last" id="last">
+        <textarea name="output1" cols="30" rows="10"></textarea>
+        <div id="another">Parent
+            <div id="one">Test 1</div>
+            <div id="two">Test 2</div>
+            <div id="three">Test 3</div>
+            <div id="four">Test 4</div>
+            <div id="five">Test 5</div>
+            <div id="six">Test 6</div>
+
+        </div>
+
+        <input value="Click Here" id="btn1" onclick="myFun1()" type="button">
+
+    </form>
+
+    <script>
+
+        var output = document.getElementById("output");
+        var divList = document.getElementsByTagName("div");  // We can use in the console divList and it will pull 8 elements that has the id on the div. But if for example we want to navigate through a parent element we can use in this case divList.another and it will display the div id's from the parent to the children elements. The tagName in this case is "div", but we can look for another tags
+
+        divList[4].innerHTML = "it worked?";  // This is the way to update the content inside of the div. When in the console we pull the divList content it will give us the position numbers inside the "array" and update it with this command.
+
+        function myFun1(){  // This function is called when the button is clicked
+            var html = "<h3>Div List</h3> <br>";  // This will be displayed at the first div, the "output" div at the top
+            for(var x = 1; x < divList.length; x++){  // then starting at element 1 it will start the loop
+                if(divList[x].firstElementChild){  // if to the divList[x] we add at the begining "!" it will bring only the child, if we do not put the "!" we will output the parent and the children, 
+                html += divList[x].innerText + "<br>";  // and add this line into the html
+                }
+            }
+            divList[0].innerHTML = html;  // and this will display the html variable "Div List" at the top since it is using the divList[0] that is the first element on the divList. 
+        }
+
+
+
+    </script>
+</body>
+</html>

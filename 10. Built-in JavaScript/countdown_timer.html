@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountDown Timer</title>
+</head>
+<body>
+    <div id="message">CountDown Timer</div>
+    <input type="date" onchange="start()">  <!--The "type='date'" will create a box to pull a calendar and set the date we want to select. The "onchange" will trigger the function as soon as the date changes-->
+    <div id="output"></div>
+    <script>
+        var cDate, eDate, s, m, h, d, t;  // "cDate" is current date, "eDate" is event date, "s" seconds, "m" minutes, "h" hour, "d" date and "t" is the timer or de countdown
+        var output = document.getElementById('output');
+
+        function start() {
+            var tDate = event.target.valueAsDate;  // This will select the date selected in the input date box
+            message.innerHTML = tDate;  // This will display the date that we select in te input date box
+            eDate = new Date(tDate);  // we have the eDate that is de Event Date and inside de parenthesis is the cDate that is the current date so the Event Date is the same as the Current Date
+            outputUpdate();   // This will trigger the function to generate the countdown in seconds
+            t = window.setTimeout(update, 1000);  //  This will set the time to countdown and it will fire the function "update" and the "1000" is for every second
+        }
+
+        function update() {
+            outputUpdate();  // This will trigger the function to generate the countdown in seconds
+            t = window.setTimeout(update, 1000);
+        }
+
+        function outputUpdate() {  // This is the function to generate the countdown in seconds
+            cDate = new Date();  //This will output the currend date
+            var dur = eDate - cDate;
+            s = Math.floor((dur % (1000 * 60)) / 1000); // This is the formula to get the remaining ("%") seconds in the "eDate" minus the "cDate"
+            s = s < 10 ? "0" + s : s;  // We use a ternary operator if the seconds left is less than 10 seconds we have to add a "0". So if the seconds is less than 10 then add "0"+"s", otherwise just keep adding the seconds if they are more than 10
+            m = Math.floor((dur % (1000 * 60 * 60)) / (1000 * 60)); // This is the formula to get the remaining ("%") minutes in the "eDate" minus the "cDate"
+            m = m < 10 ? "0" + m : m;   // We use a ternary operator if the minutes left is less than 10 minutes we have to add a "0"
+            h = Math.floor((dur % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // This is the formula to get the remaining ("%") hours in the "eDate" minus the "cDate"
+            d = Math.floor(dur / (1000 * 60 * 60 * 24));  // This is the formula to get the remaining ("%") days in the "eDate" minus the "cDate"
+            output.innerHTML = d + ":" + h + ":" + m + ":" + s;
+        }
+    </script>
+
+</body>
+</html>

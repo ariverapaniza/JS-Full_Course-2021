@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If Statement Coin Toss</title>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+
+
+        // prompt heads or tails
+        // turn value into number
+        // use math random to 0 - 1
+        // return back in the output if the user was correct or not
+        
+        var html = "something went wrong";
+        var output = document.getElementById("output");
+        var question = prompt("heads or tails");
+        var result = question == "heads" ? 1 : 0;  // If you type Heads it will choose the # 1. otherwise it will choose the # 0.
+        var randomNumber = Math.floor(Math.random()*2);    // The Math.random will throw a random number between 0.00 and 0.999999 and the Math.floor will round out the number to either 0 or 1. 
+        if(result == randomNumber) {
+            html = "yes guessed correctly";
+        }else{
+            html = "you were wrong";        
+        }
+        output.innerHTML = html;
+
+
+    </script>
+
+    <script>
+        console.log(Math.floor(Math.random()*2));
+
+    </script>
+</body>
+</html>

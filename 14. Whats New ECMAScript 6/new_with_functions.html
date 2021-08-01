@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New With Functions</title>
+</head>
+<body>
+    
+    <div id="output">New With Functions</div>
+    <script>
+        const output = document.getElementById('output');  // is the same as "var"
+
+        function outputMessage(message = "No value", b = show(message, "blank", "new")) {  // In this new ES6 update we can use the term "arguments" to call an argument placed in index places in the function "show" where is taking the "message" value placed inside the parenthesis, the "blank" and the "new" so we called it in the "arguments[0]"  
+            output.innerHTML = message;
+        }
+
+        function show() {
+            console.log(arguments[0]);  // in here it will take the "arguments" index from the "show" part we added in the "outputMessage" function 
+        }
+
+        function myFun(a, b, c, d, e) {
+            if (arguments.length == arguments.callee.length) {  //  The "callee" method is reffered to indicate how many values where spected instead of how many values are. In this case the parameters of the "myFun" function is "a,b,c,d,e" but down there when we called the "myFun" function we only place "1,2,3" parameters. So the values called is "1,2,3" and the "callee" or missing parameters will be 2 or "d,e". So we created an "if" loop to check it the length of the "arguments" id the same as the "arguments.callee.length", if yes it will display "okay", but if there are some missing it will tell us how many "callee" or missing parameters got left out.
+                console.log("okay");
+            }
+            else {
+                console.log("Missing " + (arguments.callee.length - arguments.length));
+            }
+            console.log(arguments);
+            console.log(arguments.length);
+            console.log();
+        }
+        myFun(1, 2, 3);
+    </script>
+</body>
+</html>

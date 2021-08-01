@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 and Arrays</title>
+</head>
+<body>
+    
+    <div id="output">ES6 and Arrays</div>
+    <script>
+        let myArr = [2, 5, 7, 4, 7, 89, 5, 32, 5, 23, 3, 2, 23, 55];
+        var a = myArr.find(function (x) {
+            return x > 50;
+        })
+        let b = myArr.find(x => x > 50);
+        console.log(b);
+        let c = myArr.findIndex(x => x > 50);
+        console.log(c);
+        console.log(myArr[myArr.findIndex(x => x > 50)]);
+
+        function makeArray() {
+            return Array.from(arguments);
+        }
+        let d = makeArray("test", "test2", "tet3");
+        console.log(d);
+        console.log(d.findIndex(a => a == "test2"));
+        let test = d.entries();  // This will give us the "callee" parameter. The "callee" method is reffered to indicate how many values where spected instead of how many values are. So in this case we can use the "test.next().value" to get the value and if we repeat it we can get the next value until there are no more "next" values. 
+        console.log(test);
+        console.log(test.next().value);  // With this we are going to pick the "next value" from the array, and with this after we created the next line of code "let test1 = [...test];" we are using the spread operator to get the next value, so when we call it using the "console.log(test1);" we are going to pick the other 2 values creating 2 arrays, the first one is the "1,test2" taking the index position "1" and creating it as a value so with the new array the "1" will have an index value of "0" and "test2" will have an index value of "1". 
+        /*
+        
+        console.log(test.next().value);
+        console.log(test.next().value);
+        */
+        let test1 = [...test];  // The three "..." are the "spread operator". Spread syntax (...) allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected. In this case the "test" is an "entries" object and with this method we convert it as an array
+        console.log(test1);
+        let mySet = new Set(["test", "test2", "tet3", "JavaScript", "JS6", "hello", "world"]);
+        console.log(mySet);
+        let myArr2 = Array.from(mySet);  // The "myArr2" is a new variable "let" where we are going to create a new "Array" with the "Array constructor" "from" "mySet" where we created a new set in "mySet" and then in this line of code we "convert" it to an "Array". "Set" objects are collections of values. You can iterate through the elements of a set in insertion order. A value in the Set may only occur once; it is unique in the Set's collection.  We can se that "Array" is a constructor to convert "from" (where "from" is a converter) "mySet" where this is the set we want to convert to an "Array"
+        console.log(myArr2);
+        console.log(myArr2.copyWithin(4, 1));  // With this we can copy and replace inside the array "myArr2" where starting at index "4" we are going to copy the values starting at index "1" and replace the original values starting from index "4" with the new values we just copied.  
+        console.log(myArr2.fill("tester"));  // With this "fill" method what we accomplish is that all the values within the array "myArr2" and got replaced with the value of "tester".
+    </script>
+</body>
+</html>

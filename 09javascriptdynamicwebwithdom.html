@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Dynamic Web with the DOM</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="https://cdn11.bigcommerce.com/s-h28kc1m5v1/images/stencil/640w/products/113/377/6b1749b802f3818c7f99e21b2daff8ef__68321.1511409131.png?c=2" style="width: 20%;" alt="Logo"> <strong>Complete JavaScript Course</strong>
+      </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">JavaScript Menu <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="01gettingstarted.html">01 Getting Started</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="02javascriptessencials.html">02 JS Essencials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="03javascriptmultiplevalues.html">03 JS Multiple Values</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="04dombasics.html">04 DOM Basics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="05javascriptlogicstatements.html">05 JS Logic Statements</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="06javascriptloops.html">06 JS Loops</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="07javascriptfunctions.html">07 JS Functions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="08interactivejavascriptcontentdom.html">08 Interactive Content with DOM</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="09javascriptdynamicwebwithdom.html">09 JS Dynamic Web With DOM</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="10builtinjavascript.html">10 Built-In JS</a>
+            </li>
+          </ul>
+        </li>
+        
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">  JavaScript Menu 2 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class="nav-item">
+                <a class="nav-link" href="11intermediatejavascript.html">11 Intermediate JavaScript</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="12html5javascript.html">12 HTML5 JavaScript</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="13jsonNajaxJS.html">13 JSON and AJAX JS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="14whatsnewecmascript6.html">14 ECMAScript 6</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="15javascriptinaction.html">15 JS InAction</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="16reactiongamesetup.html">16 Reaction Game Setup</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="17qnacodesnipper.html">17 Q n A Code Snipper</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="18jsnextsteps.html">18 JS Next Steps</a>
+              </li>
+
+
+              </ul>
+          </li>
+    
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Dynamic Web
+      <small>With the DOM</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">Home</a>
+      </li>
+      <li class="breadcrumb-item active">09. Dynamic Web With the DOM</li>
+    </ol>
+
+    <!-- Image Header -->
+    <img class="img-fluid rounded mb-4" src="https://www.sci-techdaresbury.com/wp-content/uploads/2019/09/back_doitbetter-1200x300.jpg" alt="">
+
+
+    <!-- Files Index -->
+    <br>
+    <div class="card h-100 card-header">
+     <center> <a href="09. JavaScript Dynamic Web with the DOM"> <h4> 09. Dynamic Web With the DOM </h4></a> </center>
+    </div>
+    <br>
+
+
+    <!-- Marketing Icons Section -->
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Get Element By ID and TagName</h4>
+          <div class="card-body">
+            <p class="card-text">We can use in the console divList and it will pull 8 elements that has the id on the div. But if for example we want to navigate through a parent element we can use in this case divList.another and it will display the div id's from the parent to the children elements. The tagName in this case is "div", but we can look for another tags. We can also update the tags (divs in this case) and we can use a "button" to call instead of an ID, we can call a function using the "onClick" method.</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/get_elements_id_and_tag_names.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Get Element by ClassName</h4>
+          <div class="card-body">
+            <p class="card-text">We use the "document.getElementsByClassName" so instead of calling by ID or Tag Names (div, input, textarea, etc), we can use the ClassName and call a couple of items at the same time, also we can trigger a function with the click of a button calling all the ClassName.</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/get_element_by_classname.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Elements Click Handler</h4>
+          <div class="card-body">
+            <p class="card-text">We can have just a text and since it has an ID or a ClassName and when clicked it can change a message at the top triggering a function.</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/elements_click_handler.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">QuerySelector Element Selection</h4>
+          <div class="card-body">
+            <p class="card-text">With the querySelector we can select a class or a type or an id because it will search for the word that resembles the one that we are looking for. In order to make it work we have to put the "dot" at the begining of the query in order to find the class ".output".</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/query_selector_element.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">QuerySelectorAll Element Selection</h4>
+          <div class="card-body">
+            <p class="card-text">With the querySelectorAll we can select all class or a type or an id because it will search for the word that resembles the one that we are looking for. In order to make it work we have to put the "dot" at the begining of the query in order to find the class ".output".</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/queryselectorall_element_selector.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Manipulating Element Style</h4>
+          <div class="card-body">
+            <p class="card-text">This will change the color of the background selecting the element by their ClassName. The "onload" will trigger the function as soon as we load the page, in this case will trigger the function "start()". Then it will trigger another function that will select randomly the color of the background.</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/manipulating_element_style.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Popup Modal using JavaScript</h4>
+          <div class="card-body">
+            <p class="card-text">Using JavaScript we can trigger a popup message as soon as we click the button and hide it when clicked again. By default the popup message is hidden.</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/popup_modal_using_javascript.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Adding and Removing Classes</h4>
+          <div class="card-body">
+            <p class="card-text">In here we can add or remove clases with the "querySelectorAll(".myClass")" and using an "if" loop, when the "!" is in front of a "this" is the negative, so if the class is not active on this box it will be added to the html, otherwise it will remove it using the "active" and "remove" method.</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/adding_and_removing_classes.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Build JavaScript Accordion</h4>
+          <div class="card-body">
+            <p class="card-text">To have the accordeon effect we got to have 3 classes, the "accordeon" that is the one to click and open the "accordeon", the second one is to display the "content" and the third  is "active" and is to activate and deactivate the class to display and hide the div. Using the "active" and "remove" method we are going to add or remove the "active" in the "div".</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/build_javascript_accordeon.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Manipulating Attributes</h4>
+          <div class="card-body">
+            <p class="card-text">We are going to trigger a function as soon as the page loads to build the table looping with the names inside the array and then creates a table with the names and the number position, then when click the number we are going to trigger another function using the .onclick method that will tell us the position of the item inside the array. And with "this.closest" will look for the closest value in the data row to get the attribute in the data row .</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/manipulating_attributes.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Use Custom Attributes</h4>
+          <div class="card-body">
+            <p class="card-text">We continue the previous exercise and we add another functions where when clicked the row number next to the name it will increase the next number like a voting counter. We use the same method calling using "this.closest" to increase it and it will look for the closest value in the data row to get the attribute in the data row or data vote and increase the voting using the "v++".</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/use_custom_attributes.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Creating New Elements</h4>
+          <div class="card-body">
+            <p class="card-text">Using the previous exercise and adding an input box we can add an element to the array and then it will be added using the function to the table getting the "value" and using the "appendChild" to push it to the array.</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/creating_new_elements.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Friend Vote List Builder</h4>
+          <div class="card-body">
+            <p class="card-text">Continue with the previous exercise we add the ability to vote for the newly added members inside the voting table. We use the function to get the "this.closest" to increase the voting on the newly added items increasing them by the "v++".</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/friend_vote_list_builder.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">JavaScript Shopping List</h4>
+          <div class="card-body">
+            <p class="card-text">We use the "ol" or Ordered List to create a list of items just by adding the item, we use the "< ol id="sList"> < li> Coffee < /li > < / ol >" to identify it is a list and in the HTML it will add the number next to the value of the item added. Then when we click the button "add item" it will trigger a function that will "appendChild" to append each element to the list.</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/shopping_list.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Event Listener on Elements</h4>
+          <div class="card-body">
+            <p class="card-text">We use "mouseOver" and "mouseOut" to do something specific on "this" element, in this case change the image depending if the mouse is over the image or outside the image. We can also update a message depending if the mouse is over or out. The "getElementById" "wrapper" will change the message when the mouseover is activated from "Page 1" to "over" or "out" or "clicked".</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/event_listeners_on_elements.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Multiple Event Listener</h4>
+          <div class="card-body">
+            <p class="card-text">On CSS we create the box where the "addEventListener" will "listen" if is "mouseOver" or "mouseOut". Also we are going to call the "this.classList.add" or "this.classList.remove" to add or remove a class from a "div". We also use the "querySelector(.holder)" (it is a class because it start with a ".") to select the "div", then the "active" class will be added or removed on the "div" inside the main "div".</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/multiple_event_listeners.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">DOM Event Flow</h4>
+          <div class="card-body">
+            <p class="card-text">The "document.getElementsByTagName('div')" will get the tag name in this case the div and store it on the variable "d" to use it in the for loop. After the for loop works it will take the variable stored (div) and use the addEventListener that as soon as we click it will use the "bup" that is "event bubbling". Event bubbling is a term you might have come across on your JavaScript travels. It relates to the order in which event handlers are called when one element is nested inside a second element, and both elements have registered a listener for the same event (a click, for example).  <a href="https://javascript.info/bubbling-and-capturing">For more info click: Bubbling and Capturing</a>.</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/DOM_event_flow.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Select Event Listener</h4>
+          <div class="card-body">
+            <p class="card-text">When selecting a text inside an input box we can call a function that uses the "event.target.value" and it will listen to the selected text inside the input box and with the "substring(e.selectionStart, e.selectionEnd)" it will select this text and place it in the "output div".</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/select_event_listener.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Event Listener ListMaker</h4>
+          <div class="card-body">
+            <p class="card-text">This is the first part of a table that we can use to add, delete or edit a name on the table from an array. We start building by just activating the function to "splice" or "delete" items from the table and the array at the same time. We use the "window.onload = build;" to load the function as soon as the page loads, then the table is created with the information in the Array. Then we use the "document.querySelector('.output').innerHTML = html;" to select the ID "output" and then the "document.querySelectorAll('[data-action="delete"]');" will select everything of that row if we click the "del" button to delete the entire row using the "splice" method.</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/event_listener_listmaker.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Dynamic List Editor</h4>
+          <div class="card-body">
+            <p class="card-text">We continue the previous exercise and now we can add and edit items, including updating the newly added items. Then we use the "appendChild" method to add the modified element to the table and array, then we use the "onBlur" method means that when clicked outside the input box it will store the modified value. We use almost the same method as the one that we used before but everything is going to be inside the same "function build()".</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/dynamic_list_editor.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Test</h4>
+          <div class="card-body">
+            <p class="card-text">This is the results of the test.</p>
+          </div>
+          <div class="card-footer">
+            <a href="09. JavaScript Dynamic Web with the DOM/test.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript --> 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

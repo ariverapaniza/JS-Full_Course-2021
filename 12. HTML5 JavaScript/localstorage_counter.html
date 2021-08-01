@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage Counter</title>
+    <style>
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">LocalStorage Counter</div>
+    <script>
+        var message = "hello world";  //  This is a message that we are going to store in this variable
+        if (localStorage.getItem('test1')) {
+            document.getElementById('output').innerHTML = localStorage.getItem('test1');
+        }
+        if (localStorage.getItem('count')) {  //  If the "count" value is set it will continue to increase it from here, otherwise it will go to the "else" part and after is set in the next refresh page will increase the counter
+            var cnt = Number(localStorage.getItem('count')) + 1;  //  With this we are creating a counter that is stored and increased each time the page refresh. The "Number" we have to add it to take it as a number and increase it
+            localStorage.setItem('count', cnt);  //  this will set and continue increasing the counter and add it to the local storage because is picking the value from the starting point that is the "else" part. And also we have to take the first value "count" taked from the "else" part and the "cnt" is to continue increasing the value "+ 1"
+            document.getElementById('output').innerHTML += cnt;  // so when the page refresh, the counter will be increased using this "if" condition
+        }
+        else {
+            localStorage.setItem('count', 1);  // and if the timer has not been started it will be set at 1 the first time, then it will be increased in the previous "if" condition
+        }
+    </script>    
+</body>
+</html>

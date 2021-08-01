@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parse String Into Object</title>
+</head>
+<body>
+    <div id="output">Parse String Into Object</div>
+    <div>Party Invite Checklist</div> Guest Name :
+    <script src="parse_string_into_object.json"></script>  <!-- we are calling this file and getting the info from this file-->
+    <script>
+        var party = JSON.parse(data);  // and with "JSON.parse()" A common use of JSON is to exchange data to/from a web server. When receiving data from a web server, the data is always a string. Parse the data with "JSON.parse()", and the data becomes a JavaScript object
+        console.log(party);
+    </script>
+    
+</body>
+</html>

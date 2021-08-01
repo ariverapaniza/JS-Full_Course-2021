@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Data Add to List</title>
+</head>
+<body>
+    <div>Party invite Checklist</div>
+    <div id="output">Update Data Add to List</div> Guest Name :
+    <input type="text" id="guestName"> +
+    <input type="number" id="guestNum" value="0">
+    <input type="button" value="add">
+    <script src="parse_string_into_object.json"></script>
+    <script>
+        var party = JSON.parse(data);  // and with "JSON.parse()" A common use of JSON is to exchange data to/from a web server. When receiving data from a web server, the data is always a string. Parse the data with "JSON.parse()", and the data becomes a JavaScript object
+        var output = document.getElementById('output');
+        var addGuest = document.querySelector('input[type="button"]');  // with this we are going to "querySelector" or search and select for the 'input[type="button"]' and we specify the "type" since there is more input and we have to be specific otherwise it will grab the first input
+        addGuest.addEventListener('click', function (e) {  //  and as soon as the selects the input it will trigger the "addEventListener" for the "click" and triggers this anonymous function
+            var g = document.getElementById('guestName'); // and take the "id" of "guestName". and it is very important to clear the value after the function ends is no to have in here the ".value" and instead calling them in the "push" part so the values can be reseted to "blank" and "0"
+            var n = document.getElementById('guestNum');  // and "guestNum"
+            message('*', g.value + ' +' + n.value, party.length);  // and creates a message with the value of "g" and "n" with the lenght of the "party" where it will be added in the function "message"
+            party.push({  // then it will "push" the new values added to this variable but not to the json file
+                name: g.value  // by the value of "g"
+                , guests: Number(n.value)  // and the value of "n"
+                , status: false  // and gave the status of "false"
+            })  // and after they are added
+            g.value = "";  // it will be updated again in blank
+            n.value = 0;  // and in value of "0"
+        })
+ 
+        function buildList() {}
+ 
+        function message(m, person, id) {  // this will get the "m" message, "person" and the "id" and the id is the "lenght" of the "party"
+            output.innerHTML += '<div class="toggle" data-id="' + id + '" data-person="' + person + '" >' + m + ' ' + person + ' </div>';
+        }
+    </script>
+    
+</body>
+</html>

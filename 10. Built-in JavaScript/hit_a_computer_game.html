@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hit a Computer Game</title>
+    <style>
+        .gameboard {  /* This is the size of the entire gameboard.  IMPORTANT: IT SHOULD HAVE AN ORDER LIKE "GAMEBOARD, OFFICE, DESK, COMPUTER" */
+            width:600px;
+            height:500px;
+            margin: 0 auto;
+            border:1px solid #ddd;
+        }
+        .office {  /* This is the inner box where it will simulate the office */
+            float:left;
+            width:120px;
+            height:170px;
+            overflow: hidden;
+            position: relative;
+            border:1px solid #ddd;
+            margin:10px 30px;
+        }
+        
+        
+        .desk{  /* This is the inner box where it will simulate the desk */
+            width:100%;
+            height:50px;
+            bottom: 0px;
+            position: absolute;
+            background-color: burlywood;
+            z-index:2;
+        }
+        
+        .computer {  /* this will show the computer image that we add */
+            background: url('computer.png') bottom center no-repeat;
+            background-size: 100% 100%;
+            position:absolute;
+            top:100%;
+            width:100%;
+            height:80%;
+            
+        }
+        
+        .popup{  /* This will be activated to popup the computer when this class is activated */
+            top:0;
+        }
+    </style>
+</head>
+<body>
+    Score:<span class="score">0</span>
+    <input type="button" onclick="start()" value="Start Game">
+    <div class="gameboard"></div>  <!-- since we are using the class "gameboard" and is the only DIV it will all be added from the javascript part inside this div -->
+
+    <script>
+        window.onload = build;  // This will trigger the function that loads the game but the game will not start until the the "start game" button is not clicked but everything will be added in the same DIV
+        var computer;
+        var offices =  6;
+        function build(){  // This will load the gameboard and all the components inside the DIV
+            var html = "<h1>Hit the computer</h1>";
+            for(var x=0;x<offices;x++){
+                html += '<div class="office"><div class="desk"></div><div class="computer"></div></div>';  // This will add 2 DIVs, one is the "office" where all the offices that are 6 (and in the next part will be expanded by 9) are added, and the second DIV is the "desk" that is an smaller box inside the "office" simulating the desk where the "computer" will be shown
+            }
+            document.querySelector('.gameboard').innerHTML = html;  // Then all the "offices" and the "Desk" after they pass through the "for loop" will be added in the HTML through the "querySelector '.gameboard"
+            computer=document.querySelectorAll('.computer');  // This variable will use the "querySelectorAll" to select all the ".computer" class so
+            for(var x=0;x<computer.length;x++){  // with the "for loop"
+                computer[x].addEventListener('click',hitcomputer,false);  // It will "addEventListener" for a "click" and trigger the "hitcomputer" function, and it is false because it does not want to repeat after it finish
+            }
+        }
+        
+        function popup(){
+            var ranCom = computer;  // CHECK FOR ERRORS, THERE WHERE '[]' AND IT SENDS AN ERROR
+        }
+        
+        
+        function hitcomputer(){
+            
+        }
+        
+        function start(){
+            popup();
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </script>
+    
+</body>
+</html>

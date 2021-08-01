@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returns and Local Variables</title>
+</head>
+<body>
+    <div> <h1>Returns and Local Variables</h1> </div>
+    <div id="output"> <h1>Returns and Local Variables</h1> </div>
+
+    <script>
+
+        var output = document.getElementById("output");
+
+        output.innerHTML = myFun1();
+
+        function myFun1(){  // This will create the function but is not going to trigger the function since it needs something to trigger it outside the function
+            return "okay";
+        }
+
+
+    </script>
+
+    <br>
+    <br>
+
+    <div id="output1"> <h1>Returns and Local Variables</h1> </div>
+
+    <script>
+
+        var output1 = document.getElementById("output1");
+
+        output1.innerHTML = myFun2(4,5,6);
+
+        function myFun2(a,b,c){ 
+            var response = a+b+c;  // this will store the sum of the 3 values that is called inside the parenthesis at the begining of the function.
+            return response;
+        }
+
+
+    </script>
+
+    <br>
+    <br>
+
+    <div id="output2"> <h1>Returns and Local Variables</h1> </div>
+
+    <script>
+
+        var output2 = document.getElementById("output2");
+
+        output2.innerHTML = myFun2(4,5,7);
+        var response = "66";  // This is a global variable
+
+        function myFun2(a,b,c){ 
+            response = "55"; // This is calling the same global variable since is outside the function
+            var response = a+b+c;  // This is a local variable since is inside the function but since it is the same name it is still being the same variable but what makes it a local variable is that it has the "var" at the beginning
+            return response;
+        }
+
+
+    </script>
+
+    <br>
+    <br>
+
+    <div id="output3"> <h1>Returns and Local Variables</h1> </div>
+
+    <script>
+
+        var output3 = document.getElementById("output3");
+
+        
+        var myWorld = " world";
+
+        function myHello(){ 
+            var response = "Hello";
+            return response;
+        }
+
+        output3.innerHTML = myHello() + " " + myWorld;
+
+
+    </script>
+
+    <br>
+    <br>
+
+    <div id="output4"> <h1>Returns and Local Variables</h1> </div>
+
+    <script>
+
+        var output4 = document.getElementById("output4");
+
+        
+        var a = "Hello";
+        output4.innerHTML = myFun3();
+
+        function myFun3(){ 
+            var b = a + " " + "World";
+            return b;
+        }
+
+        
+
+
+    </script>
+
+    <br>
+    <br>
+
+
+</body>
+</html>

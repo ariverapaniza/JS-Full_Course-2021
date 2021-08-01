@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Event Handlers</title>
+</head>
+<body>
+    <div id="wrapper">Mouse Event Handlers</div>
+
+    <img src="http://via.placeholder.com/350x150/222/fff?text=image1" id="imgSwap" onmouseover="cImg(this)" onmouseout="bImg(this)">  <!--Since we added to this image the "onmouseover" as soon as we pass the mouse over the image it will activate the cImg function. When the onmouseout it will activate the bImg function to get back to the original image going back and forth-->
+    <script>
+
+        var imgHolder = "http://via.placeholder.com/350x150/222/fff?text=image5";
+        document.getElementById("imgSwap").onclick = function(){  // This anonymous function will change the html as soon as we click the image
+            message("Clicked!")
+        }
+        window.onload = function(){
+            document.getElementById("imgSwap").src = imgHolder; // With this we can get rid of the src on the html img because the image will be called from the javascript. In here is more dynamic because is easy to change the image
+        }
+
+        function cImg(t){
+            message(t.src);  // This function will activate the next function that will change the wrapper div message already defined with the new message, in this case it is referring to the src (the web address) and its going to be displayed on the html. With this will change the text first
+            imgHolder = t.src;
+            t.src = "http://via.placeholder.com/350x150/ff0000/fff?text=image2"  // then it will change the image, and if we hover the mouse again it will change the text for this web address.
+        }
+
+        function message(m){  // This function is the one that will make the change of the text inside the html
+            document.getElementById("wrapper").innerHTML = m;
+
+        }
+
+        function bImg(t){  // This is to get back the image as soon as we move the mouse out the image
+            t.src = imgHolder;  // This will swap one value for the other changing the images back
+        }
+
+
+    </script>
+</body>
+</html>

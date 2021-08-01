@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuffle Array Function</title>
+</head>
+<body>
+
+    <input type="button" onclick="start()" value="Shuffle It!">
+    <br>
+    <br>
+    <div id="output"></div>
+
+    <script>
+
+        var output = document.getElementById("output");
+        var secretWord = ["JavaScript","CSS","HTML","Python","Bootstrap"];
+
+        function start(){
+            shuffleArray(secretWord);
+            output.innerHTML += secretWord + "<br>"; 
+        }
+
+        function shuffleArray(arr){  // This function will shuffle the array. The arr is the variable used on this function
+            for(var x = arr.length - 1; x > 0; x--){  // This will dinamically take the length of the array (in case we want to increase it) and with that number will change the order of the array
+                var holder = Math.floor(Math.random()*(x+1));  // It will select the random position of the array to shuffle it next
+                var temp = arr[x]; // This will take the value randomly selected on the array and place it on the variable temp
+                arr[x] = arr[holder];  // This will swap the position from x to holder
+                arr[holder] = temp;  //  THis will swap the holder for temp
+            }
+            return arr;
+        }
+
+
+    </script>
+</body>
+</html>

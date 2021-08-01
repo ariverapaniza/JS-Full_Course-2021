@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Bug fixes and Tweaks</title>
+    <style>
+        .active {
+            background-color: aliceblue;
+        }
+        
+        .question {
+            font-size: 1.5em;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">Complete JavaScript Course </div>
+    <div id="output1"></div>
+    <div>
+        <input type="button" id="prev" value="prev">
+        <input type="button" id="next" value="next">
+        <script>
+            window.onload = init;
+            var myData = {};  // this is an object and in here we will add the "response" or the content of the JSON file
+        var page = 0; //  this is the variable "page" where it should start at "0". in here since in the JSON file there are 4 indexes questions and answers, each page is the combination of question and answer
+        var score = 0;  // the score will start at 0
+        var userAnswer = [];  // this is an array and all the answer will be stored in here
+        var output = document.getElementById('output1');  // and we are going to added in this DIV ID "output1"
+            document.getElementById('next').addEventListener('click', function () {
+                move(page + 1);  // this is an "addEventListener" to listen to the "click" and triggers the function to "move" to the "next page" triggering the "move" function
+            })
+            document.getElementById('prev').addEventListener('click', function () {
+                move(page - 1);  // this is an "addEventListener" to listen to the "click" and triggers the function to "move" to the "previous page" triggering the "move" function
+            })
+
+            function move(a) {  // then this function will change page. The "a" means "allow to move to the next pages"
+                if (a < 0) {  //if is less than 0
+                    a = 0;  // answer is 0 so with this is not going to be -1
+                }
+                if (a >= myData.length) {  // if "a" or "answers" is greater or equal to "myData.length" then go to the "summary" function
+                    summary();
+                }
+                else {
+                    page = a;
+                    buildPage();
+                }
+            }
+
+            function summary() {
+                score = 0;  // the score starts at 0
+                var html = '<h1>Summary</h1>';
+                for (var x = 0; x < myData.length; x++) {  // then it will "for" loop
+                    html += "Question " + (x + 1) + " ";  // and add it to the html incrementing the value of question 
+                    if (myData[x].correct == userAnswer[x]) {  // and "if" the index value "x" is correct is equals to the "userAnswer"
+                        html += "correct <br>";  // then adds it is correct
+                        score++; // and increment the score
+                    }
+                    else {  // otherwise
+                        html += "wrong <br>";  // add to the question that we answer it wrong
+                    }
+                }
+                html += "Your score was " + score + " out of " + myData.length;  // then show the results of the game
+                output.innerHTML = html;
+            }
+            output.addEventListener('click', function () {  // this will trigger the function when we click an element of the list
+                for (var x = 0; x < this.children.length; x++) {  //with this for loop we can remove for "this.children" element 
+                    this.children[x].classList.remove('active'); // the classList "active" so it means that if it was active and clicked another one it will remove the the "active" in the previous class and added to the new one
+                }
+                if (!event.target.classList.contains('question')) {  //"if" the class does not contains "question" then
+                    userAnswer[page] = Number(event.target.dataset.index);  // we can take the index of the dataset
+                    event.target.classList.add('active');  // when we make a selection it will toggle the selection and use the css to change the color of the selected target
+                }
+            })
+
+            function init() {
+                getJSON('http://discoveryvip.com/shared/json.php?f=quiz', function (response) {  // i here we are going to pull the web json to get the info
+                myData = response;  // and this is an OBJECT where all the data of the json file will be added
+                    buildPage();
+                })
+            }
+
+            function buildPage() {  // and in here from the json file we are going to get the information  
+            var p = myData[page];  // this is the variable "p" or "page"
+            var html = '';  // and this variable will add the information to the html
+                html += '<div class="question">' + p.question + '?</div>';  // and in here we are going to add the "class question" to be able to not select the question like is an answer
+                for (var x = 0; x < p.answers.length; x++) {
+                    var answer = x == p.correct ? true : false;  // this will use a ternary operator if x is equals to p.correct then it is true, otherwise if false
+                    var aClass = userAnswer[page] == x ? 'active' : '';  // then change the useranswer selection to "active" class otherwise false using this ternary operator
+                    html += '<div class="' + aClass + '" data-id="' + answer + '" data-index="' + x + '">' + p.answers[x] + '</div>';
+                }
+                output.innerHTML = html;
+            }
+
+            function getJSON(url, callback) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('get', url, true);
+                xhr.responseType = 'json';
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
+                        callback(xhr.response);
+                    }
+                }
+                xhr.send();
+            }
+        </script>
+    
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While Loops</title>
+</head>
+<body>
+    <div id="output1"></div>
+
+    <script>
+
+        var output1 = document.getElementById("output1");
+
+        var x = 0;
+        var answer = prompt("How many times do you want me to loop?");
+        answer = Number(answer);
+        while (x < answer){
+            output1.innerHTML += "Value of x = " + x + "<br>"; // The += sign is indicating that this will be added to the HTML
+            x++;
+        };
+        output1.innerHTML += "Final value of x = " + x + "<br>";
+
+
+
+    </script>
+
+    <br>
+    <br>
+
+    <div id="output2"></div>
+
+    <script>
+
+        var output2 = document.getElementById("output2");
+        var secret = "javascript";
+        var crackCode = prompt("Type your Answer! Hint: Is the course that we are taking right now!");
+
+        while (secret != crackCode){  // This will compare the 2 variables if they match, if they dont they will continue the while loop, if they do they will pass to the next part the ouput2.innerHTML
+            crackCode = prompt("Guess again!");
+        };
+        output2.innerHTML += "The answer " +  crackCode  + " is correct!";
+
+
+
+
+
+    </script>
+</body>
+</html>

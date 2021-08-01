@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Cookies Creation</title>
+</head>
+<body>
+    
+    <div id="output">JavaScript Cookies Creation</div>
+    <a href="https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript">This is to store the Unix TimeStamp for JavaScript</a>
+    <script>
+        function cCookie(name, value, days) {  // This function will "create" the cookie. Then it will create the "name", the "value" and the expiration date for the "cookie"
+            var e = "";  // This will store the "expired time" of the cookie in a variable
+            if (days) {  // "if" the number of "days"
+                var d = new Date();  //it will be stored in this variable using the method "new Date"
+                d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));  // and we use the "unix timestamp" for a long format that will be converted
+                e = "; expires=" + d.toUTCString(); // using the "toUTCString" method
+            }
+            document.cookie = name + "=" + value + e + "; path=/";  //  This is the way of the DOM to read the "cookies" part. Then the "path" is where we want to store it on which foler for the entire domain
+        }
+
+        function rCookie(name) {  // This will read the cookie
+            var p = name + "=";
+            var c = document.cookie.split(';');  // This will create an array of all the cookies created
+            for (var x = 0; x < c.length; x++) {
+                //var t = c[x].charAt(0) == ' ' ? c[x].substring(1)   : c[x];  // This will remove the white spaces between the information of the cookies
+                // var t = c[x].trim();   //  This also will remove the spaces
+                var t = c[x].replace(/^\s+|\s+$/gm, '');  // this will remove the spaces at the front or the back of the cookie values that were looped with the for loop
+                if (t.indexOf(p) == 0) {  // this will check if the value exist and if the value exist
+                    return t.substring(p.length, t.length); // it will return a "substring" the lenght of "p" and "t"
+                }
+            }
+            return "";  // If the cookie is not found it will "return empty"
+        }
+
+        function dCookie(name) {  // This function will delete the cookie 
+            cCookie(name, "", -1);  //  will take the name, put it empty and delete with the "date" in "-1"
+        }
+        var myCookie = rCookie('test');
+    </script>
+</body>
+</html>

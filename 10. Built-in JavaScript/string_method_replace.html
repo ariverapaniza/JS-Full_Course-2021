@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Method Replace</title>
+</head>
+<body>
+
+    <!-- *** The method "replace" will replace the predetermined text with a new text using 2 values: the first one is the value to be replaced and the second is the one that will replace the old value. -->
+    
+    <div id="message">String Method Replace - JavaScript</div>
+    <input type="text" id="myString" placeholder="Type to replace 'JavaScript'">
+    <input type="button" value="Replace" onclick="rHeading()">
+    <script>
+        var a = "world hello";
+        var b = new String("Hello World");
+        var message = document.getElementById('message');
+        var holder = "JavaScript";
+
+        function rHeading() {
+            var m = document.getElementById('myString').value;  // This will take the value that we write in te input text box and store it in the variable "m"
+            var c = message.innerText;  // This will store the text in the ID "message"
+            c = c.replace(holder, m);  // This will use the method "replace" to take the word stored in the variable "holder" and replace it with the content of the variable "m". The method "replace" requires 2 items: the first one is the value to be replaced and the second is the one that will replace the old value.
+            holder = m;  // This will take any new value that we put in the text area and  update the variable "holder" to be replaced again in the variable "c".
+            message.innerText = c;  // This will change the message in the ID "message" and replace it with the new value
+        }
+    </script>
+
+</body>
+</html>

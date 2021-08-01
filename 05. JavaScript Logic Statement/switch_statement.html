@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Statement</title>
+</head>
+<body>
+
+    <div id="output">Switch Statements</div>
+    <script>
+
+        var myTime = prompt("What are you doing?");
+        var output = document.getElementById("output");
+        var html;
+        
+        switch (myTime) {
+            case "Get Up":
+                html = "8:00AM";
+                break;
+            case "Lunch":
+                html ="12:00PM";
+                break;
+            case "Dinner":
+                html ="6:00PM";
+                break;
+            default:
+                html = "Not found";
+        }
+
+        output.innerHTML = html;
+        
+
+
+    </script>
+
+    
+    <p>Click the button to display a dialog box which will ask for your favorite drink.</p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <p id="demo"></p>
+
+    <script>
+    function myFunction() {
+    var text;
+    var favDrink = prompt("What's your favorite cocktail drink?", "Daiquiri");
+    switch(favDrink) {
+        case "Martini":
+        text = "Excellent choice. Martini is good for your soul.";
+        break;
+        case "Daiquiri":
+        text = "Daiquiri is my favorite too!";
+        break;
+        case "Cosmopolitan":
+        text = "Really? Are you sure the Cosmopolitan is your favorite?";
+        break;
+        default:
+        text = "I have never heard of that one..";
+    }
+    document.getElementById("demo").innerHTML = text;
+    }
+    </script>
+
+
+</body>
+</html>

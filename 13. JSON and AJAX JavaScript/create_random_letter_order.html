@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Random Letter Order</title>
+    <style>
+        .box {
+            font-size: 1.5em;
+            background-color: aliceblue;
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">Create Random Letter Order</div>
+    <input type="button" id="myButton" value="New Country">
+    <input type="text" id="guess" placeholder="Guess the Country">
+    <input type="button" id="myGuess" value="Guess">
+    <div id="output1" class="box"></div>
+    <div id="output2" class="box"></div>
+    <script>
+        window.onload = init;
+        var pick = "";  //  this will store the information randomly pulled from the Rest API from the web address
+
+        function init() {
+            document.getElementById('myButton').addEventListener('click', myLoader, false);  //  this will get the element with the ID of "myButton" and "addEventListener" for a "click", triggers the "myLoader" function 
+        }
+
+        function myLoader() {
+            var xHR = new XMLHttpRequest();  // this will request the information from the "rest api"
+            xHR.onload = rOutput;  // this will trigger the "rOutput" function or Request Output
+            xHR.open('get', 'https://restcountries.eu/rest/v2/all', true);  // "true" remains Asynchronous
+            xHR.send();  // remember that the xHR or "XML HTTP Request" open with the previous command and sends or initiates the information using this command 
+        }
+
+        function guessWord() {
+            // value of guess
+            // loop through the letters of pick.name
+            // toLowerCase
+            // update output2 with correct letters
+        }
+
+        function rOutput() {
+            var myObj = JSON.parse(this.responseText);  // this will parse the entire document converting it as an object
+            pick = myObj[Math.floor(Math.random() * myObj.length)];  // and this will select a random country from the object "myObj" containing all the countries
+            var ww = '';  // this variable starts empty because in here we are going to put the dashes "-" of the word
+            for (var x = 0; x < pick.name.length; x++) {  // with this "for loop" after we selected a random name it will take the lenght of the name and replace it with the "-" dashes to know the lenght of the name to be guessed
+                ww += '-';  // this will add as many dashes "-" as the word lenght
+            }
+            document.getElementById('output1').innerHTML = shuffleWord(pick.name);  //  this will take the name and trigger the "shuffleWord" function with the name randomly picked
+            document.getElementById('output2').innerHTML = ww;
+        }
+
+        function shuffleWord(w) {
+            var response = '';  //  this will store the word shuffled
+            w = w.split('');  //  this will create an array
+            while (w.length > 0) {  // "while" the word is more than "0" 
+                response += w.splice(Math.floor(Math.random() * w.length), 1);  // we are going to splice each letter of the word and randomly place it in the "response" variable
+            }
+            return response;
+        }
+    </script>
+    
+</body>
+</html>

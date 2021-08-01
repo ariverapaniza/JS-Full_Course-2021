@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Invoking Functions</title>
+</head>
+<body>
+    <div id="output"></div>
+    <br>
+    <div id="output1"></div>
+
+
+    <script>
+
+        var output = document.getElementById("output");
+
+        var a = " World!";
+
+        (function(){
+            var a = "Hello";
+            output.innerHTML = a;
+        })(); // This parenthesis at the end will trigger the function by itself
+
+        output.innerHTML += a;
+
+        (function(){  // To start a self invoked function we have to start it with a parethesis and ended with a parenthesis at the end
+            var test = "test";
+            output1.innerHTML = test;
+        })();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnLoad Event Handler</title>
+</head>
+<body onload="myFun(' body;')">  <!--If we delete the "body" word it will just trigger the function-->
+    <div id="wrapper">OnLoad Event Handler</div>
+
+    <form name="myForm">
+
+        <input type="button" value="click 1" id="id1">
+        <input type="button" value="click 2" id="id2">
+        <input type="button" value="click 3" id="id3">
+
+    </form>
+
+    <script>
+
+        var output = document.getElementById("wrapper");
+
+        window.onload = function (event) {  // Even though if this function is triggered by the body onload function on the html and the word "body is written on the <body onload="myFun('body;')">" it will take the value triggered on this function
+            myFun(' window'); // If this function is not activated it will write "window" instead of "body"
+        }
+        function myFun(a){
+            output.innerHTML = "Welcome, All Loaded!" + a; // The "a" will add the word "window" instead of the word "body"
+        }
+
+
+
+    </script>
+</body>
+</html>

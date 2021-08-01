@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 GamePlay Setup Values</title>
+    <style>
+        .btn {
+            background-color: red;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 1em;
+            padding: 15px;
+            color: white;
+        }
+        
+        .btn:hover {
+            background-color: crimson;
+        }
+        
+        .gameTile {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="output">01 GamePlay Setup Values</div>
+    <div id="wrapper">
+        <div id="start" class="btn">Start</div>
+        <div id="score"></div>
+        <div id="message"></div>
+        <div id="gameboard"></div>
+    </div>
+    <script>
+        var playLockout = false;  //  this will toggle the tiles to show the pairs
+        var gamePlay = false;
+        var sb = document.getElementById('start');  // start button
+        var message = document.getElementById('message');  // This will add to the HTML in the "message id"
+        var score = document.getElementById('score');
+        var gameBoard = document.getElementById('gameboard');
+        sb.addEventListener('click', startGame);  // We add the "addEventListener" where the first part is listening to the "click" and the second is going to call the function "startGame"
+
+        function startGame() {
+            // hide start button
+            message.innerHTML = "Its working" + gamePlay;  // This will add to the HTML in the "message id"
+            if (!gamePlay) {  // if "!gamePlay" is not true 
+                gamePlay = true;  // change it to "true"
+                // build array for tiles
+                // shuffle tiles
+                // buildboard
+            }
+        }
+    </script>
+</body>
+</html>

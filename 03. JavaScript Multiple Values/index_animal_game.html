@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Game</title>
+</head>
+<body>
+    <script>
+        var animals = ["cat","dog","rabbit","bird","fish"];
+        var randomIndex = Math.floor(Math.random()*animals.length);
+        var randomAnimal = animals[randomIndex];
+        var message = prompt("which index value is "+randomAnimal );
+        var response = (message == randomIndex) ? "Correct" : "Wrong it was " +  randomIndex;
+        alert(response);
+        animals.push("cow"); // Add an animal to the end of the array
+        animals.pop(); // This will remove the last item on the array
+        animals.shift(); // This will remove the first item on the array
+        animals.unshift("eagle"); // Add first item on the array
+        animals.splice(2,2); // This will remove the 2 items on the array according to the position. The first number is the position, the second number is the number of items that will be removed, in this case 2 items will be removed.
+        animals.reverse(); // This will reverse the array. 
+        animals.sort(); // This will sort the list alphabetically. 
+        animals.sort().reverse(); // This will apply the 2 commands in one single line. 
+        animals[20] = "horse";
+        animals.fill("mouse",3);
+
+        var animal = ["cat","dog","rabbit","bird","fish","zebra"];
+        var startVal = animal.length;
+        console.log(startVal);
+        animal[20] = "horse";
+        animal.fill("mouse",startVal , (animal.length-1));
+
+        
+    </script>
+</body>
+</html>

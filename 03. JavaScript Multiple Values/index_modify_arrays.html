@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Arrays</title>
+</head>
+<body>
+    <script>
+       
+        var newHolder = ["cat","dog","rabbit","bird"];
+        var posIndex = newHolder.indexOf("cat");
+
+        var question = prompt("What did you want to look for?");
+        var position = newHolder.indexOf(question);
+
+        var message = position > -1 ? "Found!!!!" : "Not There..."; 
+        document.write(message);  // This will be displayed on the html
+        
+        console.log(message);// This will be displayed on the console
+
+        console.log(newHolder.includes("dog"));  // This will display a boolean value at the console, We can write formulas inside parenthesis
+
+        console.log(newHolder.includes(prompt("Which Animal"))); // This will display a boolean value at the console, prompting to ask which animal are we looking for. 
+
+        console.log(newHolder.slice(1,3)); // This will slice the array into the items that we want
+
+        var array = [3,4,2,7,77,4,34,55,9,26,654,"cat","dog"];
+        array.sort();
+        console.log(array);
+        var question2 = prompt("What do you want to remove?");
+        var finder = array.indexOf(question2);
+
+        var newValue = (finder > -1) ? array.splice(finder,1) : false;
+        //var remover = array.splice(finder,1);  // This will remove the last item on the array even though is not found on the array. For example if we remove "horse" that is not listed on the array, it will remove the last item (dog)
+        console.log(newValue);
+
+        console.log(array); 
+
+    //["Horse", "fish", "fish", "fish", "fish", "fish", "fish", "fish", "rabbit", "dog", "sheep"]
+ 
+    </script>
+
+</body>
+</html>

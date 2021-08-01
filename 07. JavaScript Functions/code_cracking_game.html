@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Cracking Game</title>
+</head>
+<body>
+    <h3>Code: </h3>
+    <input type="text" id="code1"> <!--This is the box to type the number-->
+    <input type="text" id="code2">
+    <input type="text" id="code3">
+    <br>
+    <input type="button" onclick="crack()" value="Try Code">  <!--This is the button to check if we guess the code-->
+    <br>
+    <div id="output"></div>
+
+    <script>
+
+        var cCode = [];  // This is the array where the random number is going to be added, there are 3 spotsthat will be added on the "for loop"
+        var count = 0;
+        var output = document.getElementById("output");
+        var c1 = document.getElementById("code1");
+        var c2 = document.getElementById("code2");
+        var c3 = document.getElementById("code3");
+        for(var x = 0; x < 3; x++){  // x < 3 is telling that the random numbers to be push on the cCode will be 3 spots
+            cCode.push(Math.floor(Math.random() * 9));  // This will push the random numbers generated
+        }
+        output.innerHTML = cCode + "<br>";  // We can hide this number so they do not know what is the number and they have to guess it
+
+        function crack(){
+            count = 0;
+            var guess = [c1.value, c2.value, c3.value];  // This is the place where we are going to add our guessed numbers
+            for(var x = 0; x < cCode.length; x++){  // The x < cCode.length will take the previously for the length of the cCode array
+                output.innerHTML += checkNum(guess[x],cCode[x]);  // This will check the guessed number we input and the random selected number of the cCode array
+            }
+            if(count == 3){  // If True it will return that you guess it!
+                output.innerHTML += " You Guess It! <br>";
+            }else{    // Otherwise is not going to stop until we guess it
+                output.innerHTML += "<br>";  
+            }
+        }
+
+        function checkNum(a,b){  // In this function we will compare the guess and the cCode number to see if we guess it.
+            if(a>b){return "L";}
+            if(a<b){return "H";}
+            if(a==b){
+                count++;
+                return a;
+            }
+        }
+
+
+
+
+    </script>
+</body>
+</html>

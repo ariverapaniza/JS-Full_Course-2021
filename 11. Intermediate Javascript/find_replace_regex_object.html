@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find and Replace RegEx Object</title>
+</head>
+<body>
+    
+    <div id="output">Complete JavaScript Course Complete JavaScript Course Complete JavaScript Course Complete JavaScript Course Complete JavaScript Course</div> Search for :
+    <input id="sText" type="text">  <!-- This is te text that we are going to be searching for-->
+    <br> Replace with :
+    <input id="rText" type="text">  <!--and this is the text that we are going to be replacing with-->
+    <br>
+    <input type="button" onclick="lookUp()" value="find text">
+    <script>
+        function lookUp() {
+            var s = document.getElementById('output').innerText;  // the text or "string" to be searched
+            var st = document.getElementById('sText').value;  // search text
+            var rt = document.getElementById('rText').value;  // replace text
+            var re = new RegExp(st, "gi");  // we are going to create a pattern using the "new RegExp" and the format is the value of the searched text or "st" and the values of the pattern is "gi" or "global" and "ignore case (upper or lower)"
+            var result = s.match(re); // with the "s" or "string variable" we are going to "match" (method) with the "re" or the new pattern for the "RegExp" we created
+            if (result) {  // "if" the result exist
+                var rr = s.replace(re, rt);  // we are going to replace the word that we find in "re" for the word that we defined to be replaced with in "rt". 
+                document.getElementById('output').innerText = rr;  // and place it in the HTML
+            }
+            console.log(result);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuipulating Attributes</title>
+    <style>
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+<body>
+        <div id="message">Complete JavaScript Course</div>
+    <div id="output"></div>
+    <script>
+        window.onload = build;  // This line of code will activate the build function as soon as the page loads
+        var myArray = ["Laurence", "Mike", "John", "Larry", "Kim", "Joanne", "Lisa", "Janet", "Jane"];
+        var message = document.getElementById('message');
+
+        function build() {  // This function will be loaded as soon as the page loads and build the table
+            var html = "<h1>My Friends Table</h1><table>";  // This will be added and since later we use the += it will add the rest of the elements inside the table since after the <h1> it has the <table>
+            for (var x = 0; x < myArray.length; x++) {  // then it will loop in the array on each element inside the array
+                html += '<tr data-row="' + x + '"><td>' + myArray[x] + '</td><td class="box" >' + (x + 1) + '</td><td></td></tr>';  // <tr data row "x" where x is the row that we are going to create according to the lenght of the array, in this case there are 8 elements (tr means table row). "<td myArray[x]" means the value of the element, in this case the name that is in the array, then "<td class box" "x+1" means the number of the element inside the array = 1 that instead of starting at 0 it will start at 1. Then another "<td></td>" that will be empty unless we add some value
+            }
+            html += '</table>'; // Then we will add "+=" the last element that is the end of the table
+            document.getElementById('output').innerHTML = html; // with this line of code it will add all the html (the title + the table) inside the html
+            var elbox = document.querySelectorAll('#output .box');  // this querySelectorAll will select the id #output (we select the id with a # and the class with a . ) and store it in this variable to use it later 
+            var a;
+            for (var x = 0; x < elbox.length; x++) {  // we will loop inside the variable
+                elbox[x].onclick = function () {  // and when we click the row with the id and class
+                    //a = this.parentElement.getAttribute('data-row');
+                    a = this.closest('[data-row]').getAttribute('data-row');  // "this" "data-row" "closest" will look for the closest value in the data row to get the attribute in the data row. The first "[data-row]" should be in brackets [] because is like when we try to get the [x]
+                    console.log(myArray[a]);  // myArray[a] is pulling the element value, in this case the name
+                    message.innerHTML = myArray[a] + " is on row #" + a;  // message.innerHTML will add to the "id message"  and the "a" is the position number inside the array
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
